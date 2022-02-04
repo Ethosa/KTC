@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background1"
+    android:elevation="8sp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/wallTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:text="@string/postTitle"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/leftPadding"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/wallDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-4dp"
+        android:text="@string/date"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/wallTitle"
+        app:layout_constraintTop_toBottomOf="@+id/wallTitle"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/wallText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/postDescription"
+        app:layout_constraintEnd_toStartOf="@+id/rightPadding"
+        app:layout_constraintStart_toStartOf="@+id/wallTitle"
+        app:layout_constraintTop_toBottomOf="@+id/wallDate"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/blurredBackground"
+        android:layout_width="0dp"
+        android:layout_height="229dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/rightPadding"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/leftPadding"
+        app:layout_constraintTop_toBottomOf="@+id/wallText" />
+
+    <ImageView
+        android:id="@+id/sourceImage"
+        android:layout_width="0dp"
+        android:layout_height="229dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightPadding"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/leftPadding"
+        app:layout_constraintTop_toBottomOf="@+id/wallText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightPadding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_begin="395dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftPadding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

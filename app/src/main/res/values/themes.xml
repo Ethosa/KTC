@@ -3,14 +3,16 @@
     <style name="Theme.KTC" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary2</item>
         <item name="colorPrimaryVariant">@color/accent1</item>
         <item name="colorOnPrimary">@color/accent2</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/info</item>
-        <item name="colorOnSecondary">@color/dark</item>
+        <item name="colorSecondaryVariant">@color/secondary2</item>
+        <item name="colorOnSecondary">@color/info</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+
+        <item name="fontFamily">@font/nuritom</item>
     </style>
 </resources>

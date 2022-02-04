@@ -2,4 +2,7 @@
     <string name="app_name">KTC</string>
     <string name="title_home">Новости</string>
     <string name="title_timetable">Расписание</string>
+    <string name="postTitle">Название поста</string>
+    <string name="date">19 апр</string>
+    <string name="postDescription">Краткое описание поста</string>
 </resources>
