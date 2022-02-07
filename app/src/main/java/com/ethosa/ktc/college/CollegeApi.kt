@@ -26,6 +26,7 @@ class CollegeApi : Callback{
 
     override fun onFailure(call: Call, e: IOException) {
         Log.e("CollegeAPI", e.message.toString())
+        _callback = null
     }
 
     override fun onResponse(call: Call, response: Response) {

@@ -9,12 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ethosa.ktc.R
-import com.ethosa.ktc.college.objects.New
+import com.ethosa.ktc.college.CollegeApi
+import com.ethosa.ktc.college.CollegeCallback
+import com.ethosa.ktc.college.objects.LastNews
 import com.ethosa.ktc.databinding.FragmentHomeBinding
 import com.ethosa.ktc.ui.adapters.NewsAdapter
+import com.google.gson.Gson
+import okhttp3.Response
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), CollegeCallback<Response> {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
@@ -32,14 +35,11 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val items: ArrayList<New> = ArrayList()
-        for (i in 0 until 10)
-            items.add(New("Lorem Ipsum", getString(R.string.lorem_ipsum)))
-
         val itemDecoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
         binding.newsContainer.layoutManager = LinearLayoutManager(context)
-        binding.newsContainer.adapter = NewsAdapter(items)
         binding.newsContainer.addItemDecoration(itemDecoration)
+        val college = CollegeApi()
+        college.lastNews(this)
 
         return root
     }
@@ -47,5 +47,13 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResponse(response: Response) {
+        val jsonString = response.body?.string()
+        val news = Gson().fromJson(jsonString, LastNews::class.java)
+        activity?.runOnUiThread {
+            binding.newsContainer.adapter = NewsAdapter(news.anonce)
+        }
     }
 }
