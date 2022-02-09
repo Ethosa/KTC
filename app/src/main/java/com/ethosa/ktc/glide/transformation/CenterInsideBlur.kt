@@ -1,4 +1,4 @@
-package com.ethosa.ktc.utils
+package com.ethosa.ktc.glide.transformation
 
 import android.content.Context
 import android.graphics.*
@@ -15,11 +15,10 @@ class CenterInsideBlur @JvmOverloads constructor(
 
     companion object {
         private const val VERSION = 1
-        const val ID = "org.kinglloy.transformation.CenterInsideBlurTransformation.$VERSION"
+        const val ID = "com.ethosa.ktc.utils.CenterInsideBlurTransformation.$VERSION"
 
         const val MAX_RADIUS = 25
         const val DEFAULT_DOWN_SAMPLING = 1
-
     }
 
     override fun transform(
@@ -27,9 +26,9 @@ class CenterInsideBlur @JvmOverloads constructor(
         toTransform: Bitmap, outWidth: Int, outHeight: Int
     ): Bitmap {
         val blur = blurBitmap(pool, toTransform)
-        val centerCrop = TransformationUtils.centerCrop(pool, blur, outWidth, outHeight);
+        val centerCrop = TransformationUtils.centerCrop(pool, blur, outWidth, outHeight)
         val centerInside = TransformationUtils.centerInside(pool, toTransform, outWidth, outHeight)
-        return mergeBitmap(centerCrop, centerInside);
+        return mergeBitmap(centerCrop, centerInside)
     }
 
     override fun toString(): String {
@@ -50,24 +49,33 @@ class CenterInsideBlur @JvmOverloads constructor(
         messageDigest.update((ID + radius + sampling).toByteArray(Key.CHARSET))
     }
 
+    /**
+     * Blurs bitmap.
+     * @param src source bitmap
+     */
     private fun blurBitmap(pool: BitmapPool, src: Bitmap): Bitmap {
         val width = src.width
         val height = src.height
         val scaledWidth = width / sampling
         val scaledHeight = height / sampling
-        var blured: Bitmap = pool[scaledWidth, scaledHeight, Bitmap.Config.ARGB_8888]
-        setCanvasBitmapDensity(src, blured)
-        val canvas = Canvas(blured)
+        var blurred: Bitmap = pool[scaledWidth, scaledHeight, Bitmap.Config.ARGB_8888]
+        setCanvasBitmapDensity(src, blurred)
+        val canvas = Canvas(blurred)
         canvas.scale(1 / sampling.toFloat(), 1 / sampling.toFloat())
         val paint = Paint()
         paint.flags = Paint.FILTER_BITMAP_FLAG
         canvas.drawBitmap(src, 0f, 0f, paint)
-        blured = FastBlur.blur(blured, radius, true)
+        blurred = FastBlur.blur(blurred, radius, true)
 
-        return blured
+        return blurred
     }
 
-    private fun mergeBitmap(bg: Bitmap, f: Bitmap): Bitmap {
+    /**
+     * Merges two bitmaps into one.
+     * @param bg background bitmap
+     * @param fg foreground bitmap
+     */
+    private fun mergeBitmap(bg: Bitmap, fg: Bitmap): Bitmap {
         val result = Bitmap.createBitmap(
             bg.width, bg.height,
             bg.config
@@ -76,13 +84,13 @@ class CenterInsideBlur @JvmOverloads constructor(
         canvas.drawBitmap(bg, 0f, 0f, null)
         val m = Matrix()
         m.setRectToRect(
-            RectF(0f, 0f, f.width.toFloat(), f.height.toFloat()),
+            RectF(0f, 0f, fg.width.toFloat(), fg.height.toFloat()),
             RectF(0f, 0f, bg.width.toFloat(), bg.height.toFloat()),
             Matrix.ScaleToFit.CENTER
         )
         val scaled = Bitmap.createBitmap(
-            f, 0, 0,
-            f.width, f.height, m, true
+            fg, 0, 0,
+            fg.width, fg.height, m, true
         )
         if (scaled.width < bg.width) {
             canvas.drawBitmap(

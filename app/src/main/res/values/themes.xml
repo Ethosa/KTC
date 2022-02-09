@@ -16,4 +16,13 @@
 
         <item name="fontFamily">@font/nuritom</item>
     </style>
+
+    <style name="Theme.KTC.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.KTC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.KTC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

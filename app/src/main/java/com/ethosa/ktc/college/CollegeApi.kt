@@ -1,36 +1,33 @@
 package com.ethosa.ktc.college
 
-import android.util.Log
-import okhttp3.Callback
+import com.ethosa.ktc.college.interfaces.CollegeCallback
 import okhttp3.OkHttpClient
-import okhttp3.Call
-import okhttp3.Response
 import okhttp3.Request
-import java.io.IOException
 
-class CollegeApi : Callback{
-    private var client: OkHttpClient = OkHttpClient()
-    private var _callback: CollegeCallback<Response>? = null
+class CollegeApi {
+    companion object {
+        private var client: OkHttpClient = OkHttpClient()
+    }
 
     /**
      * Gets the last news and receives it in onResponse method
      */
-    fun lastNews(callback: CollegeCallback<Response>? = null) {
+    fun lastNews(callback: CollegeCallback) {
         val request: Request.Builder = Request.Builder()
             .get()
             .url("http://api.kansk-tc.ru/news/")
 
-        _callback = callback
-        client.newCall(request.build()).enqueue(this)
+        client.newCall(request.build()).enqueue(callback)
     }
 
-    override fun onFailure(call: Call, e: IOException) {
-        Log.e("CollegeAPI", e.message.toString())
-        _callback = null
-    }
+    /**
+     * Fetches the new by ID.
+     */
+    fun fetchNewById(id: Int, callback: CollegeCallback) {
+        val request: Request.Builder = Request.Builder()
+            .get()
+            .url("http://api.kansk-tc.ru/news/$id")
 
-    override fun onResponse(call: Call, response: Response) {
-        _callback?.onResponse(response)
-        _callback = null
+        client.newCall(request.build()).enqueue(callback)
     }
 }

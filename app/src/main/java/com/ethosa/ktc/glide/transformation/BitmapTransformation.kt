@@ -1,4 +1,4 @@
-package com.ethosa.ktc.utils
+package com.ethosa.ktc.glide.transformation
 
 import android.content.Context
 import android.graphics.Bitmap
