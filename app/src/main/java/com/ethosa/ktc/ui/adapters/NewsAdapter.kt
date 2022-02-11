@@ -22,7 +22,7 @@ import java.lang.Exception
 class NewsAdapter(private var items: List<New>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var binding: WallBinding = WallBinding.bind(view)
+        var binding = WallBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,40 +36,42 @@ class NewsAdapter(private var items: List<New>) : RecyclerView.Adapter<NewsAdapt
      * Loads title, date and wall post text
      */
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
-        if (items[pos].image == "") {
-            holder.binding.root.removeView(holder.binding.image)
+        val binding = holder.binding
+        val new = items[pos]
+        if (new.image == "") {
+            binding.root.removeView(binding.image)
         } else {
             // Download image and blurs it.
-            Glide.with(holder.binding.root)
+            Glide.with(binding.root)
                 .asBitmap()
-                .load(items[pos].image)
+                .load(new.image)
                 .transform(CenterInsideBlur(40, 5))
                 .listener(GlideListener(
                     object : GlideCallback {
                         override fun onReady(res: Bitmap) {
-                            holder.binding.image.setImageDrawable(
+                            binding.image.setImageDrawable(
                                 BitmapDrawable(Resources.getSystem(), res)
                             )
                         }
 
                         override fun onFailure(e: Exception) {
-                            holder.binding.root.removeView(holder.binding.image)
+                            binding.root.removeView(binding.image)
                         }
                     }
                 ))
-                .into(holder.binding.image)
+                .into(binding.image)
         }
-        holder.binding.wallTitle.text = items[pos].title
-        holder.binding.wallText.text = items[pos].body
-        holder.binding.wallDate.text = items[pos].date
+        binding.wallTitle.text = new.title
+        binding.wallText.text = new.body
+        binding.wallDate.text = new.date
 
-        holder.binding.root.setOnClickListener {
+        binding.root.setOnClickListener {
             // Go to WallPostActivity
-            val intent = Intent(holder.binding.root.context, WallPostActivity::class.java)
-            intent.putExtra("id", items[pos].id)
-            intent.putExtra("title", items[pos].title)
-            intent.putExtra("image", items[pos].image)
-            holder.binding.root.context.startActivity(intent)
+            val intent = Intent(binding.root.context, WallPostActivity::class.java)
+            intent.putExtra("id", new.id)
+            intent.putExtra("title", new.title)
+            intent.putExtra("image", new.image)
+            binding.root.context.startActivity(intent)
         }
     }
 

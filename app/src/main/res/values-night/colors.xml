@@ -10,6 +10,7 @@
     <color name="accent1">#2c2e32</color>
     <color name="accent2">#4d4d4e</color>
     <color name="foreground">#212121</color>
+    <color name="foreground_alpha">#95212121</color>
     <color name="text">#DADFE3</color>
     <color name="unchecked">#b4bcca</color>
     <color name="checked">#78A3DD</color>

@@ -10,4 +10,9 @@
         android:id="@+id/navigation_timetable"
         android:icon="@drawable/schedule"
         android:title="@string/title_timetable" />
+
+    <item
+        android:id="@+id/navigation_gallery"
+        android:icon="@drawable/attach"
+        android:title="@string/title_gallery" />
 </menu>

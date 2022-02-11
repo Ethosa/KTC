@@ -51,6 +51,7 @@ class HomeFragment : Fragment(), CollegeCallback {
      * Calls when collegeApi fetches last news.
      */
     override fun onResponse(call: Call, response: Response) {
+        if (_binding == null) return
         // Parse JSON
         val jsonString = response.body?.string()
         val news = Gson().fromJson(jsonString, LastNews::class.java)

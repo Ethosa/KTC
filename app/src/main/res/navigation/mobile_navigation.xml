@@ -17,4 +17,10 @@
         android:label="@string/title_timetable"
         tools:layout="@layout/fragment_timetable" />
 
+    <fragment
+        android:id="@+id/navigation_gallery"
+        android:name="com.ethosa.ktc.ui.gallery.GalleryFragment"
+        android:label="@string/title_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
 </navigation>

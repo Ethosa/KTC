@@ -5,16 +5,25 @@
       <map>
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/item.xml" value="0.1" />
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/navigation_item_tint.xml" value="0.1575" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/font-v26/nuritom_bold.xml" value="0.13425925925925927" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/font/nuritom_bold.xml" value="0.40208333333333335" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.1765625" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.15437158469945356" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_album.xml" value="0.33" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_album_content.xml" value="0.25" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_main.xml" value="0.2949438202247191" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_wall_post.xml" value="0.33" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/album_image.xml" value="0.33" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/album_preview.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/content_scrolling.xml" value="0.33" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_dashboard.xml" value="0.371875" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_gallery.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_timetable.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/scroll_content.xml" value="0.20471014492753623" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/wall.xml" value="0.67" />
         <entry key="..\:/android projects/KTC/app/src/main/res/menu/bottom_nav_menu.xml" value="0.371875" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/menu/menu_wall_post.xml" value="0.371875" />
       </map>
     </option>
   </component>
