@@ -37,7 +37,7 @@ class HomeFragment : Fragment(), CollegeCallback {
         binding.newsContainer.addItemDecoration(itemDecoration)
         // Fetch last news from college
         val college = CollegeApi()
-        college.lastNews(this)
+        college.fetchLastNews(this)
 
         return root
     }

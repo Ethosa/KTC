@@ -37,6 +37,8 @@ class AlbumsPreviewAdapter(
         binding.holder.setOnClickListener {
             val intent = Intent(binding.root.context, AlbumActivity::class.java)
             intent.putExtra("id", album.id)
+            intent.putExtra("preview", album.preview)
+            intent.putExtra("title", album.title)
             binding.root.context.startActivity(intent)
         }
     }

@@ -3,6 +3,7 @@ package com.ethosa.ktc.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.interfaces.CollegeCallback
@@ -11,6 +12,7 @@ import com.ethosa.ktc.databinding.ActivityAlbumBinding
 import com.ethosa.ktc.ui.adapters.AlbumAdapter
 import com.ethosa.ktc.ui.adapters.SpacingItemDecoration
 import com.google.gson.Gson
+import jp.wasabeef.glide.transformations.BlurTransformation
 import okhttp3.Call
 import okhttp3.Response
 
@@ -18,7 +20,7 @@ class AlbumActivity(
     private val spanCount: Int = 2
 ) : AppCompatActivity(), CollegeCallback {
 
-    private lateinit var binding: ActivityAlbumBinding
+    lateinit var binding: ActivityAlbumBinding
     private val college = CollegeApi()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,15 +28,21 @@ class AlbumActivity(
 
         binding = ActivityAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(findViewById(R.id.toolbar))
-        binding.toolbarLayout.title = title
+
+        // Setup recycler view
         val layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
         binding.albumContent.album.layoutManager = layoutManager
         binding.albumContent.album.setHasFixedSize(true)
         binding.albumContent.album.addItemDecoration(SpacingItemDecoration(8))
 
+        // Fetch intent extra data
+        binding.toolbarLayout.title = intent.getStringExtra("title")
+        Glide.with(binding.root)
+            .load(intent.getStringExtra("image"))
+            .transform(BlurTransformation(20, 2))
+            .into(binding.albumToolbarImage)
         college.fetchAlbumById(intent.getStringExtra("id")!!, this)
     }
 
@@ -44,7 +52,7 @@ class AlbumActivity(
         val album = Gson().fromJson(json, Album::class.java)
 
         runOnUiThread  {
-            binding.albumContent.album.adapter = AlbumAdapter(album)
+            binding.albumContent.album.adapter = AlbumAdapter(album, this)
         }
     }
 }

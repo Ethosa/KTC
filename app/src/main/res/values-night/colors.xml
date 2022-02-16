@@ -2,6 +2,7 @@
 <resources>
     <color name="background">#151d23</color>
     <color name="background1">#1A242B</color>
+    <color name="background_photo">#B5101519</color>
     <color name="primary">#29384a</color>
     <color name="primary2">#34495f</color>
     <color name="info">#4d6172</color>
@@ -12,6 +13,7 @@
     <color name="foreground">#212121</color>
     <color name="foreground_alpha">#95212121</color>
     <color name="text">#DADFE3</color>
+    <color name="btn_text">#DADFE3</color>
     <color name="unchecked">#b4bcca</color>
     <color name="checked">#78A3DD</color>
 
