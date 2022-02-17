@@ -1,6 +1,5 @@
 package com.ethosa.ktc.ui.adapters
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -21,6 +20,8 @@ class AlbumAdapter(
     private val activity: AppCompatActivity
 ) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
+    private val dialog = Dialog(activity)
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = AlbumImageBinding.bind(view)
     }
@@ -28,30 +29,26 @@ class AlbumAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
             .inflate(R.layout.album_image, parent, false)
+        dialog.window?.setContentView(R.layout.album_photo)
+        val root = dialog.findViewById<ConstraintLayout>(R.id.album_photo_root)
+        root.setOnClickListener {
+            dialog.dismiss()
+        }
         return ViewHolder(inflater)
     }
 
-    @SuppressLint("InflateParams", "ClickableViewAccessibility")
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
         val binding = holder.binding
         val image = items[pos]
         // Download image
         Glide.with(binding.root)
-            .asBitmap()
             .load(image)
             .into(binding.imageView)
 
         binding.root.setOnClickListener {
-            val dialog = Dialog(activity)
-            dialog.window?.setContentView(R.layout.album_photo)
             val img = dialog.findViewById<ImageView>(R.id.album_photo)
-            val root = dialog.findViewById<ConstraintLayout>(R.id.album_photo_root)
-            root.setOnClickListener {
-                dialog.dismiss()
-            }
             // Load image
             Glide.with(dialog.context)
-                .asBitmap()
                 .load(image)
                 .into(img!!)
             // Resize dialog
