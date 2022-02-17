@@ -24,12 +24,9 @@ class AlbumAdapter(
 ) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
     private val dialog = Dialog(activity)
+    private var animator = ObjectAnimator()
     private var img: ImageView? = null
     private var root: ConstraintLayout? = null
-    private var animator = ObjectAnimator()
-    private var touchX = 0f
-    private var touchY = 0f
-    private var lastMotionEvent = 0
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = AlbumImageBinding.bind(view)
@@ -75,11 +72,13 @@ class AlbumAdapter(
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         root = dialog.findViewById(R.id.album_photo_root)
         img = dialog.findViewById(R.id.album_photo)
+        var touchY = 0f
+        var lastMotionEvent = 0
+        val hideHeight = 400
 
         root!!.setOnTouchListener { _, motionEvent ->
             when (motionEvent.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    touchX = motionEvent.x
                     touchY = motionEvent.y
                 }
                 MotionEvent.ACTION_MOVE -> {
@@ -87,6 +86,8 @@ class AlbumAdapter(
                 }
                 MotionEvent.ACTION_UP -> {
                     if (lastMotionEvent == MotionEvent.ACTION_DOWN) {
+                        dialog.dismiss()
+                    } else if (root!!.y < -hideHeight || root!!.y > root!!.width + hideHeight) {
                         dialog.dismiss()
                     } else {
                         animator = ObjectAnimator.ofFloat(root!!, "y", 0f)
