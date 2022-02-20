@@ -1,6 +1,6 @@
 package com.ethosa.ktc.college.objects.timetable
 
 data class Course(
-    val groupId: Int,
-    val groupName: String
+    val course: Int,
+    val groups: Groups
 )

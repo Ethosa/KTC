@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.objects.timetable.Branches
 import com.ethosa.ktc.databinding.BranchBinding
+import com.ethosa.ktc.ui.timetable.TimetableFragment
 
 class BranchAdapter(
+    private val timetableFragment: TimetableFragment,
     private val items: Branches
 ) : RecyclerView.Adapter<BranchAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -26,7 +28,7 @@ class BranchAdapter(
         val branch = items[position]
         binding.button.text = branch.title
         binding.button.setOnClickListener {
-
+            timetableFragment.fetchCourses(branch.id)
         }
     }
 

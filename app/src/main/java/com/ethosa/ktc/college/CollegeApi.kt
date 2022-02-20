@@ -49,7 +49,7 @@ class CollegeApi {
     /**
      * Fetch all branch courses
      */
-    fun fetchCourses(branchId: String, callback: CollegeCallback) {
+    fun fetchCourses(branchId: Int, callback: CollegeCallback) {
         sendRequest("$COURSES/$branchId", callback)
     }
 
@@ -72,7 +72,7 @@ class CollegeApi {
      * @param groupId course group ID.
      * @param week week number. by default fetches current week.
      */
-    fun fetchTimetable(groupId: String, callback: CollegeCallback, week: Int? = null) {
+    fun fetchTimetable(groupId: Int, callback: CollegeCallback, week: Int? = null) {
         if (week == null)
             sendRequest("$TIMETABLE/$groupId", callback)
         else

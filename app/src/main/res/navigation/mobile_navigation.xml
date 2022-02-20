@@ -7,18 +7,21 @@
 
     <fragment
         android:id="@+id/navigation_home"
+        android:tag="News"
         android:name="com.ethosa.ktc.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_timetable"
+        android:tag="Timetable"
         android:name="com.ethosa.ktc.ui.timetable.TimetableFragment"
         android:label="@string/title_timetable"
         tools:layout="@layout/fragment_timetable" />
 
     <fragment
         android:id="@+id/navigation_gallery"
+        android:tag="Gallery"
         android:name="com.ethosa.ktc.ui.gallery.GalleryFragment"
         android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery" />
