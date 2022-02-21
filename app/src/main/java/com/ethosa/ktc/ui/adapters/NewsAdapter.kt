@@ -11,23 +11,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.activities.WallPostActivity
-import com.ethosa.ktc.college.objects.news.New
-import com.ethosa.ktc.databinding.WallBinding
+import com.ethosa.ktc.college.objects.news.News
+import com.ethosa.ktc.databinding.LayoutWallBinding
 import com.ethosa.ktc.interfaces.GlideCallback
 import com.ethosa.ktc.glide.transformation.CenterInsideBlur
 import com.ethosa.ktc.glide.GlideListener
 import java.lang.Exception
 
 
-class NewsAdapter(private var items: List<New>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
+class NewsAdapter(private var items: List<News>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var binding = WallBinding.bind(view)
+        var binding = LayoutWallBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.wall, parent, false)
+            .inflate(R.layout.layout_wall, parent, false)
         return ViewHolder(layoutInflater)
     }
 

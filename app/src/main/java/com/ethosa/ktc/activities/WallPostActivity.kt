@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.interfaces.CollegeCallback
-import com.ethosa.ktc.college.objects.news.New
+import com.ethosa.ktc.college.objects.news.News
 import com.ethosa.ktc.databinding.ActivityWallPostBinding
 import com.ethosa.ktc.glide.transformation.CenterInsideBlur
 import com.ethosa.ktc.utils.HtmlImageGetter
@@ -50,7 +50,7 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
     override fun onResponse(call: Call, response: Response) {
         // Parse JSON
         val body = response.body?.string()
-        val new = Gson().fromJson(body, New::class.java)
+        val new = Gson().fromJson(body, News::class.java)
         // Create animation object
         val animate = ObjectAnimator.ofFloat(
             binding.content.progressBar, "alpha", 1f, 0f

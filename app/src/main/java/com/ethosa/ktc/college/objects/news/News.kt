@@ -1,0 +1,18 @@
+package com.ethosa.ktc.college.objects.news
+
+/**
+ * {
+ *      "title": "Молодежная площадка «Поколение 2030»",
+ *      "body": "Студенты нашего колледжа примут участие  в Молоде...",
+ *      "date": "21 Фев",
+ *      "image": "http://...jpg",
+ *      "id": "2392"
+ * }
+ */
+data class News(
+    val title: String = "",
+    var body: String = "",
+    val date: String = "1 апр",
+    val image: String = "",
+    val id: String = ""
+)

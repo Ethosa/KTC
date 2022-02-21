@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.activities.AlbumActivity
 import com.ethosa.ktc.college.objects.gallery.AlbumPreview
-import com.ethosa.ktc.databinding.AlbumPreviewBinding
+import com.ethosa.ktc.databinding.LayoutAlbumPreviewBinding
 
 /**
  * Provides RecyclerView.Adapter behavior for album previews
@@ -22,12 +22,12 @@ class AlbumsPreviewAdapter(
      * Also includes AlbumPreviewBinding.
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = AlbumPreviewBinding.bind(view)
+        val binding = LayoutAlbumPreviewBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.album_preview, parent, false)
+            .inflate(R.layout.layout_album_preview, parent, false)
         return ViewHolder(inflater)
     }
 

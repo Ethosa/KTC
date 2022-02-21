@@ -1,3 +1,6 @@
 package com.ethosa.ktc.college.objects.news
 
-data class LastNews(val anonce: List<New>)
+/**
+ * List of last news.
+ */
+data class LastNews(val anonce: List<News>)

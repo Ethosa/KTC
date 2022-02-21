@@ -16,7 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
-import com.ethosa.ktc.databinding.AlbumImageBinding
+import com.ethosa.ktc.databinding.LayoutAlbumImageBinding
 
 /**
  * Provides RecyclerView.Adapter behavior for album photos.
@@ -36,12 +36,12 @@ class AlbumAdapter(
      * Also includes AlbumImageBinding.
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = AlbumImageBinding.bind(view)
+        val binding = LayoutAlbumImageBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.album_image, parent, false)
+            .inflate(R.layout.layout_album_image, parent, false)
         setupDialog()
         return ViewHolder(inflater)
     }
@@ -85,7 +85,7 @@ class AlbumAdapter(
     @SuppressLint("ClickableViewAccessibility")
     private fun setupDialog() {
         // set content view
-        dialog.window?.setContentView(R.layout.album_photo)
+        dialog.window?.setContentView(R.layout.layout_album_photo)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         root = dialog.findViewById(R.id.album_photo_root)
         img = dialog.findViewById(R.id.album_photo)

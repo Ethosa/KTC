@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.objects.timetable.Branches
-import com.ethosa.ktc.databinding.BranchBinding
+import com.ethosa.ktc.databinding.LayoutBranchBinding
 import com.ethosa.ktc.ui.timetable.TimetableFragment
 
 /**
@@ -21,12 +21,12 @@ class BranchAdapter(
      * Also includes BranchAdapter.
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = BranchBinding.bind(view)
+        val binding = LayoutBranchBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.branch, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.layout_branch, parent, false)
         )
     }
 

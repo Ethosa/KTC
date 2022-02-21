@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.objects.timetable.Courses
-import com.ethosa.ktc.databinding.CourseBinding
+import com.ethosa.ktc.databinding.LayoutCourseBinding
 import com.ethosa.ktc.ui.timetable.TimetableFragment
 import com.google.android.material.chip.Chip
 
@@ -23,12 +23,12 @@ class CourseAdapter(
      * Also includes CourseBinding.
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = CourseBinding.bind(view)
+        val binding = LayoutCourseBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.course, parent, false)
+            .inflate(R.layout.layout_course, parent, false)
         return ViewHolder(inflater)
     }
 

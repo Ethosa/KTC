@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.objects.timetable.Week
-import com.ethosa.ktc.databinding.LessonBinding
-import com.ethosa.ktc.databinding.TimetableBinding
+import com.ethosa.ktc.databinding.LayoutLessonBinding
+import com.ethosa.ktc.databinding.LayoutTimetableBinding
 import com.ethosa.ktc.ui.timetable.TimetableFragment
 
 /**
@@ -22,12 +22,12 @@ class TimetableAdapter(
      * Also includes TimetableBinding.
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = TimetableBinding.bind(view)
+        val binding = LayoutTimetableBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.timetable, parent, false)
+            .inflate(R.layout.layout_timetable, parent, false)
         return ViewHolder(inflater)
     }
 
@@ -42,7 +42,7 @@ class TimetableAdapter(
         binding.dayHeader.text = day.title
 
         for (l in day.lessons) {
-            val lesson = LessonBinding.inflate(
+            val lesson = LayoutLessonBinding.inflate(
                 LayoutInflater.from(timetableFragment.context),
                 holder.binding.root, false)
             lesson.lessonTitle.text = l.title
