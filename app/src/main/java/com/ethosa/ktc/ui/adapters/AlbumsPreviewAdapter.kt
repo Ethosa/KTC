@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
-import com.ethosa.ktc.activities.AlbumActivity
-import com.ethosa.ktc.college.objects.gallery.AlbumPreview
+import com.ethosa.ktc.ui.activities.AlbumActivity
+import com.ethosa.ktc.college.gallery.AlbumPreview
 import com.ethosa.ktc.databinding.LayoutAlbumPreviewBinding
 
 /**

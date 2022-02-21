@@ -1,4 +1,4 @@
-package com.ethosa.ktc.interfaces
+package com.ethosa.ktc.utils
 
 /**
  * Provides interface which includes onBackPressed function.

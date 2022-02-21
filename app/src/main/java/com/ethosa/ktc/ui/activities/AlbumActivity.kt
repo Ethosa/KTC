@@ -1,4 +1,4 @@
-package com.ethosa.ktc.activities
+package com.ethosa.ktc.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
-import com.ethosa.ktc.college.interfaces.CollegeCallback
-import com.ethosa.ktc.college.objects.gallery.Album
+import com.ethosa.ktc.college.CollegeCallback
+import com.ethosa.ktc.college.gallery.Album
 import com.ethosa.ktc.databinding.ActivityAlbumBinding
 import com.ethosa.ktc.ui.adapters.AlbumAdapter
 import com.ethosa.ktc.utils.SpacingItemDecoration

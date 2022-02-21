@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
-import com.ethosa.ktc.college.objects.timetable.Week
+import com.ethosa.ktc.college.timetable.Week
 import com.ethosa.ktc.databinding.LayoutLessonBinding
 import com.ethosa.ktc.databinding.LayoutTimetableBinding
-import com.ethosa.ktc.ui.timetable.TimetableFragment
+import com.ethosa.ktc.ui.fragments.TimetableFragment
 
 /**
  * Provides RecyclerView.Adapter behavior for timetable.

@@ -1,4 +1,4 @@
-package com.ethosa.ktc.college.objects.timetable
+package com.ethosa.ktc.college.timetable
 
 /**
  * ["1", "8:15", "9:45"]

@@ -1,4 +1,4 @@
-package com.ethosa.ktc.college.interfaces
+package com.ethosa.ktc.college
 
 import android.util.Log
 import okhttp3.Call

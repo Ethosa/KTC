@@ -1,4 +1,4 @@
-package com.ethosa.ktc.activities
+package com.ethosa.ktc.ui.activities
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

@@ -1,4 +1,4 @@
-package com.ethosa.ktc.college.objects.gallery
+package com.ethosa.ktc.college.gallery
 
 /**
  * List of image urls

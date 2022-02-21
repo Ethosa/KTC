@@ -1,4 +1,4 @@
-package com.ethosa.ktc.ui.gallery
+package com.ethosa.ktc.ui.fragments
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ethosa.ktc.college.CollegeApi
-import com.ethosa.ktc.college.interfaces.CollegeCallback
-import com.ethosa.ktc.college.objects.gallery.Albums
+import com.ethosa.ktc.college.CollegeCallback
+import com.ethosa.ktc.college.gallery.Albums
 import com.ethosa.ktc.databinding.FragmentGalleryBinding
 import com.ethosa.ktc.ui.adapters.AlbumsPreviewAdapter
 import com.ethosa.ktc.utils.SpacingItemDecoration

@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
-import com.ethosa.ktc.college.objects.timetable.Courses
+import com.ethosa.ktc.college.timetable.Courses
 import com.ethosa.ktc.databinding.LayoutCourseBinding
-import com.ethosa.ktc.ui.timetable.TimetableFragment
+import com.ethosa.ktc.ui.fragments.TimetableFragment
 import com.google.android.material.chip.Chip
 
 /**

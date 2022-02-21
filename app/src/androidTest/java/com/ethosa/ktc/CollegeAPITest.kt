@@ -2,7 +2,7 @@ package com.ethosa.ktc
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ethosa.ktc.college.CollegeApi
-import com.ethosa.ktc.college.interfaces.CollegeCallback
+import com.ethosa.ktc.college.CollegeCallback
 import okhttp3.Call
 import okhttp3.Response
 

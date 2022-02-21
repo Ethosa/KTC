@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
-import com.ethosa.ktc.college.objects.timetable.Branches
+import com.ethosa.ktc.college.timetable.Branches
 import com.ethosa.ktc.databinding.LayoutBranchBinding
-import com.ethosa.ktc.ui.timetable.TimetableFragment
+import com.ethosa.ktc.ui.fragments.TimetableFragment
 
 /**
  * Provides RecyclerView.Adapter behavior for branches

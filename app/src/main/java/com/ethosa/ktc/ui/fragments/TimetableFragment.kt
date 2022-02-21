@@ -1,4 +1,4 @@
-package com.ethosa.ktc.ui.timetable
+package com.ethosa.ktc.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ethosa.ktc.college.CollegeApi
-import com.ethosa.ktc.college.interfaces.CollegeCallback
-import com.ethosa.ktc.college.objects.timetable.Branches
-import com.ethosa.ktc.college.objects.timetable.Courses
-import com.ethosa.ktc.college.objects.timetable.Week
+import com.ethosa.ktc.college.CollegeCallback
+import com.ethosa.ktc.college.timetable.Branches
+import com.ethosa.ktc.college.timetable.Courses
+import com.ethosa.ktc.college.timetable.Week
 import com.ethosa.ktc.databinding.FragmentTimetableBinding
 import com.ethosa.ktc.ui.adapters.BranchAdapter
 import com.ethosa.ktc.ui.adapters.CourseAdapter

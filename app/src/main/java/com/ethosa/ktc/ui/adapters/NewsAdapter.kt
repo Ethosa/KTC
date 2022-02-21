@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
-import com.ethosa.ktc.activities.WallPostActivity
-import com.ethosa.ktc.college.objects.news.News
+import com.ethosa.ktc.ui.activities.WallPostActivity
+import com.ethosa.ktc.college.news.News
 import com.ethosa.ktc.databinding.LayoutWallBinding
-import com.ethosa.ktc.interfaces.GlideCallback
+import com.ethosa.ktc.glide.GlideCallback
 import com.ethosa.ktc.glide.transformation.CenterInsideBlur
 import com.ethosa.ktc.glide.GlideListener
 import java.lang.Exception

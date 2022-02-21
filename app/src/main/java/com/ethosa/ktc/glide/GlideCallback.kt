@@ -1,4 +1,4 @@
-package com.ethosa.ktc.interfaces
+package com.ethosa.ktc.glide
 
 import android.graphics.Bitmap
 import android.util.Log

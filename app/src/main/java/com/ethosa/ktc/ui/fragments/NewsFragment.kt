@@ -1,4 +1,4 @@
-package com.ethosa.ktc.ui.home
+package com.ethosa.ktc.ui.fragments
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ethosa.ktc.college.CollegeApi
-import com.ethosa.ktc.college.interfaces.CollegeCallback
-import com.ethosa.ktc.college.objects.news.LastNews
+import com.ethosa.ktc.college.CollegeCallback
+import com.ethosa.ktc.college.news.LastNews
 import com.ethosa.ktc.databinding.FragmentNewsBinding
 import com.ethosa.ktc.ui.adapters.NewsAdapter
 import com.google.gson.Gson

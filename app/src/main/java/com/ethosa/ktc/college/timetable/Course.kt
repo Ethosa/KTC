@@ -1,4 +1,4 @@
-package com.ethosa.ktc.college.objects.timetable
+package com.ethosa.ktc.college.timetable
 
 /**
  * {

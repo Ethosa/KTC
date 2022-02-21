@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/navigation_news"
         android:tag="News"
-        android:name="com.ethosa.ktc.ui.home.NewsFragment"
+        android:name="com.ethosa.ktc.ui.fragments.NewsFragment"
         android:label="@string/title_news"
         tools:layout="@layout/fragment_news" />
 
     <fragment
         android:id="@+id/navigation_timetable"
         android:tag="Timetable"
-        android:name="com.ethosa.ktc.ui.timetable.TimetableFragment"
+        android:name="com.ethosa.ktc.ui.fragments.TimetableFragment"
         android:label="@string/title_timetable"
         tools:layout="@layout/fragment_timetable" />
 
     <fragment
         android:id="@+id/navigation_gallery"
         android:tag="Gallery"
-        android:name="com.ethosa.ktc.ui.gallery.GalleryFragment"
+        android:name="com.ethosa.ktc.ui.fragments.GalleryFragment"
         android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery" />
 

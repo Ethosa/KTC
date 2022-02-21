@@ -1,6 +1,5 @@
 package com.ethosa.ktc.college
 
-import com.ethosa.ktc.college.interfaces.CollegeCallback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
@@ -9,16 +8,16 @@ import okhttp3.Request
  */
 class CollegeApi {
     companion object {
-        private val client: OkHttpClient = OkHttpClient()
+        private val client = OkHttpClient()
 
-        private const val API_URL: String = "http://api.kansk-tc.ru/"
-        private const val NEWS_API: String = "${API_URL}news/"
-        private const val ALBUMS_API: String = "${API_URL}albums/"
+        private const val API_URL = "http://api.kansk-tc.ru/"
+        private const val NEWS_API = "${API_URL}news/"
+        private const val ALBUMS_API = "${API_URL}albums/"
 
-        private const val MY_API: String = "http://109.248.133.17:8000/ktc-api"
-        private const val BRANCHES: String = "$MY_API/branches"
-        private const val COURSES: String = "$MY_API/courses"
-        private const val TIMETABLE: String = "$MY_API/timetable"
+        private const val MY_API = "http://109.248.133.17:8000/ktc-api"
+        private const val BRANCHES = "$MY_API/branches"
+        private const val COURSES = "$MY_API/courses"
+        private const val TIMETABLE = "$MY_API/timetable"
 
         /**
          * Sends GET request to url.

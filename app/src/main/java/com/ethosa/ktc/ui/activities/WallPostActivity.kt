@@ -1,4 +1,4 @@
-package com.ethosa.ktc.activities
+package com.ethosa.ktc.ui.activities
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.core.text.HtmlCompat
 import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
-import com.ethosa.ktc.college.interfaces.CollegeCallback
-import com.ethosa.ktc.college.objects.news.News
+import com.ethosa.ktc.college.CollegeCallback
+import com.ethosa.ktc.college.news.News
 import com.ethosa.ktc.databinding.ActivityWallPostBinding
 import com.ethosa.ktc.glide.transformation.CenterInsideBlur
 import com.ethosa.ktc.utils.HtmlImageGetter

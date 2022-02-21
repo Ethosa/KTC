@@ -1,4 +1,4 @@
-package com.ethosa.ktc.college.objects.news
+package com.ethosa.ktc.college.news
 
 /**
  * List of last news.
