@@ -1,7 +1,7 @@
 <div align="center">
 
 # KTC
-## 🔨 Unofficial app for Kansk Technological College written in Kotlin 🔨
+## 🔨 Неофициальное приложение для Канского ТК, написанное на Kotlin 🔨
 
 ![1614516581_161-p-telefon-na-belom-fone-1781](https://user-images.githubusercontent.com/49402667/154338718-7b93e6ca-743d-42f5-a054-722ef1274e26.png)
 
