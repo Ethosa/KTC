@@ -16,6 +16,9 @@ import jp.wasabeef.glide.transformations.BlurTransformation
 import okhttp3.Call
 import okhttp3.Response
 
+/**
+ * Provides album behavior.
+ */
 class AlbumActivity(
     private val spanCount: Int = 2
 ) : AppCompatActivity(), CollegeCallback {
@@ -46,6 +49,9 @@ class AlbumActivity(
         college.fetchAlbumById(intent.getStringExtra("id")!!, this)
     }
 
+    /**
+     * Fetches album content
+     */
     override fun onResponse(call: Call, response: Response) {
         // Parse JSON
         val json = response.body?.string()

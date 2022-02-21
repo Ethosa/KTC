@@ -16,7 +16,10 @@ import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
 
-class WallPostActivity : AppCompatActivity() {
+/**
+ * Provides Wall post behavior
+ */
+class WallPostActivity : AppCompatActivity(), CollegeCallback {
 
     private lateinit var binding: ActivityWallPostBinding
     private val college: CollegeApi = CollegeApi()
@@ -38,35 +41,35 @@ class WallPostActivity : AppCompatActivity() {
             .into(binding.toolbarImage)
 
         // Fetches post data.
-        college.fetchNewById(
-            intent.getStringExtra("id")!!.toInt(),
-            object : CollegeCallback {
-                override fun onResponse(call: Call, response: Response) {
-                    // Parse JSON
-                    val body = response.body?.string()
-                    val new = Gson().fromJson(body, New::class.java)
-                    // Create animation object
-                    val animate = ObjectAnimator.ofFloat(
-                        binding.content.progressBar, "alpha", 1f, 0f
-                    )
-                    animate.duration = 500
-                    // Fix <img/> tag
-                    new.body = new.body.replace(
-                        "src=\"/", "src=\"http://www.kansk-tc.ru/"
-                    )
-                    runOnUiThread {
-                        // Render HTML tags
-                        binding.content.body.text = HtmlCompat.fromHtml(
-                            new.body,
-                            HtmlCompat.FROM_HTML_MODE_LEGACY,
-                            HtmlImageGetter(resources, binding.content.body),
-                            null
-                        )
-                        // cancel progress
-                        animate.start()
-                    }
-                }
-            }
+        college.fetchNewById(intent.getStringExtra("id")!!.toInt(), this)
+    }
+
+    /**
+     * Fetches a news data
+     */
+    override fun onResponse(call: Call, response: Response) {
+        // Parse JSON
+        val body = response.body?.string()
+        val new = Gson().fromJson(body, New::class.java)
+        // Create animation object
+        val animate = ObjectAnimator.ofFloat(
+            binding.content.progressBar, "alpha", 1f, 0f
         )
+        animate.duration = 500
+        // Fix <img/> tag
+        new.body = new.body.replace(
+            "src=\"/", "src=\"http://www.kansk-tc.ru/"
+        )
+        runOnUiThread {
+            // Render HTML tags
+            binding.content.body.text = HtmlCompat.fromHtml(
+                new.body,
+                HtmlCompat.FROM_HTML_MODE_LEGACY,
+                HtmlImageGetter(resources, binding.content.body),
+                null
+            )
+            // cancel progress
+            animate.start()
+        }
     }
 }

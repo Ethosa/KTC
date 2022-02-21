@@ -8,6 +8,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.ethosa.ktc.R
 import com.ethosa.ktc.databinding.ActivityMainBinding
 
+/**
+ * The main app activity.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
