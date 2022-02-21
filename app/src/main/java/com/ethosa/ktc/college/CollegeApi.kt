@@ -4,6 +4,9 @@ import com.ethosa.ktc.college.interfaces.CollegeCallback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
+/**
+ * Provides working with KTC api.
+ */
 class CollegeApi {
     companion object {
         private val client: OkHttpClient = OkHttpClient()

@@ -11,6 +11,9 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.util.Util
 import java.security.MessageDigest
 
+/**
+ * Provides glide Transformation with Bitmap
+ */
 abstract class BitmapTransformation :
     Transformation<Bitmap?> {
     override fun transform(
@@ -42,6 +45,9 @@ abstract class BitmapTransformation :
         return result
     }
 
+    /**
+     * Changes canvas bitmap density
+     */
     fun setCanvasBitmapDensity(toTransform: Bitmap, canvasBitmap: Bitmap) {
         canvasBitmap.density = toTransform.density
     }

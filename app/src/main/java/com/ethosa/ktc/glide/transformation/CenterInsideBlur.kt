@@ -8,6 +8,9 @@ import com.bumptech.glide.load.resource.bitmap.TransformationUtils
 import jp.wasabeef.glide.transformations.internal.FastBlur
 import java.security.MessageDigest
 
+/**
+ * Provides transformation with centered image and blurred it.
+ */
 class CenterInsideBlur @JvmOverloads constructor(
     private val radius: Int = MAX_RADIUS,
     private val sampling: Int = DEFAULT_DOWN_SAMPLING
