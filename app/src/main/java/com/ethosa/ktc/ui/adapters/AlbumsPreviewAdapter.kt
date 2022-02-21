@@ -11,10 +11,16 @@ import com.ethosa.ktc.activities.AlbumActivity
 import com.ethosa.ktc.college.objects.gallery.AlbumPreview
 import com.ethosa.ktc.databinding.AlbumPreviewBinding
 
+/**
+ * Provides RecyclerView.Adapter behavior for album previews
+ */
 class AlbumsPreviewAdapter(
     private val items: List<AlbumPreview>
 ) : RecyclerView.Adapter<AlbumsPreviewAdapter.ViewHolder>() {
-
+    /**
+     * Provides RecyclerView.ViewHolder behavior.
+     * Also includes AlbumPreviewBinding.
+     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = AlbumPreviewBinding.bind(view)
     }
@@ -25,6 +31,9 @@ class AlbumsPreviewAdapter(
         return ViewHolder(inflater)
     }
 
+    /**
+     * Builds album preview
+     */
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
         val binding = holder.binding
         val album = items[pos]
@@ -43,5 +52,8 @@ class AlbumsPreviewAdapter(
         }
     }
 
+    /**
+     * @return albums count
+     */
     override fun getItemCount(): Int = items.size
 }

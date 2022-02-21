@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">KTC</string>
-    <string name="title_home">Новости</string>
+    <string name="title_news">Новости</string>
     <string name="title_timetable">Расписание</string>
     <string name="title_gallery">Галерея</string>
     <string name="postTitle">Название поста</string>

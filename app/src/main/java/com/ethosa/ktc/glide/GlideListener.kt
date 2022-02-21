@@ -5,6 +5,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.ethosa.ktc.interfaces.GlideCallback
 
 class GlideListener(private val callback: GlideCallback) : RequestListener<Bitmap> {
     override fun onResourceReady(

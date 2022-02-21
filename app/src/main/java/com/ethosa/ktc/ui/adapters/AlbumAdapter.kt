@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.databinding.AlbumImageBinding
 
+/**
+ * Provides RecyclerView.Adapter behavior for album photos.
+ */
 class AlbumAdapter(
     private val items: List<String>,
     private val activity: AppCompatActivity
@@ -28,6 +31,10 @@ class AlbumAdapter(
     private var img: ImageView? = null
     private var root: ConstraintLayout? = null
 
+    /**
+     * Provides RecyclerView.ViewHolder behavior.
+     * Also includes AlbumImageBinding.
+     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = AlbumImageBinding.bind(view)
     }
@@ -39,6 +46,9 @@ class AlbumAdapter(
         return ViewHolder(inflater)
     }
 
+    /**
+     * Builds photo
+     */
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
         val binding = holder.binding
         val image = items[pos]
@@ -47,6 +57,7 @@ class AlbumAdapter(
             .load(image)
             .into(binding.imageView)
 
+        // Show photo dialog.
         binding.root.setOnClickListener {
             // Load image
             root!!.x = 0f
@@ -63,8 +74,14 @@ class AlbumAdapter(
         }
     }
 
+    /**
+     * @return image urls count
+     */
     override fun getItemCount(): Int = items.size
 
+    /**
+     * Provides dialog behavior
+     */
     @SuppressLint("ClickableViewAccessibility")
     private fun setupDialog() {
         // set content view
@@ -76,6 +93,7 @@ class AlbumAdapter(
         var lastMotionEvent = 0
         val hideHeight = 400
 
+        // Provides touch
         root!!.setOnTouchListener { _, motionEvent ->
             when (motionEvent.action) {
                 MotionEvent.ACTION_DOWN -> {

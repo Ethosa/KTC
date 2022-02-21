@@ -1,11 +1,20 @@
-package com.ethosa.ktc.ui.adapters
+package com.ethosa.ktc.utils
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
-class SpacingItemDecoration(private val spaceH: Int, private val spaceV: Int = spaceH*2) : ItemDecoration() {
+/**
+ * Provides spacing item decoration for RecyclerView.
+ */
+class SpacingItemDecoration(
+    private val spaceH: Int,
+    private val spaceV: Int = spaceH*2
+) : ItemDecoration() {
+    /**
+     * Calculates item offsets
+     */
     override fun getItemOffsets(
         outRect: Rect, view: View,
         parent: RecyclerView, state: RecyclerView.State
@@ -15,9 +24,10 @@ class SpacingItemDecoration(private val spaceH: Int, private val spaceV: Int = s
         outRect.bottom = spaceV
 
         // Add top margin only for the first item to avoid double space between items
-        if (parent.getChildLayoutPosition(view) == 0)
-            outRect.top = spaceV
-        else
-            outRect.top = 0
+        outRect.top =
+            if (parent.getChildLayoutPosition(view) == 0)
+                spaceV
+            else
+                0
     }
 }

@@ -12,7 +12,7 @@ import com.ethosa.ktc.college.interfaces.CollegeCallback
 import com.ethosa.ktc.college.objects.gallery.Albums
 import com.ethosa.ktc.databinding.FragmentGalleryBinding
 import com.ethosa.ktc.ui.adapters.AlbumsPreviewAdapter
-import com.ethosa.ktc.ui.adapters.SpacingItemDecoration
+import com.ethosa.ktc.utils.SpacingItemDecoration
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
@@ -46,11 +46,17 @@ class GalleryFragment(
         return binding.root
     }
 
+    /**
+     * Destroy bindings.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+     * Called when KTC Api successfully fetches albums.
+     */
     override fun onResponse(call: Call, response: Response) {
         if (_binding == null) return
         // Parse JSON

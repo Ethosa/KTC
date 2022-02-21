@@ -21,7 +21,11 @@ import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
 
-class TimetableFragment : Fragment(), IOBackPressed {
+/**
+ * Provides working with KTC timetable.
+ * Includes branches, courses with groups and timetable for any week.
+ */
+class TimetableFragment : Fragment() {
     private var _binding: FragmentTimetableBinding? = null
 
     private val binding get() = _binding!!
@@ -43,12 +47,18 @@ class TimetableFragment : Fragment(), IOBackPressed {
         return binding.root
     }
 
+    /**
+     * destroy bindings.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    fun fetchBranches() {
+    /**
+     * Fetches branches and shows it.
+     */
+    private fun fetchBranches() {
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 if (_binding == null) return
@@ -63,6 +73,10 @@ class TimetableFragment : Fragment(), IOBackPressed {
         })
     }
 
+    /**
+     * Fetches courses for specified branch.
+     * @param branchId unique branch ID.
+     */
     fun fetchCourses(branchId: Int) {
         college.fetchCourses(branchId, object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
@@ -78,6 +92,11 @@ class TimetableFragment : Fragment(), IOBackPressed {
         })
     }
 
+    /**
+     * Fetches timetable for specified groupId.
+     * @param groupId unique group ID.
+     * @param week by default is current week.
+     */
     fun fetchTimetable(groupId: Int, week: Int? = null) {
         college.fetchTimetable(groupId, object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
@@ -91,13 +110,5 @@ class TimetableFragment : Fragment(), IOBackPressed {
                 }
             }
         }, week)
-    }
-
-    override fun onBackPressed() {
-        when (binding.timetable.adapter!!::class.java) {
-            CourseAdapter::class.java -> {
-                fetchBranches()
-            }
-        }
     }
 }

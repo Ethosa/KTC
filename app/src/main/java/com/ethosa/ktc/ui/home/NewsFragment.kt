@@ -12,15 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.interfaces.CollegeCallback
 import com.ethosa.ktc.college.objects.news.LastNews
-import com.ethosa.ktc.databinding.FragmentHomeBinding
+import com.ethosa.ktc.databinding.FragmentNewsBinding
 import com.ethosa.ktc.ui.adapters.NewsAdapter
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
 
-class HomeFragment : Fragment(), CollegeCallback {
-
-    private var _binding: FragmentHomeBinding? = null
+/**
+ * Provides working with KTC last news.
+ */
+class NewsFragment : Fragment(), CollegeCallback {
+    private var _binding: FragmentNewsBinding? = null
 
     private val binding get() = _binding!!
 
@@ -30,7 +32,7 @@ class HomeFragment : Fragment(), CollegeCallback {
             savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentNewsBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val itemDecoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
         binding.newsContainer.layoutManager = LinearLayoutManager(context)
@@ -42,6 +44,9 @@ class HomeFragment : Fragment(), CollegeCallback {
         return root
     }
 
+    /**
+     * destroy bindings.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -58,8 +63,7 @@ class HomeFragment : Fragment(), CollegeCallback {
         // Create animation object
         val animate = ObjectAnimator.ofFloat(
             binding.progessLoad, "alpha",
-            1f,
-            0f
+            1f, 0f
         )
         animate.duration = 500
         activity?.runOnUiThread {

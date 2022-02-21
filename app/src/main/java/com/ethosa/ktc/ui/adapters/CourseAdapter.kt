@@ -11,10 +11,17 @@ import com.ethosa.ktc.databinding.CourseBinding
 import com.ethosa.ktc.ui.timetable.TimetableFragment
 import com.google.android.material.chip.Chip
 
+/**
+ * Provides RecyclerView.Adapter behavior for courses.
+ */
 class CourseAdapter(
     private val timetableFragment: TimetableFragment,
     private val items: Courses
 ) : RecyclerView.Adapter<CourseAdapter.ViewHolder>() {
+    /**
+     * Provides RecyclerView.ViewHolder behavior.
+     * Also includes CourseBinding.
+     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = CourseBinding.bind(view)
     }
@@ -25,6 +32,9 @@ class CourseAdapter(
         return ViewHolder(inflater)
     }
 
+    /**
+     * Builds groups for every course.
+     */
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
@@ -40,5 +50,8 @@ class CourseAdapter(
         }
     }
 
+    /**
+     * @return items count
+     */
     override fun getItemCount(): Int = items.size
 }

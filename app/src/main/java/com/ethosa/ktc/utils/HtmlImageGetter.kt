@@ -20,6 +20,7 @@ class HtmlImageGetter(
     /**
      * Fetches images from HTML text
      */
+    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
     @OptIn(DelicateCoroutinesApi::class)
     override fun getDrawable(p0: String?): Drawable {
         val holder = PlaceHolder(res, null)
@@ -30,11 +31,12 @@ class HtmlImageGetter(
                 val drawable = BitmapDrawable(res, bitmap)
                 // Scale image with keep aspect ratio
                 val width = res.displayMetrics.widthPixels
-                val aspectRatio = drawable.intrinsicWidth.toFloat() / drawable.intrinsicHeight.toFloat()
+                val aspectRatio =
+                    drawable.intrinsicWidth.toFloat() / drawable.intrinsicHeight.toFloat()
                 val height = (width / aspectRatio).toInt()
                 // Change bounds
                 drawable.setBounds(0, 0, width, height)
-                holder.setDrawable(drawable)
+                holder.drawable = drawable
                 holder.setBounds(0, 0, width, height)
                 // Update text
                 withContext(Dispatchers.Main) {
@@ -45,15 +47,17 @@ class HtmlImageGetter(
         return holder
     }
 
-    internal class PlaceHolder(res: Resources, bitmap: Bitmap?) : BitmapDrawable(res, bitmap){
-        private var drawable: Drawable? = null
-
-        override fun draw(canvas: Canvas) {
-            drawable?.run { draw(canvas) }
-        }
-
-        fun setDrawable(d: Drawable) {
-            drawable = d
-        }
+    /**
+     * Drawable placeholder
+     */
+    class PlaceHolder(
+        res: Resources,
+        bitmap: Bitmap?
+    ) : BitmapDrawable(res, bitmap) {
+        var drawable: Drawable? = null
+        /**
+         * Draws canvas on drawable.
+         */
+        override fun draw(canvas: Canvas) = drawable?.run { draw(canvas) }!!
     }
 }

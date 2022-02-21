@@ -9,10 +9,17 @@ import com.ethosa.ktc.college.objects.timetable.Branches
 import com.ethosa.ktc.databinding.BranchBinding
 import com.ethosa.ktc.ui.timetable.TimetableFragment
 
+/**
+ * Provides RecyclerView.Adapter behavior for branches
+ */
 class BranchAdapter(
     private val timetableFragment: TimetableFragment,
     private val items: Branches
 ) : RecyclerView.Adapter<BranchAdapter.ViewHolder>() {
+    /**
+     * Provides RecyclerView.ViewHolder behavior
+     * Also includes BranchAdapter.
+     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = BranchBinding.bind(view)
     }
@@ -23,6 +30,9 @@ class BranchAdapter(
         )
     }
 
+    /**
+     * Builds branches
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         val branch = items[position]
@@ -32,5 +42,8 @@ class BranchAdapter(
         }
     }
 
+    /**
+     * @return items count
+     */
     override fun getItemCount(): Int = items.size
 }

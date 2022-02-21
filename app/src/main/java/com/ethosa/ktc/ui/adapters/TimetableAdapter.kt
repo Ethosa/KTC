@@ -10,10 +10,17 @@ import com.ethosa.ktc.databinding.LessonBinding
 import com.ethosa.ktc.databinding.TimetableBinding
 import com.ethosa.ktc.ui.timetable.TimetableFragment
 
+/**
+ * Provides RecyclerView.Adapter behavior for timetable.
+ */
 class TimetableAdapter(
     private val timetableFragment: TimetableFragment,
     private val week: Week
 ) : RecyclerView.Adapter<TimetableAdapter.ViewHolder>() {
+    /**
+     * Provides RecyclerView.ViewHolder behavior.
+     * Also includes TimetableBinding.
+     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = TimetableBinding.bind(view)
     }
@@ -24,6 +31,10 @@ class TimetableAdapter(
         return ViewHolder(inflater)
     }
 
+    /**
+     * Binds every day in week.
+     * Binds every lesson in day.
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         val day = week.days[position]
@@ -44,5 +55,8 @@ class TimetableAdapter(
         }
     }
 
+    /**
+     * @return days count.
+     */
     override fun getItemCount(): Int = week.days.count()
 }
