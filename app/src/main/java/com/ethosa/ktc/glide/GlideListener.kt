@@ -7,7 +7,15 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.ethosa.ktc.interfaces.GlideCallback
 
-class GlideListener(private val callback: GlideCallback) : RequestListener<Bitmap> {
+/**
+ * Provides RequestListener behavior for Bitmap
+ */
+class GlideListener(
+    private val callback: GlideCallback
+) : RequestListener<Bitmap> {
+    /**
+     * Called when resource successfully loaded.
+     */
     override fun onResourceReady(
         resource: Bitmap?,
         model: Any?,
@@ -19,6 +27,9 @@ class GlideListener(private val callback: GlideCallback) : RequestListener<Bitma
         return true
     }
 
+    /**
+     * Called when resource failure loaded
+     */
     override fun onLoadFailed(
         e: GlideException?,
         model: Any?,

@@ -17,6 +17,9 @@ class CollegeApi {
         private const val COURSES: String = "$MY_API/courses"
         private const val TIMETABLE: String = "$MY_API/timetable"
 
+        /**
+         * Sends GET request to url.
+         */
         fun sendRequest(url: String, callback: CollegeCallback) {
             val request: Request.Builder = Request.Builder()
                 .get()
@@ -33,7 +36,8 @@ class CollegeApi {
     }
 
     /**
-     * Fetches the new by ID.
+     * Fetches the album by ID.
+     * @param id unique album ID.
      */
     fun fetchAlbumById(id: String, callback: CollegeCallback) {
         sendRequest("$ALBUMS_API$id", callback)
@@ -48,6 +52,7 @@ class CollegeApi {
 
     /**
      * Fetch all branch courses
+     * @param branchId unique branch ID.
      */
     fun fetchCourses(branchId: Int, callback: CollegeCallback) {
         sendRequest("$COURSES/$branchId", callback)
@@ -62,6 +67,7 @@ class CollegeApi {
 
     /**
      * Fetches the new by ID.
+     * @param id unique new's ID.
      */
     fun fetchNewById(id: Int, callback: CollegeCallback) {
         sendRequest("$NEWS_API$id", callback)

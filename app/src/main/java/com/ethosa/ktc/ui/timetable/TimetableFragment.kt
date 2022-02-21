@@ -58,7 +58,8 @@ class TimetableFragment : Fragment() {
     /**
      * Fetches branches and shows it.
      */
-    private fun fetchBranches() {
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun fetchBranches() {
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 if (_binding == null) return
