@@ -19,3 +19,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "KTC"
 include ':app'
+include ':shared'
