@@ -46,7 +46,7 @@ class TimetableAdapter(
                 LayoutInflater.from(timetableFragment.context),
                 holder.binding.root, false)
             lesson.lessonTitle.text = l.title
-            lesson.lessonClassroom.text = l.auditory
+            lesson.lessonClassroom.text = l.classroom
             lesson.lessonNumber.text = l.time[0]
             lesson.lessonFrom.text = l.time[1]
             lesson.lessonTo.text = l.time[2]

@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.timetable.Branches
@@ -31,6 +32,8 @@ class TimetableFragment : Fragment() {
     private val binding get() = _binding!!
     private val college = CollegeApi()
 
+    private lateinit var itemDecoration: RecyclerView.ItemDecoration
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,9 +41,9 @@ class TimetableFragment : Fragment() {
     ): View {
         _binding = FragmentTimetableBinding.inflate(inflater, container, false)
 
-        val itemDecoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
         binding.timetable.layoutManager = LinearLayoutManager(context)
-        binding.timetable.addItemDecoration(itemDecoration)
+        itemDecoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
+        // binding.timetable.addItemDecoration(itemDecoration)
 
         fetchBranches()
 
