@@ -58,6 +58,8 @@ class HtmlImageGetter(
         /**
          * Draws canvas on drawable.
          */
-        override fun draw(canvas: Canvas) = drawable?.run { draw(canvas) }!!
+        override fun draw(canvas: Canvas) {
+            drawable?.run { draw(canvas) }
+        }
     }
 }
