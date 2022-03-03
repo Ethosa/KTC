@@ -42,17 +42,17 @@
             app:layout_constraintTop_toTopOf="@+id/lesson_title" />
 
         <TextView
-            android:id="@+id/lesson_from"
+            android:id="@+id/lesson_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lesson_time"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/hr_time"
             app:layout_constraintStart_toStartOf="@+id/hr_time"
-            app:layout_constraintTop_toBottomOf="@+id/lesson_to" />
+            app:layout_constraintTop_toBottomOf="@+id/lesson_from" />
 
         <TextView
-            android:id="@+id/lesson_to"
+            android:id="@+id/lesson_from"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lesson_time"
