@@ -15,6 +15,7 @@
         <item name="android:colorAccent">@color/accent1</item>
 
         <item name="fontFamily">@font/nuritom</item>
+        <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
     </style>
 
     <style name="Theme.KTC.NoActionBar">
@@ -22,7 +23,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.KTC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.KTC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="background">@color/background1</item>
+    </style>
 
     <style name="Theme.KTC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

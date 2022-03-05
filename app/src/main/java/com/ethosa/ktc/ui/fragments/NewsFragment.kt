@@ -5,15 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.news.LastNews
 import com.ethosa.ktc.databinding.FragmentNewsBinding
 import com.ethosa.ktc.ui.adapters.NewsAdapter
+import com.ethosa.ktc.utils.SpacingItemDecoration
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
@@ -34,7 +33,7 @@ class NewsFragment : Fragment(), CollegeCallback {
 
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val itemDecoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
+        val itemDecoration = SpacingItemDecoration(0, 32)
         binding.newsContainer.layoutManager = LinearLayoutManager(context)
         binding.newsContainer.addItemDecoration(itemDecoration)
         // Fetch last news from college
@@ -67,8 +66,8 @@ class NewsFragment : Fragment(), CollegeCallback {
         )
         animate.duration = 500
         activity?.runOnUiThread {
-            binding.newsContainer.adapter = NewsAdapter(news.anonce)
             animate.start()
+            binding.newsContainer.adapter = NewsAdapter(news.anonce)
         }
     }
 }

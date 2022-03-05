@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#151d23</color>
-    <color name="background1">#1A242B</color>
-    <color name="background_photo">#B5101519</color>
-    <color name="primary">#29384a</color>
-    <color name="primary2">#34495f</color>
-    <color name="info">#4d6172</color>
-    <color name="secondary">#536f96</color>
-    <color name="secondary2">#6e8caf</color>
-    <color name="accent1">#2c2e32</color>
-    <color name="accent2">#4d4d4e</color>
+    <color name="background">#150524</color>
+    <color name="background1">#1A1430</color>
+    <color name="background_photo">#B51A1430</color>
+    <color name="primary">#D7BBF2</color>
+    <color name="primary2">#E6CFFD</color>
+    <color name="info">#8BB1E5</color>
+    <color name="secondary">#2F1D38</color>
+    <color name="secondary2">#3A2147</color>
+    <color name="accent1">#322D5F</color>
+    <color name="accent2">#3F396E</color>
     <color name="foreground">#212121</color>
     <color name="foreground_alpha">#95212121</color>
     <color name="text">#DADFE3</color>
-    <color name="btn_text">#DADFE3</color>
+    <color name="btn_text">#2F1D38</color>
     <color name="unchecked">#b4bcca</color>
     <color name="checked">#78A3DD</color>
 

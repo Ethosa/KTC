@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.college.CollegeApi
@@ -18,6 +16,7 @@ import com.ethosa.ktc.databinding.FragmentTimetableBinding
 import com.ethosa.ktc.ui.adapters.BranchAdapter
 import com.ethosa.ktc.ui.adapters.CourseAdapter
 import com.ethosa.ktc.ui.adapters.TimetableAdapter
+import com.ethosa.ktc.utils.SpacingItemDecoration
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
@@ -42,8 +41,8 @@ class TimetableFragment : Fragment() {
         _binding = FragmentTimetableBinding.inflate(inflater, container, false)
 
         binding.timetable.layoutManager = LinearLayoutManager(context)
-        itemDecoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
-        // binding.timetable.addItemDecoration(itemDecoration)
+        itemDecoration = SpacingItemDecoration(0, 32)
+        binding.timetable.addItemDecoration(itemDecoration)
 
         fetchBranches()
 

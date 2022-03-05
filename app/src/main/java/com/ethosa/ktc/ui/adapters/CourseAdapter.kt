@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.timetable.Courses
 import com.ethosa.ktc.databinding.LayoutCourseBinding
 import com.ethosa.ktc.ui.fragments.TimetableFragment
-import com.google.android.material.chip.Chip
 
 /**
  * Provides RecyclerView.Adapter behavior for courses.
@@ -41,8 +41,9 @@ class CourseAdapter(
         val item = items[position]
         binding.courseTitle.text = "${item.course} курс"
         for (group in item.groups) {
-            val chip = Chip(timetableFragment.context)
+            val chip = Button(timetableFragment.context)
             chip.text = group.title
+            chip.setPadding(2, 2, 2, 2)
             chip.setOnClickListener {
                 timetableFragment.fetchTimetable(group.id)
             }

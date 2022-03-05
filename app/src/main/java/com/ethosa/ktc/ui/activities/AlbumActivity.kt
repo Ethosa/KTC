@@ -43,7 +43,7 @@ class AlbumActivity(
         // Fetch intent extra data
         binding.toolbarLayout.title = intent.getStringExtra("title")
         Glide.with(binding.root)
-            .load(intent.getStringExtra("image"))
+            .load(intent.getStringExtra("preview"))
             .transform(BlurTransformation(20, 2))
             .into(binding.albumToolbarImage)
         college.fetchAlbumById(intent.getStringExtra("id")!!, this)

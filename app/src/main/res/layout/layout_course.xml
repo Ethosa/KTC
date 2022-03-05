@@ -4,31 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:background="@color/background">
-
-    <TextView
-        android:id="@+id/course_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/course_string"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@drawable/background1">
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/course_group"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:background="@color/background1"
-        app:chipSpacingHorizontal="6dp"
-        app:chipSpacingVertical="4dp"
+        android:clipChildren="false"
+        app:chipSpacingHorizontal="2dp"
+        app:chipSpacingVertical="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/course_title"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/course_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/course_string"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </com.google.android.material.chip.ChipGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
