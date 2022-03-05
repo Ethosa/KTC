@@ -1,6 +1,8 @@
 package com.ethosa.ktc.ui.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +29,7 @@ import okhttp3.Response
 class TimetableFragment : Fragment() {
     private var _binding: FragmentTimetableBinding? = null
     private lateinit var itemDecoration: RecyclerView.ItemDecoration
+    private lateinit var preferences: SharedPreferences
 
     private val college = CollegeApi()
     private val binding get() = _binding!!
@@ -46,6 +49,13 @@ class TimetableFragment : Fragment() {
         itemDecoration = SpacingItemDecoration(0, 32)
         binding.timetable.addItemDecoration(itemDecoration)
 
+        // Load state
+        preferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        state = preferences.getInt("state", 0)
+        branch = Branch(id = preferences.getInt("branch", 0), "")
+        group = Group(preferences.getInt("group", 0), preferences.getString("group_title", "")!!)
+        loadState()
+
         binding.back.setOnClickListener {
             when (state) {
                 1 -> fetchBranches()
@@ -54,8 +64,6 @@ class TimetableFragment : Fragment() {
             }
             binding.back.isEnabled = false
         }
-
-        fetchBranches()
 
         return binding.root
     }
@@ -68,12 +76,21 @@ class TimetableFragment : Fragment() {
         _binding = null
     }
 
+    private fun loadState() {
+        when (state) {
+            0 -> fetchBranches()
+            1 -> fetchCourses(branch!!.id)
+            2 -> fetchTimetable(group!!.id)
+        }
+    }
+
     /**
      * Fetches branches and shows it.
      */
     @Suppress("MemberVisibilityCanBePrivate")
     fun fetchBranches() {
         state = 0
+        preferences.edit().putInt("state", state).apply()
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 if (_binding == null) return
@@ -109,6 +126,8 @@ class TimetableFragment : Fragment() {
                     binding.timetableToolbar.visibility = View.VISIBLE
                     binding.timetableTitle.text = "Курсы"
                     binding.timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
+                    preferences.edit().putInt("state", state).apply()
+                    preferences.edit().putInt("branch", branch!!.id).apply()
                 }
             }
         })
@@ -131,9 +150,12 @@ class TimetableFragment : Fragment() {
 
                 requireActivity().runOnUiThread {
                     binding.back.isEnabled = true
-                    binding.timetableTitle.text = "${timetable.week_number} неделя"
+                    binding.timetableTitle.text = "${group!!.title}\n${timetable.week_number} неделя"
                     binding.timetableToolbar.visibility = View.VISIBLE
                     binding.timetable.adapter = TimetableAdapter(this@TimetableFragment, timetable)
+                    preferences.edit().putInt("state", state).apply()
+                    preferences.edit().putInt("group", group!!.id).apply()
+                    preferences.edit().putString("group_title", group!!.title).apply()
                 }
             }
         }, week)
