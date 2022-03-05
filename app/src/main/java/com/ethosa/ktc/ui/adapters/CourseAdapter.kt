@@ -27,15 +27,15 @@ class CourseAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
+        return ViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_course, parent, false)
-        return ViewHolder(inflater)
+        )
     }
 
     /**
      * Builds groups for every course.
      */
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "NewApi")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         val item = items[position]
@@ -44,8 +44,14 @@ class CourseAdapter(
             val chip = Button(timetableFragment.context)
             chip.text = group.title
             chip.setPadding(2, 2, 2, 2)
+            chip.setBackgroundResource(R.drawable.button)
+            chip.setTextColor(
+                timetableFragment.resources.getColor(
+                    R.color.btn_text, timetableFragment.requireContext().theme)
+            )
             chip.setOnClickListener {
                 timetableFragment.fetchTimetable(group.id)
+                timetableFragment.group = group
             }
             binding.courseGroup.addView(chip)
         }

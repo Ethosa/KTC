@@ -26,7 +26,8 @@ class BranchAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.layout_branch, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.layout_branch, parent, false)
         )
     }
 
@@ -39,6 +40,7 @@ class BranchAdapter(
         binding.button.text = branch.title
         binding.button.setOnClickListener {
             timetableFragment.fetchCourses(branch.id)
+            timetableFragment.branch = branch
         }
     }
 

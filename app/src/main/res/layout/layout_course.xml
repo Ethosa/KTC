@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:clipChildren="false"
         app:chipSpacingHorizontal="2dp"
-        app:chipSpacingVertical="1dp"
+        app:chipSpacingVertical="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,8 @@
         <TextView
             android:id="@+id/course_title"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="@string/course_string"
             android:textSize="20sp"
             android:textStyle="bold" />
