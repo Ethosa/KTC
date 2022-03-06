@@ -97,6 +97,7 @@ class TimetableFragment : Fragment() {
     }
 
     private fun loadState() {
+        // Fetches timetable from loaded state.
         when (state) {
             0 -> fetchBranches()
             1 -> fetchCourses(branch!!.id)
