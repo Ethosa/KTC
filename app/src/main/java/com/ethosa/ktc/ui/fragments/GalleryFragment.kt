@@ -17,7 +17,9 @@ import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
 
-
+/**
+ * Provides albums behavior
+ */
 class GalleryFragment(
     private val spanCount: Int = 2
 ) : Fragment(), CollegeCallback {

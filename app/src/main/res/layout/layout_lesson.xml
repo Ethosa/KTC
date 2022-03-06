@@ -27,7 +27,8 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/lesson_classroom"
             app:layout_constraintStart_toEndOf="@+id/hr_time"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:textStyle="bold" />
 
         <TextView
             android:id="@+id/lesson_number"

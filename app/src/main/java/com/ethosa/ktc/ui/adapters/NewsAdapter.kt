@@ -18,9 +18,16 @@ import com.ethosa.ktc.glide.transformation.CenterInsideBlur
 import com.ethosa.ktc.glide.GlideListener
 import java.lang.Exception
 
+/**
+ * Provides RecyclerView.Adapter behavior for news
+ */
+class NewsAdapter(
+    private var items: List<News>
+) : RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
 
-class NewsAdapter(private var items: List<News>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
-
+    /**
+     * Provides RecyclerView.ViewHolder behavior
+     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var binding = LayoutWallBinding.bind(view)
     }

@@ -38,6 +38,13 @@ class TimetableFragment : Fragment() {
     var branch: Branch? = null
     var group: Group? = null
 
+    companion object {
+        const val STATE = "state"
+        const val BRANCH = "branch"
+        const val GROUP = "group"
+        const val GROUP_TITLE = "group_title"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,12 +58,16 @@ class TimetableFragment : Fragment() {
 
         // Load state
         preferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        state = preferences.getInt("state", 0)
-        branch = Branch(id = preferences.getInt("branch", 0), "")
-        group = Group(preferences.getInt("group", 0), preferences.getString("group_title", "")!!)
+        state = preferences.getInt(STATE, 0)
+        branch = Branch(preferences.getInt(BRANCH, 0), "")
+        group = Group(
+            preferences.getInt(GROUP, 0),
+            preferences.getString(GROUP_TITLE, "")!!
+        )
         loadState()
 
         binding.back.setOnClickListener {
+            // Analog for back button
             when (state) {
                 1 -> fetchBranches()
                 2 -> fetchCourses(branch!!.id)
@@ -90,7 +101,7 @@ class TimetableFragment : Fragment() {
     @Suppress("MemberVisibilityCanBePrivate")
     fun fetchBranches() {
         state = 0
-        preferences.edit().putInt("state", state).apply()
+        preferences.edit().putInt(STATE, state).apply()
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 if (_binding == null) return
@@ -126,8 +137,8 @@ class TimetableFragment : Fragment() {
                     binding.timetableToolbar.visibility = View.VISIBLE
                     binding.timetableTitle.text = "Курсы"
                     binding.timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
-                    preferences.edit().putInt("state", state).apply()
-                    preferences.edit().putInt("branch", branch!!.id).apply()
+                    preferences.edit().putInt(STATE, state).apply()
+                    preferences.edit().putInt(BRANCH, branch!!.id).apply()
                 }
             }
         })
@@ -153,9 +164,9 @@ class TimetableFragment : Fragment() {
                     binding.timetableTitle.text = "${group!!.title}\n${timetable.week_number} неделя"
                     binding.timetableToolbar.visibility = View.VISIBLE
                     binding.timetable.adapter = TimetableAdapter(this@TimetableFragment, timetable)
-                    preferences.edit().putInt("state", state).apply()
-                    preferences.edit().putInt("group", group!!.id).apply()
-                    preferences.edit().putString("group_title", group!!.title).apply()
+                    preferences.edit().putInt(STATE, state).apply()
+                    preferences.edit().putInt(GROUP, group!!.id).apply()
+                    preferences.edit().putString(GROUP_TITLE, group!!.title).apply()
                 }
             }
         }, week)
