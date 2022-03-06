@@ -8,5 +8,5 @@
     android:maxHeight="300dp"
     android:minHeight="128dp"
     android:scaleType="centerCrop"
-    app:srcCompat="@drawable/attach"
+    app:srcCompat="@drawable/img_attach"
     tools:ignore="ContentDescription" />

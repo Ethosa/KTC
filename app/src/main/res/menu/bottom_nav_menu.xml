@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/navigation_news"
-        android:icon="@drawable/newspaper"
+        android:icon="@drawable/img_newspaper"
         android:title="@string/title_news" />
 
     <item
         android:id="@+id/navigation_timetable"
-        android:icon="@drawable/schedule"
+        android:icon="@drawable/img_schedule"
         android:title="@string/title_timetable" />
 
     <item
         android:id="@+id/navigation_gallery"
-        android:icon="@drawable/attach"
+        android:icon="@drawable/img_attach"
         android:title="@string/title_gallery" />
 </menu>

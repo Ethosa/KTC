@@ -44,7 +44,7 @@ class CourseAdapter(
             val chip = Button(timetableFragment.context)
             chip.text = group.title
             chip.setPadding(2, 2, 2, 2)
-            chip.setBackgroundResource(R.drawable.button)
+            chip.setBackgroundResource(R.drawable.selector_button)
             chip.setTextColor(
                 timetableFragment.resources.getColor(
                     R.color.btn_text, timetableFragment.requireContext().theme)

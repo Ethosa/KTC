@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,14 +67,10 @@ class TimetableFragment : Fragment() {
         )
         loadState()
 
+        // Analog for back button
         binding.back.setOnClickListener {
-            // Analog for back button
-            when (state) {
-                1 -> fetchBranches()
-                2 -> fetchCourses(branch!!.id)
-                else -> return@setOnClickListener
-            }
-            binding.back.isEnabled = false
+            // back button disabled when state isn't 0
+            binding.back.isEnabled = !backState()
         }
 
         return binding.root
@@ -87,12 +84,33 @@ class TimetableFragment : Fragment() {
         _binding = null
     }
 
+    override fun onResume() {
+        super.onResume()
+        view?.isFocusableInTouchMode = true
+        view?.requestFocus()
+        view?.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK)
+                // return true if at branches
+                return@OnKeyListener backState()
+            return@OnKeyListener false
+        })
+    }
+
     private fun loadState() {
         when (state) {
             0 -> fetchBranches()
             1 -> fetchCourses(branch!!.id)
             2 -> fetchTimetable(group!!.id)
         }
+    }
+
+    private fun backState(): Boolean {
+        when (state) {
+            1 -> fetchBranches()
+            2 -> fetchCourses(branch!!.id)
+            else -> return false
+        }
+        return true
     }
 
     /**
