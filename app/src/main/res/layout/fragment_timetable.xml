@@ -38,7 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/primary"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/timetable_title"
@@ -52,6 +52,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/previous"
+            android:layout_width="32dp"
+            android:layout_height="0dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/timetable_title"
+            app:layout_constraintEnd_toStartOf="@+id/timetable_title"
+            app:layout_constraintTop_toTopOf="@+id/timetable_title"
+            app:tint="@color/text"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/next"
+            android:layout_width="32dp"
+            android:layout_height="0dp"
+            android:rotation="180"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/timetable_title"
+            app:layout_constraintStart_toEndOf="@+id/timetable_title"
+            app:layout_constraintTop_toTopOf="@+id/timetable_title"
+            app:tint="@color/text"
+            tools:ignore="ContentDescription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,12 +38,14 @@ class TimetableFragment : Fragment() {
     private var state = 0
     var branch: Branch? = null
     var group: Group? = null
+    var week: Int = 0
 
     companion object {
         const val STATE = "state"
         const val BRANCH = "branch"
         const val GROUP = "group"
         const val GROUP_TITLE = "group_title"
+        const val WEEK = "week"
     }
 
     override fun onCreateView(
@@ -65,12 +67,25 @@ class TimetableFragment : Fragment() {
             preferences.getInt(GROUP, 0),
             preferences.getString(GROUP_TITLE, "")!!
         )
+        week = preferences.getInt(WEEK, 0)
         loadState()
 
         // Analog for back button
         binding.back.setOnClickListener {
             // back button disabled when state isn't 0
             binding.back.isEnabled = !backState()
+        }
+
+        // Next week
+        binding.next.setOnClickListener {
+            if (week < 57)
+                changeWeek(1)
+        }
+
+        // previous week
+        binding.previous.setOnClickListener {
+            if (week > 1)
+                changeWeek(-1)
         }
 
         return binding.root
@@ -94,6 +109,13 @@ class TimetableFragment : Fragment() {
                 return@OnKeyListener backState()
             return@OnKeyListener false
         })
+    }
+
+    private fun changeWeek(i: Int) {
+        week += i
+        binding.next.isEnabled = false
+        binding.previous.isEnabled = false
+        fetchTimetable(group!!.id, week)
     }
 
     private fun loadState() {
@@ -154,6 +176,8 @@ class TimetableFragment : Fragment() {
                 requireActivity().runOnUiThread {
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.VISIBLE
+                    binding.next.visibility = View.GONE
+                    binding.previous.visibility = View.GONE
                     binding.timetableTitle.text = "Курсы"
                     binding.timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
                     preferences.edit().putInt(STATE, state).apply()
@@ -177,14 +201,20 @@ class TimetableFragment : Fragment() {
                 // Parse JSON
                 val json = response.body?.string()
                 val timetable = Gson().fromJson(json, Week::class.java)
+                this@TimetableFragment.week = timetable.week_number
 
                 requireActivity().runOnUiThread {
                     binding.back.isEnabled = true
+                    binding.next.isEnabled = true
+                    binding.previous.isEnabled = true
                     binding.timetableTitle.text = "${group!!.title}\n${timetable.week_number} неделя"
                     binding.timetableToolbar.visibility = View.VISIBLE
+                    binding.next.visibility = View.VISIBLE
+                    binding.previous.visibility = View.VISIBLE
                     binding.timetable.adapter = TimetableAdapter(this@TimetableFragment, timetable)
                     preferences.edit().putInt(STATE, state).apply()
                     preferences.edit().putInt(GROUP, group!!.id).apply()
+                    preferences.edit().putInt(WEEK, timetable.week_number).apply()
                     preferences.edit().putString(GROUP_TITLE, group!!.title).apply()
                 }
             }
