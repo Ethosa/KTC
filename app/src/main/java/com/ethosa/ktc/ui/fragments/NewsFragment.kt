@@ -61,7 +61,7 @@ class NewsFragment : Fragment(), CollegeCallback {
         val news = Gson().fromJson(jsonString, LastNews::class.java)
         // Create animation object
         val animate = ObjectAnimator.ofFloat(
-            binding.progessLoad, "alpha",
+            binding.progressLoad, "alpha",
             1f, 0f
         )
         animate.duration = 500
