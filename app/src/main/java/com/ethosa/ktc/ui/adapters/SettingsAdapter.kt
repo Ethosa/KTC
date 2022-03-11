@@ -10,6 +10,9 @@ import com.ethosa.ktc.R
 import com.ethosa.ktc.databinding.LayoutSettingsButtonBinding
 import com.ethosa.ktc.ui.fragments.SettingsFragment
 
+/**
+ * Provides settings behavior.
+ */
 class SettingsAdapter (
     private val fragment: SettingsFragment
 ) : RecyclerView.Adapter<SettingsAdapter.ViewHolder>() {
@@ -20,6 +23,9 @@ class SettingsAdapter (
     private var actions: TypedArray = fragment.requireContext()
         .resources.obtainTypedArray(R.array.settings_actions)
 
+    /**
+     * Provides RecyclerView.ViewHolder behavior
+     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = LayoutSettingsButtonBinding.bind(view)
     }
