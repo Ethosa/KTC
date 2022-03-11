@@ -27,7 +27,7 @@ class HtmlImageGetter(
         GlobalScope.launch(Dispatchers.IO) {
             run {
                 // Download image and converts to Drawable
-                val bitmap = Picasso.with(textView.context).load(p0!!).get()
+                val bitmap = Picasso.get().load(p0!!).get()
                 val drawable = BitmapDrawable(res, bitmap)
                 // Scale image with keep aspect ratio
                 val width = res.displayMetrics.widthPixels
