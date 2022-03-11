@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_titles">
+        <item>О программе</item>
+    </string-array>
+
+    <array name="settings_icons">
+        <item>@drawable/img_info</item>
+    </array>
+
+    <array name="settings_actions">
+        <item>@id/action_navigation_settings_to_navigation_about_app</item>
+    </array>
+</resources>

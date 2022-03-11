@@ -26,4 +26,24 @@
         android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery" />
 
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:tag="Settings"
+        android:name="com.ethosa.ktc.ui.fragments.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_about_app"
+            app:destination="@id/navigation_about_app"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_about_app"
+        android:tag="AboutApp"
+        android:name="com.ethosa.ktc.ui.fragments.AboutAppFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about_app" />
+
 </navigation>

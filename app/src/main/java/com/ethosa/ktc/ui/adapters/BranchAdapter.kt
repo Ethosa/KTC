@@ -37,8 +37,8 @@ class BranchAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         val branch = items[position]
-        binding.button.text = branch.title
-        binding.button.setOnClickListener {
+        binding.btn.text = branch.title
+        binding.btn.setOnClickListener {
             timetableFragment.fetchCourses(branch.id)
             timetableFragment.branch = branch
         }

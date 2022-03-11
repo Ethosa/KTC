@@ -19,7 +19,7 @@
         <entry key="..\:/android projects/KTC/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.15437158469945356" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_album.xml" value="0.33" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_album_content.xml" value="0.25" />
-        <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_main.xml" value="0.2949438202247191" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_wall_post.xml" value="0.33" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/activity_wall_post_content.xml" value="0.22644927536231885" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/album_image.xml" value="0.33" />
@@ -28,18 +28,21 @@
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/branch.xml" value="0.3052586575459598" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/content_scrolling.xml" value="0.33" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/course.xml" value="0.5" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_about_app.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_album_photo.xml" value="0.26201269265639165" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_dashboard.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_gallery.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_news.xml" value="0.3052586575459598" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_settings.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_timetable.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_album_image.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_album_photo.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_album_preview.xml" value="0.1573321932449765" />
-        <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_branch.xml" value="0.67" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_branch.xml" value="0.3112449799196787" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_course.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_lesson.xml" value="0.5" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_settings_button.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_timetable.xml" value="0.67" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/layout_wall.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/lesson.xml" value="0.75" />
@@ -51,6 +54,7 @@
         <entry key="..\:/android projects/KTC/app/src/main/res/menu/menu_wall_post.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.194" />
         <entry key="..\:/android projects/KTC/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/xml/root_preferences.xml" value="0.371875" />
       </map>
     </option>
   </component>

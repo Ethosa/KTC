@@ -15,4 +15,9 @@
         android:id="@+id/navigation_gallery"
         android:icon="@drawable/img_attach"
         android:title="@string/title_gallery" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/img_settings"
+        android:title="@string/title_settings" />
 </menu>
