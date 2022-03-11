@@ -2,6 +2,7 @@
     <string name="app_name">KTC</string>
     <string name="author_tag">\@Ethosa</string>
     <string name="author">Ethosa</string>
+    <string name="github">Github</string>
 
     <string name="title">Заголовок</string>
     <string name="title_news">Новости</string>
@@ -24,6 +25,10 @@
     <string name="lesson_classroom">3.10</string>
     <string name="lesson_teacher">Гринь Д. Х.</string>
 
+    <string name="about_app_desc">
+        "Приложение для Канского технологического колледжа, разработанное @Ethosa"
+    </string>
+
     <string name="lorem_ipsum_title">Lorem ipsum</string>
     <string name="lorem_ipsum">
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
@@ -34,8 +39,4 @@
         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui "
         "officia deserunt mollit anim id est laborum."
     </string>
-
-    <string name="menu_text">Пункт меню</string>
-    <string name="about_app_desc">Приложение для Канского технологического колледжа, разработанное</string>
-    <string name="github">Github</string>
 </resources>

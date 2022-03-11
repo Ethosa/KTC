@@ -5,7 +5,7 @@
     </string-array>
 
     <array name="settings_icons">
-        <item>@drawable/img_info</item>
+        <item>@drawable/ic_info</item>
     </array>
 
     <array name="settings_actions">

@@ -8,5 +8,5 @@
     android:maxHeight="300dp"
     android:minHeight="128dp"
     android:scaleType="centerCrop"
-    app:srcCompat="@drawable/img_attach"
+    app:srcCompat="@drawable/ic_calendar"
     tools:ignore="ContentDescription" />

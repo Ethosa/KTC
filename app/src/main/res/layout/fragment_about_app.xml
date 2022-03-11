@@ -22,7 +22,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="24dp"
-            android:src="@drawable/img_info"
+            android:src="@drawable/ic_info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,15 +56,6 @@
             app:layout_constraintTop_toBottomOf="@+id/about_app_title"
             tools:ignore="TextContrastCheck" />
 
-        <TextView
-            android:id="@+id/about_app_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/author_tag"
-            app:layout_constraintStart_toStartOf="@+id/about_app_description"
-            app:layout_constraintTop_toBottomOf="@+id/about_app_description"
-            tools:ignore="TextContrastCheck" />
-
         <ImageView
             android:id="@+id/author_github"
             android:layout_width="48dp"
@@ -72,7 +63,7 @@
             android:src="@drawable/img_github"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about_app_tag"
+            app:layout_constraintTop_toBottomOf="@+id/about_app_description"
             app:tint="@color/primary"
             tools:ignore="ContentDescription,ImageContrastCheck" />
 

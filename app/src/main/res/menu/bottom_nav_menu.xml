@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/navigation_news"
-        android:icon="@drawable/img_newspaper"
+        android:icon="@drawable/ic_megaphone"
         android:title="@string/title_news" />
 
     <item
         android:id="@+id/navigation_timetable"
-        android:icon="@drawable/img_schedule"
+        android:icon="@drawable/ic_calendar"
         android:title="@string/title_timetable" />
 
     <item
         android:id="@+id/navigation_gallery"
-        android:icon="@drawable/img_attach"
+        android:icon="@drawable/ic_mode_landscape"
         android:title="@string/title_gallery" />
 
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@drawable/img_settings"
+        android:icon="@drawable/ic_settings"
         android:title="@string/title_settings" />
 </menu>
