@@ -19,6 +19,7 @@
         android:maxLength="35"
         android:maxLines="1"
         android:text="@string/news_title"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/left_padding"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +39,7 @@
         android:id="@+id/wall_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/news_description"
         app:layout_constraintEnd_toStartOf="@+id/right_padding"
         app:layout_constraintStart_toStartOf="@+id/wall_title"

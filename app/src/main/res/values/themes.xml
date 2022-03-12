@@ -3,16 +3,16 @@
     <style name="Theme.KTC" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary2</item>
-        <item name="colorPrimaryVariant">@color/accent1</item>
-        <item name="colorOnPrimary">@color/accent2</item>
+        <item name="colorPrimaryDark">@color/primary_variant</item>
+        <item name="colorPrimaryVariant">@color/accent</item>
+        <item name="colorOnPrimary">@color/accent_variant</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/secondary2</item>
-        <item name="colorOnSecondary">@color/info</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/accent</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
-        <item name="android:colorAccent">@color/accent1</item>
+        <item name="android:colorAccent">@color/accent</item>
 
         <item name="fontFamily">@font/nuritom</item>
         <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
@@ -24,7 +24,7 @@
     </style>
 
     <style name="Theme.KTC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="background">@color/background1</item>
+        <item name="background">@color/background_secondary</item>
     </style>
 
     <style name="Theme.KTC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

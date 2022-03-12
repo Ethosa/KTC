@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.ethosa.ktc.R
 import com.ethosa.ktc.ui.activities.WallPostActivity
 import com.ethosa.ktc.college.news.News
-import com.ethosa.ktc.databinding.LayoutWallBinding
+import com.ethosa.ktc.databinding.LayoutNewsBinding
 import com.ethosa.ktc.glide.GlideCallback
 import com.ethosa.ktc.glide.transformation.CenterInsideBlur
 import com.ethosa.ktc.glide.GlideListener
@@ -29,12 +29,12 @@ class NewsAdapter(
      * Provides RecyclerView.ViewHolder behavior
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var binding = LayoutWallBinding.bind(view)
+        var binding = LayoutNewsBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_wall, parent, false)
+            .inflate(R.layout.layout_news, parent, false)
         return ViewHolder(layoutInflater)
     }
 

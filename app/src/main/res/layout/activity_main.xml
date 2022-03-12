@@ -26,7 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
         android:background="@drawable/navigation"
-        app:itemTextColor="@color/checked"
+        app:itemTextColor="@color/active"
         app:itemIconTint="@drawable/navigation_item_tint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
