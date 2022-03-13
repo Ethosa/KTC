@@ -11,6 +11,7 @@
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/ic_angle_left.xml" value="0.144" />
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/ic_calendar.xml" value="0.144" />
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/ic_github_logo.xml" value="0.1" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/drawable/ic_headset.xml" value="0.226" />
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/ic_info.xml" value="0.144" />
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/ic_launcher_background.xml" value="0.194" />
         <entry key="..\:/android projects/KTC/app/src/main/res/drawable/ic_megaphone.xml" value="0.144" />
@@ -40,6 +41,7 @@
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/course.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_about_app.xml" value="0.5" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_album_photo.xml" value="0.26201269265639165" />
+        <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_contact_info.xml" value="0.19516728624535315" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_dashboard.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_gallery.xml" value="0.371875" />
         <entry key="..\:/android projects/KTC/app/src/main/res/layout/fragment_home.xml" value="0.5" />

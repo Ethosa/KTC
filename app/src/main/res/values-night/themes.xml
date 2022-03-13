@@ -9,12 +9,13 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary_variant</item>
         <item name="colorSecondaryVariant">@color/secondary</item>
-        <item name="colorOnSecondary">@color/accent_variant</item>
+        <item name="colorOnSecondary">@color/secondary_variant</item>
         <item name="colorAccent">@color/accent</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:windowBackground">@color/background</item>
+        <item name="android:textColorLink">@color/primary_variant</item>
 
         <item name="fontFamily">@font/nuritom</item>
         <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>

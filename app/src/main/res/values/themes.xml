@@ -13,6 +13,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <item name="android:colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:textColorLink">@color/primary_variant</item>
 
         <item name="fontFamily">@font/nuritom</item>
         <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>

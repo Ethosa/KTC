@@ -21,7 +21,6 @@ class AboutAppFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentAboutAppBinding.inflate(inflater, container, false)
 
         binding.authorGithub.setOnClickListener {

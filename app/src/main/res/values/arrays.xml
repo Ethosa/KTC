@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="settings_titles">
+        <item>Контактная информация</item>
         <item>О программе</item>
     </string-array>
 
     <array name="settings_icons">
+        <item>@drawable/ic_headset</item>
         <item>@drawable/ic_info</item>
     </array>
 
     <array name="settings_actions">
+        <item>@id/action_navigation_settings_to_navigation_contact_info</item>
         <item>@id/action_navigation_settings_to_navigation_about_app</item>
     </array>
 </resources>

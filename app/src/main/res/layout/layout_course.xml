@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:background="@drawable/shape_background1">
+    android:background="@drawable/shape_background_secondary">
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/course_group"

@@ -9,6 +9,7 @@
     <string name="title_gallery">Галерея</string>
     <string name="title_settings">Настройки</string>
     <string name="title_about">О приложении</string>
+    <string name="title_contact_info">Контактная информация</string>
     <string name="title_activity_album">Альбом</string>
     <string name="title_activity_wall_post">Новость</string>
 
@@ -22,6 +23,25 @@
     <string name="lesson_time">00:00</string>
     <string name="lesson_classroom">3.10</string>
     <string name="lesson_teacher">Гринь Д. Х.</string>
+
+    <string name="contact_email">Электронная почта: kansk-ktt@mail.ru</string>
+    <string name="contact_site">Сайт колледжа: http://www.kansk-tc.ru</string>
+    <string name="contact_phone">
+        "Приемная, секретарь руководителя, Сухорукова Нина Викторовна +7 (39161) 2–39–52"
+    </string>
+    <string name="contact_phone_director">
+        "Директор, Берлинец Тамара Владимировна +7 (39161) 2–38–41"
+    </string>
+    <string name="contact_phone_dep_dir_academic">
+        "Заместитель директора по учебной работе, Гончарова Светлана Алексеевна +7 (39161) 2–39–52"
+    </string>
+    <string name="contact_phone_dep_dir_academic_work">
+        "Заместитель директора по учебно-производственной работе, Михиенкова Нина Лаврентьева +7 (39161) 2–06–51"
+    </string>
+    <string name="contact_phone_dep_dir_educational">
+        "Заместитель директора по воспитательной работе, Соколова Евгения Викторовна +7 (39161) 2–36–11"
+    </string>
+    <string name="contact_address">663600, Красноярский край, г. Канск, ул. Кайтымская, д.56</string>
 
     <string name="about_app_desc">
         "Приложение для Канского технологического колледжа, разработанное @Ethosa"

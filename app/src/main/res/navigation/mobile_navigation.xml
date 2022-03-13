@@ -37,6 +37,11 @@
             app:destination="@id/navigation_about_app"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_contact_info"
+            app:destination="@id/navigation_contact_info"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -45,5 +50,12 @@
         android:name="com.ethosa.ktc.ui.fragments.AboutAppFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about_app" />
+
+    <fragment
+        android:id="@+id/navigation_contact_info"
+        android:tag="ContactInfo"
+        android:name="com.ethosa.ktc.ui.fragments.ContactInfoFragment"
+        android:label="@string/title_contact_info"
+        tools:layout="@layout/fragment_contact_info" />
 
 </navigation>
