@@ -49,6 +49,7 @@
             android:layout_height="wrap_content"
             android:text="@string/placeholder"
             android:textAlignment="center"
+            android:textColor="@color/text"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -67,7 +67,7 @@ class NewsFragment : Fragment(), CollegeCallback {
         animate.duration = 500
         activity?.runOnUiThread {
             animate.start()
-            binding.newsContainer.adapter = NewsAdapter(news.anonce)
+            binding.newsContainer.adapter = NewsAdapter(news.anonce + news.news)
         }
     }
 }

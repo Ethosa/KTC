@@ -25,6 +25,7 @@
             android:padding="0dp"
             android:text="@string/lesson_title"
             android:textSize="14sp"
+            android:textColor="@color/text"
             app:layout_constraintEnd_toStartOf="@+id/lesson_classroom"
             app:layout_constraintStart_toEndOf="@+id/hr_time"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,6 +38,7 @@
             android:layout_marginStart="8dp"
             android:text="@string/lesson_number"
             android:textStyle="bold"
+            android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="@+id/lesson_teacher"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/lesson_title" />
@@ -47,6 +49,7 @@
             android:layout_height="wrap_content"
             android:text="@string/lesson_time"
             android:textSize="12sp"
+            android:textColor="@color/text"
             app:layout_constraintEnd_toEndOf="@+id/hr_time"
             app:layout_constraintStart_toStartOf="@+id/hr_time"
             app:layout_constraintTop_toBottomOf="@+id/lesson_from" />
@@ -57,6 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/lesson_time"
             android:textSize="12sp"
+            android:textColor="@color/text"
             app:layout_constraintBottom_toTopOf="@+id/hr_time"
             app:layout_constraintEnd_toEndOf="@+id/hr_time"
             app:layout_constraintStart_toStartOf="@+id/hr_time" />
@@ -68,6 +72,7 @@
             android:layout_marginStart="2dp"
             android:background="@color/text"
             android:orientation="horizontal"
+            android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="@+id/lesson_number"
             app:layout_constraintStart_toEndOf="@+id/lesson_number"
             app:layout_constraintTop_toTopOf="@+id/lesson_number" />
@@ -78,6 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:text="@string/lesson_classroom"
+            android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="@+id/lesson_from"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/lesson_to" />
@@ -89,6 +95,7 @@
             android:gravity="center"
             android:padding="0dp"
             android:text="@string/lesson_teacher"
+            android:textColor="@color/text"
             app:layout_constraintEnd_toEndOf="@+id/lesson_title"
             app:layout_constraintStart_toStartOf="@+id/lesson_title"
             app:layout_constraintTop_toBottomOf="@+id/lesson_title" />

@@ -37,6 +37,7 @@
             android:shadowRadius="5"
             android:text="@string/placeholder"
             android:textAlignment="center"
+            android:textColor="@color/text"
             android:textStyle="bold"
             app:flow_wrapMode="aligned"
             app:layout_constraintEnd_toEndOf="parent"

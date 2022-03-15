@@ -21,6 +21,7 @@
         android:text="@string/news_title"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/text"
         app:layout_constraintStart_toStartOf="@+id/left_padding"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +32,7 @@
         android:layout_marginTop="-4dp"
         android:text="@string/news_date"
         android:textSize="12sp"
+        android:textColor="@color/text"
         app:layout_constraintStart_toStartOf="@+id/wall_title"
         app:layout_constraintTop_toBottomOf="@+id/wall_title"
         tools:ignore="TextContrastCheck" />
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/news_description"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toStartOf="@+id/right_padding"
         app:layout_constraintStart_toStartOf="@+id/wall_title"
         app:layout_constraintTop_toBottomOf="@+id/wall_date"

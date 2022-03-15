@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="@string/course_string"
+            android:textColor="@color/text"
             android:textSize="20sp"
             android:textStyle="bold" />
     </com.google.android.material.chip.ChipGroup>
