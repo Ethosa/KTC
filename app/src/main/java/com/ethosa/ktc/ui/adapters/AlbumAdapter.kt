@@ -105,7 +105,7 @@ class AlbumAdapter(
                 MotionEvent.ACTION_UP -> {
                     if (lastMotionEvent == MotionEvent.ACTION_DOWN) {
                         dialog.dismiss()
-                    } else if (root!!.y < -hideHeight || root!!.y > root!!.width + hideHeight) {
+                    } else if (root!!.y < -hideHeight || root!!.y > root!!.width - hideHeight) {
                         dialog.dismiss()
                     } else {
                         animator = ObjectAnimator.ofFloat(root!!, "y", 0f)

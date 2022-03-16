@@ -10,6 +10,7 @@ import com.ethosa.ktc.R
 import com.ethosa.ktc.ui.activities.AlbumActivity
 import com.ethosa.ktc.college.gallery.AlbumPreview
 import com.ethosa.ktc.databinding.LayoutAlbumPreviewBinding
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 /**
  * Provides RecyclerView.Adapter behavior for album previews
@@ -41,6 +42,7 @@ class AlbumsPreviewAdapter(
         // Download image
         Glide.with(binding.root)
             .load(album.preview)
+            .transform(BlurTransformation(3, 2))
             .into(binding.preview)
 
         binding.holder.setOnClickListener {
