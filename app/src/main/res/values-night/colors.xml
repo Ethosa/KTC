@@ -2,6 +2,7 @@
 <resources>
     <color name="background">#150524</color>
     <color name="background_secondary">#1A1430</color>
+    <color name="background_toolbar">@color/background_secondary</color>
     <color name="background_photo">#B51A1430</color>
     <color name="primary">#D7BBF2</color>
     <color name="primary_variant">#E6CFFD</color>

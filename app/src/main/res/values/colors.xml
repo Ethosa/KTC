@@ -2,17 +2,18 @@
 <resources>
     <color name="background">#fcfefe</color>
     <color name="background_secondary">#ECF2F8</color>
-    <color name="background_photo">#B5101519</color>
-    <color name="primary">#6998b4</color>
-    <color name="primary_variant">#608aac</color>
-    <color name="secondary">#8e9faf</color>
-    <color name="secondary_variant">#647a97</color>
-    <color name="accent">#aec8d4</color>
-    <color name="accent_variant">#98b2c8</color>
-    <color name="foreground">#f8fafc</color>
-    <color name="foreground_alpha">#AFF8FAFC</color>
+    <color name="background_toolbar">#1E2832</color>
+    <color name="background_photo">#B5101119</color>
+    <color name="primary">#6979B4</color>
+    <color name="primary_variant">#6076AC</color>
+    <color name="secondary">#8E95AF</color>
+    <color name="secondary_variant">#647197</color>
+    <color name="accent">#AEB9D4</color>
+    <color name="accent_variant">#98A0C8</color>
+    <color name="foreground">#F8F9FC</color>
+    <color name="foreground_alpha">#AFF8F8FC</color>
     <color name="text">#212122</color>
-    <color name="btn_text">#DADFE3</color>
-    <color name="inactive">#232527</color>
-    <color name="active">#0069AE</color>
+    <color name="btn_text">#DADCE3</color>
+    <color name="inactive">#232427</color>
+    <color name="active">#0026AE</color>
 </resources>

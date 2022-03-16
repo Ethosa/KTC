@@ -22,7 +22,6 @@ import okhttp3.Response
  */
 class NewsFragment : Fragment(), CollegeCallback {
     private var _binding: FragmentNewsBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -55,19 +54,18 @@ class NewsFragment : Fragment(), CollegeCallback {
      * Calls when collegeApi fetches last news.
      */
     override fun onResponse(call: Call, response: Response) {
-        if (_binding == null) return
         // Parse JSON
         val jsonString = response.body?.string()
         val news = Gson().fromJson(jsonString, LastNews::class.java)
         // Create animation object
         val animate = ObjectAnimator.ofFloat(
-            binding.progressLoad, "alpha",
+            _binding?.progressLoad, "alpha",
             1f, 0f
         )
         animate.duration = 500
         activity?.runOnUiThread {
             animate.start()
-            binding.newsContainer.adapter = NewsAdapter(news.anonce + news.news)
+            _binding?.newsContainer?.adapter = NewsAdapter(news.anonce + news.news)
         }
     }
 }

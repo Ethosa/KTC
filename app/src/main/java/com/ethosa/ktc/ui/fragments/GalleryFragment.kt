@@ -60,19 +60,18 @@ class GalleryFragment(
      * Called when KTC Api successfully fetches albums.
      */
     override fun onResponse(call: Call, response: Response) {
-        if (_binding == null) return
         // Parse JSON
         val json = response.body?.string()
         val albums = Gson().fromJson(json, Albums::class.java)
         // Create animation object
         val animate = ObjectAnimator.ofFloat(
-            binding.progressLoad, "alpha",
+            _binding?.progressLoad, "alpha",
             1f,
             0f
         )
         animate.duration = 500
         activity?.runOnUiThread {
-            binding.albumsList.adapter = AlbumsPreviewAdapter(albums)
+            _binding?.albumsList?.adapter = AlbumsPreviewAdapter(albums)
             animate.start()
         }
     }
