@@ -4,11 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.college.CollegeApi
@@ -18,6 +16,7 @@ import com.ethosa.ktc.databinding.FragmentTimetableBinding
 import com.ethosa.ktc.ui.adapters.BranchAdapter
 import com.ethosa.ktc.ui.adapters.CourseAdapter
 import com.ethosa.ktc.ui.adapters.TimetableAdapter
+import com.ethosa.ktc.utils.IOFragmentBackPressed
 import com.ethosa.ktc.utils.SpacingItemDecoration
 import com.google.gson.Gson
 import okhttp3.Call
@@ -27,7 +26,7 @@ import okhttp3.Response
  * Provides working with KTC timetable.
  * Includes branches, courses with groups and timetable for any week.
  */
-class TimetableFragment : Fragment() {
+class TimetableFragment : IOFragmentBackPressed() {
     private var _binding: FragmentTimetableBinding? = null
     private lateinit var itemDecoration: RecyclerView.ItemDecoration
     private lateinit var preferences: SharedPreferences
@@ -73,7 +72,7 @@ class TimetableFragment : Fragment() {
         // Analog for back button
         binding.back.setOnClickListener {
             // back button disabled when state isn't 0
-            binding.back.isEnabled = !backState()
+            binding.back.isEnabled = !onBackPressed()
         }
 
         // Next week
@@ -99,19 +98,8 @@ class TimetableFragment : Fragment() {
         _binding = null
     }
 
-    override fun onResume() {
-        super.onResume()
-        view?.isFocusableInTouchMode = true
-        view?.requestFocus()
-        view?.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK)
-                // return true if at branches
-                return@OnKeyListener backState()
-            return@OnKeyListener false
-        })
-    }
-
     private fun changeWeek(i: Int) {
+        // Provides week changing behavior.
         week += i
         binding.next.isEnabled = false
         binding.previous.isEnabled = false
@@ -127,7 +115,8 @@ class TimetableFragment : Fragment() {
         }
     }
 
-    private fun backState(): Boolean {
+    override fun onBackPressed(): Boolean {
+        // Provides behavior on Back pressed.
         when (state) {
             1 -> fetchBranches()
             2 -> fetchCourses(branch!!.id)
@@ -136,13 +125,25 @@ class TimetableFragment : Fragment() {
         return true
     }
 
+    private fun updateState(current: Int = 0) {
+        // Updates fragment's state and saves it into SharedPreferences
+        state = current
+        preferences.edit().putInt(STATE, state).apply()
+    }
+
+    private fun updateTimetable(timetable: Week) {
+        // Updates fragment's group and saves it into SharedPreferences
+        preferences.edit().putInt(GROUP, group!!.id).apply()
+        preferences.edit().putInt(WEEK, timetable.week_number).apply()
+        preferences.edit().putString(GROUP_TITLE, group!!.title).apply()
+    }
+
     /**
      * Fetches branches and shows it.
      */
     @Suppress("MemberVisibilityCanBePrivate")
     fun fetchBranches() {
-        state = 0
-        preferences.edit().putInt(STATE, state).apply()
+        updateState()
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 if (_binding == null) return
@@ -164,7 +165,7 @@ class TimetableFragment : Fragment() {
      * @param branchId unique branch ID.
      */
     fun fetchCourses(branchId: Int) {
-        state = 1
+        updateState(1)
         college.fetchCourses(branchId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
@@ -180,7 +181,6 @@ class TimetableFragment : Fragment() {
                     binding.previous.visibility = View.GONE
                     binding.timetableTitle.text = "Курсы"
                     binding.timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
-                    preferences.edit().putInt(STATE, state).apply()
                     preferences.edit().putInt(BRANCH, branch!!.id).apply()
                 }
             }
@@ -193,7 +193,7 @@ class TimetableFragment : Fragment() {
      * @param week by default is current week.
      */
     fun fetchTimetable(groupId: Int, week: Int? = null) {
-        state = 2
+        updateState(2)
         college.fetchTimetable(groupId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
@@ -212,10 +212,7 @@ class TimetableFragment : Fragment() {
                     binding.next.visibility = View.VISIBLE
                     binding.previous.visibility = View.VISIBLE
                     binding.timetable.adapter = TimetableAdapter(this@TimetableFragment, timetable)
-                    preferences.edit().putInt(STATE, state).apply()
-                    preferences.edit().putInt(GROUP, group!!.id).apply()
-                    preferences.edit().putInt(WEEK, timetable.week_number).apply()
-                    preferences.edit().putString(GROUP_TITLE, group!!.title).apply()
+                    updateTimetable(timetable)
                 }
             }
         }, week)

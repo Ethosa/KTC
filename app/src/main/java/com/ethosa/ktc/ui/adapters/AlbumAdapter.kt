@@ -39,7 +39,7 @@ class AlbumAdapter(
         private const val MAX_DIM_AMOUNT = 0.95f
         private const val HIDE_OFFSET = 400
         private const val CHANGE_IMAGE_OFFSET = 200
-        private const val Y_PRIORITY = 3
+        private const val Y_PRIORITY = 2
         private const val DIM_STEP = 0.1f
     }
 
@@ -115,7 +115,7 @@ class AlbumAdapter(
     /**
      * Provides dialog behavior
      */
-    @SuppressLint("ClickableViewAccessibility", "ObjectAnimatorBinding")
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupDialog() {
         // set content view
         dialog.window?.setContentView(R.layout.layout_album_photo)

@@ -24,10 +24,7 @@ class SpacingItemDecoration(
         outRect.bottom = spaceV
 
         // Add top margin only for the first item to avoid double space between items
-        outRect.top =
-            if (parent.getChildLayoutPosition(view) == 0)
-                spaceV
-            else
-                0
+        val layoutPos = parent.getChildLayoutPosition(view)
+        outRect.top = if (layoutPos == 0) spaceV else 0
     }
 }

@@ -39,10 +39,9 @@ class CourseAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         val item = items[position]
-        val back = timetableFragment.resources.getColorStateList(
-            R.color.primary, timetableFragment.requireContext().theme)
-        val fore = timetableFragment.resources.getColor(
-            R.color.btn_text, timetableFragment.requireContext().theme)
+        val theme = timetableFragment.requireContext().theme
+        val back = timetableFragment.resources.getColorStateList(R.color.primary, theme)
+        val fore = timetableFragment.resources.getColor(R.color.btn_text, theme)
         binding.courseTitle.text = "${item.course} курс"
         for (group in item.groups) {
             val chip = Chip(timetableFragment.context)

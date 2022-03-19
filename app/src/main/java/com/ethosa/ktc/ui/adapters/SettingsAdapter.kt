@@ -16,12 +16,12 @@ import com.ethosa.ktc.ui.fragments.SettingsFragment
 class SettingsAdapter (
     private val fragment: SettingsFragment
 ) : RecyclerView.Adapter<SettingsAdapter.ViewHolder>() {
-    private var titles: TypedArray = fragment.requireContext()
-        .resources.obtainTypedArray(R.array.settings_titles)
-    private var icons: TypedArray = fragment.requireContext()
-        .resources.obtainTypedArray(R.array.settings_icons)
-    private var actions: TypedArray = fragment.requireContext()
-        .resources.obtainTypedArray(R.array.settings_actions)
+    private val context = fragment.requireContext()
+    private val res = context.resources
+
+    private val titles: TypedArray = res.obtainTypedArray(R.array.settings_titles)
+    private val icons: TypedArray = res.obtainTypedArray(R.array.settings_icons)
+    private val actions: TypedArray = res.obtainTypedArray(R.array.settings_actions)
 
     /**
      * Provides RecyclerView.ViewHolder behavior
