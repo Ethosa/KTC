@@ -42,6 +42,11 @@
             app:destination="@id/navigation_contact_info"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_pro_college"
+            app:destination="@id/navigation_pro_college"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -57,5 +62,12 @@
         android:name="com.ethosa.ktc.ui.fragments.ContactInfoFragment"
         android:label="@string/title_contact_info"
         tools:layout="@layout/fragment_contact_info" />
+
+    <fragment
+        android:id="@+id/navigation_pro_college"
+        android:tag="ProCollege"
+        android:name="com.ethosa.ktc.ui.fragments.ProCollegeFragment"
+        android:label="@string/title_pro_college"
+        tools:layout="@layout/fragment_pro_college" />
 
 </navigation>

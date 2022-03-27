@@ -10,13 +10,19 @@
     <string name="title_settings">Настройки</string>
     <string name="title_about">О приложении</string>
     <string name="title_contact_info">Контактная информация</string>
+    <string name="title_pro_college">ProCollege</string>
     <string name="title_activity_album">Альбом</string>
     <string name="title_activity_wall_post">Новость</string>
 
     <string name="news_title">Название поста</string>
     <string name="news_date">19 апр</string>
     <string name="news_description">Краткое описание поста</string>
+
     <string name="course_string">1 Курс</string>
+
+    <string name="username">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="auth">Войти</string>
 
     <string name="lesson_title">Проектирование и дизайн информационных систем</string>
     <string name="lesson_number">1</string>
