@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ProgressBar
 
 /**
  * Provides work with pro college.

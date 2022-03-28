@@ -18,6 +18,5 @@
         <item name="android:textColorLink">@color/primary_variant</item>
 
         <item name="fontFamily">@font/nuritom</item>
-        <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
     </style>
 </resources>
