@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:description="@string/app_widget_description"
+    android:initialKeyguardLayout="@layout/timetable_widget"
+    android:initialLayout="@layout/timetable_widget"
+    android:minWidth="256dp"
+    android:minHeight="80dp"
+    android:previewImage="@drawable/ic_calendar"
+    android:previewLayout="@layout/timetable_widget"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="6"
+    android:targetCellHeight="2"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen"
+    tools:targetApi="s" />

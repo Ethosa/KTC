@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="9dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/lesson_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/lesson_number"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/lesson_teacher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lesson_title" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lesson_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_time"
+                android:textColor="@color/text"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/hr_time"
+                app:layout_constraintEnd_toEndOf="@+id/hr_time"
+                app:layout_constraintStart_toStartOf="@+id/hr_time" />
+
+            <LinearLayout
+                android:id="@+id/hr_time"
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/text"
+                android:orientation="horizontal"
+                android:textColor="@color/text">
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lesson_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_time"
+                android:textColor="@color/text"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/hr_time"
+                app:layout_constraintStart_toStartOf="@+id/hr_time"
+                app:layout_constraintTop_toBottomOf="@+id/lesson_from" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lesson_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:lineSpacingExtra="-4sp"
+                android:padding="0dp"
+                android:text="@string/lesson_title"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lesson_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text="@string/lesson_teacher"
+                    android:textColor="@color/text" />
+
+                <TextView
+                    android:id="@+id/lesson_classroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/lesson_classroom"
+                    android:textColor="@color/text"
+                    app:layout_constraintBottom_toBottomOf="@+id/lesson_from"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lesson_to" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

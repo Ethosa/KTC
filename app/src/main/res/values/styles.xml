@@ -14,4 +14,14 @@
         <item name="android:windowBackground">@color/background</item>
         <item name="actionMenuTextColor">?attr/colorAccent</item>
     </style>
+
+    <style name="Widget.KTC.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <style name="Widget.KTC.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">@color/background</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
 </resources>

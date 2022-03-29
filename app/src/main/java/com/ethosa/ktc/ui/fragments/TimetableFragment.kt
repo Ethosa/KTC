@@ -59,7 +59,7 @@ class TimetableFragment : IOFragmentBackPressed() {
         binding.timetable.addItemDecoration(itemDecoration)
 
         // Load state
-        preferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        preferences = requireActivity().getSharedPreferences("com.ethosa.ktc", Context.MODE_PRIVATE)
         state = preferences.getInt(STATE, 0)
         branch = Branch(preferences.getInt(BRANCH, 0), "")
         group = Group(

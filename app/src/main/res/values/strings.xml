@@ -4,6 +4,9 @@
     <string name="author">Ethosa</string>
     <string name="github">Github</string>
 
+    <string name="add_widget">Расписание</string>
+    <string name="app_widget_description">Отображается расписание на сегодня</string>
+
     <string name="title_news">Новости</string>
     <string name="title_timetable">Расписание</string>
     <string name="title_gallery">Галерея</string>

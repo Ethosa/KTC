@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ethosa.ktc">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,19 +12,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KTC"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <receiver
+            android:name=".ui.widgets.TimetableWidget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/timetable_widget_info" />
+        </receiver>
+
         <activity
-            android:name="com.ethosa.ktc.ui.activities.AlbumActivity"
+            android:name=".ui.activities.AlbumActivity"
             android:exported="true"
             android:label="@string/title_activity_album"
             android:theme="@style/Theme.KTC.NoActionBar" />
         <activity
-            android:name="com.ethosa.ktc.ui.activities.WallPostActivity"
+            android:name=".ui.activities.WallPostActivity"
             android:exported="true"
             android:label="@string/title_activity_wall_post"
             android:theme="@style/Theme.KTC.NoActionBar" />
         <activity
-            android:name="com.ethosa.ktc.ui.activities.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
