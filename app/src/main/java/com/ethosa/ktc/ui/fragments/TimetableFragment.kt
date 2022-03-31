@@ -17,7 +17,7 @@ import com.ethosa.ktc.ui.adapters.BranchAdapter
 import com.ethosa.ktc.ui.adapters.CourseAdapter
 import com.ethosa.ktc.ui.adapters.TimetableAdapter
 import com.ethosa.ktc.utils.IOFragmentBackPressed
-import com.ethosa.ktc.utils.SpacingItemDecoration
+import com.ethosa.ktc.ui.decoration.SpacingItemDecoration
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response

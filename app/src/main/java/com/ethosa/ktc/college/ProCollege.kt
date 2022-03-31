@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.ProgressBar
 
 /**
  * Provides work with pro college.
@@ -21,6 +20,7 @@ class ProCollege(
     /**
      * Authorization in pro college using WebView.
      */
+    @Suppress("DEPRECATION")
     @SuppressLint("SetJavaScriptEnabled")
     fun auth(username: String, password: String) {
         authInterface.webView = wb

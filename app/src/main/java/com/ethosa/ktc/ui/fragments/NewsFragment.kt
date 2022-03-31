@@ -12,7 +12,7 @@ import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.news.LastNews
 import com.ethosa.ktc.databinding.FragmentNewsBinding
 import com.ethosa.ktc.ui.adapters.NewsAdapter
-import com.ethosa.ktc.utils.SpacingItemDecoration
+import com.ethosa.ktc.ui.decoration.SpacingItemDecoration
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response

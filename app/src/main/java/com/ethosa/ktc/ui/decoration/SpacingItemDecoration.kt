@@ -1,4 +1,4 @@
-package com.ethosa.ktc.utils
+package com.ethosa.ktc.ui.decoration
 
 import android.graphics.Rect
 import android.view.View

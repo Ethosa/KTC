@@ -7,6 +7,9 @@
     <string name="add_widget">Расписание</string>
     <string name="app_widget_description">Отображается расписание на сегодня</string>
 
+    <string name="update_is_available">Доступно обновление!</string>
+    <string name="update_app_button">Скачать обновление</string>
+
     <string name="title_news">Новости</string>
     <string name="title_timetable">Расписание</string>
     <string name="title_gallery">Галерея</string>

@@ -35,7 +35,8 @@
             android:src="@drawable/ic_reload"
             app:srcCompat="@drawable/ic_reload"
             app:tint="@color/primary"
-            tools:ignore="ContentDescription,ImageContrastCheck" />
+            android:tint="@color/primary"
+            tools:ignore="ContentDescription,ImageContrastCheck,UseAppTint" />
     </LinearLayout>
 
     <LinearLayout

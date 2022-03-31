@@ -10,7 +10,7 @@ import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.gallery.Album
 import com.ethosa.ktc.databinding.ActivityAlbumBinding
 import com.ethosa.ktc.ui.adapters.AlbumAdapter
-import com.ethosa.ktc.utils.SpacingItemDecoration
+import com.ethosa.ktc.ui.decoration.SpacingItemDecoration
 import com.google.gson.Gson
 import jp.wasabeef.glide.transformations.BlurTransformation
 import okhttp3.Call

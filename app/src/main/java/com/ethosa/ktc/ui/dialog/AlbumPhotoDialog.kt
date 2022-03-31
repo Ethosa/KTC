@@ -1,4 +1,4 @@
-package com.ethosa.ktc.utils
+package com.ethosa.ktc.ui.dialog
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder

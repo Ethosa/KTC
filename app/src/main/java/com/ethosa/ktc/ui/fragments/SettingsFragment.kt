@@ -5,12 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ethosa.ktc.R
 import com.ethosa.ktc.databinding.FragmentSettingsBinding
 import com.ethosa.ktc.ui.adapters.SettingsAdapter
-import com.ethosa.ktc.utils.SpacingItemDecoration
+import com.ethosa.ktc.ui.decoration.SpacingItemDecoration
 
 /**
  * Provides working with KTC last news.

@@ -18,6 +18,12 @@ class CollegeApi {
         private const val BRANCHES = "$MY_API/branches"
         private const val COURSES = "$MY_API/courses"
         private const val TIMETABLE = "$MY_API/timetable"
+        private const val TEACHER_TIMETABLE = "$MY_API/teacher-timetable"
+        private const val ACTUAL_VERSION = "$MY_API/actual-version"
+
+        // version Major.Minor.Patch
+        val VERSION = arrayOf(0, 6, 0)
+        val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
 
         /**
          * Sends GET request to url.
@@ -28,6 +34,13 @@ class CollegeApi {
                 .url(url)
             client.newCall(request.build()).enqueue(callback)
         }
+    }
+
+    /**
+     * Fetches JSON with actual app version.
+     */
+    fun fetchActualVersion(callback: CollegeCallback) {
+        sendRequest(ACTUAL_VERSION, callback)
     }
 
     /**
@@ -85,5 +98,14 @@ class CollegeApi {
             sendRequest("$TIMETABLE/$groupId", callback)
         else
             sendRequest("$TIMETABLE/$groupId/$week", callback)
+    }
+
+    /**
+     * Fetches the teacher's timetable.
+     * @param branchId branch ID.
+     * @param teacherId unique teacher ID.
+     */
+    fun fetchTeacherTimetable(branchId: Int, teacherId: Int, callback: CollegeCallback) {
+        sendRequest("$TEACHER_TIMETABLE/$branchId/$teacherId", callback)
     }
 }
