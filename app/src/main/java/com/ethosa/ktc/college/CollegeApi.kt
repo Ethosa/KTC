@@ -21,10 +21,6 @@ class CollegeApi {
         private const val TEACHER_TIMETABLE = "$MY_API/teacher-timetable"
         private const val ACTUAL_VERSION = "$MY_API/actual-version"
 
-        // version Major.Minor.Patch
-        val VERSION = arrayOf(0, 6, 0)
-        val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
-
         /**
          * Sends GET request to url.
          */

@@ -13,6 +13,7 @@ import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.timetable.Week
+import com.ethosa.ktc.ui.activities.MainActivity
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
@@ -40,6 +41,7 @@ class TimetableWidget : AppWidgetProvider() {
     }
 }
 
+
 /**
  * Update timetable for current widget
  */
@@ -61,6 +63,19 @@ internal fun updateWidgetPendingIntent(
 }
 
 
+/**
+ * Open app with pending intent
+ */
+@SuppressLint("UnspecifiedImmutableFlag")
+internal fun openAppPendingIntent(
+    context: Context?,
+    appWidgetId: Int
+): PendingIntent? {
+    val intent = Intent(context, MainActivity::class.java)
+    return PendingIntent.getActivity(context, appWidgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+}
+
+
 @SuppressLint("RemoteViewLayout")
 internal fun updateAppWidget(
     context: Context,
@@ -73,11 +88,14 @@ internal fun updateAppWidget(
         R.id.timetable_widget_reload,
         updateWidgetPendingIntent(context, appWidgetId)
     )
+    views.setOnClickPendingIntent(
+        R.id.timetable_widget_background,
+        openAppPendingIntent(context, appWidgetId)
+    )
     // Load last group ID
     val groupId = preferences?.getInt("group", 0)
     val calendar = Calendar.getInstance()
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    println(weekday)
 
     college.fetchTimetable(groupId!!, object : CollegeCallback {
         @SuppressLint("SetTextI18n")
