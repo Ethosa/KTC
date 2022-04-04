@@ -24,9 +24,11 @@ class AppUpdater(
     private val context: AppCompatActivity
 ) {
     companion object {
+        // when google services is available on phone.
         private const val GOOGLE_PLAY_MARKET_URL = "market://details?id=com.ethosa.ktc"
-        private const val GOOGLE_PLAY_WEB_URL = "https://play.google.com/store/apps/details?id=com.ethosa.ktc"
         private const val GOOGLE_PLAY_PACKAGE = "com.android.vending"
+        // When google services isn't available on phone
+        private const val GITHUB_RELEASES_URL = "https://github.com/Ethosa/KTC/releases"
 
         val VERSION = arrayOf(0, 7, 0)
         val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
@@ -62,7 +64,7 @@ class AppUpdater(
                     intent.`package` = GOOGLE_PLAY_PACKAGE
                     context.startActivity(intent)
                 } catch (notFound: ActivityNotFoundException) {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(GOOGLE_PLAY_WEB_URL))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB_RELEASES_URL))
                     context.startActivity(intent)
                 }
                 dialog.dismiss()

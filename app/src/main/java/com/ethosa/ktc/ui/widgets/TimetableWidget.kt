@@ -8,7 +8,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Bundle
+import android.os.Build
 import android.widget.RemoteViews
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
@@ -47,17 +47,21 @@ class TimetableWidget : AppWidgetProvider() {
     private fun updateWidgetPendingIntent(
         context: Context?,
         appWidgetId: Int
-    ): PendingIntent? {
+    ): PendingIntent {
         val intent = Intent(context, TimetableWidget::class.java)
         val ids = AppWidgetManager.getInstance(context)
             .getAppWidgetIds(ComponentName(context!!, TimetableWidget::class.java))
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+
         return PendingIntent.getBroadcast(
             context,
             appWidgetId,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT)
+            when {
+                Build.VERSION.SDK_INT >= 31 -> PendingIntent.FLAG_MUTABLE
+                else -> PendingIntent.FLAG_UPDATE_CURRENT
+            })
     }
 
     /**
@@ -67,13 +71,16 @@ class TimetableWidget : AppWidgetProvider() {
     private fun openAppPendingIntent(
         context: Context?,
         appWidgetId: Int
-    ): PendingIntent? {
+    ): PendingIntent {
         val intent = Intent(context, MainActivity::class.java)
         return PendingIntent.getActivity(
             context,
             appWidgetId,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT)
+            when {
+                Build.VERSION.SDK_INT >= 31 -> PendingIntent.FLAG_MUTABLE
+                else -> PendingIntent.FLAG_UPDATE_CURRENT
+            })
     }
 
     @SuppressLint("RemoteViewLayout")
