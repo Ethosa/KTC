@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ethosa.ktc.databinding.FragmentAboutAppBinding
+import com.ethosa.ktc.utils.AppUpdater
 
 /**
  * Provides About app fragment behavior.
@@ -22,6 +23,8 @@ class AboutAppFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAboutAppBinding.inflate(inflater, container, false)
+
+        binding.appVersion.text = AppUpdater.version
 
         binding.authorGithub.setOnClickListener {
             // Go to Github repo

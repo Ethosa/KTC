@@ -62,4 +62,5 @@
     </string>
 
     <string name="placeholder">Placeholder</string>
+    <string name="app_version_string">v0.0.1</string>
 </resources>

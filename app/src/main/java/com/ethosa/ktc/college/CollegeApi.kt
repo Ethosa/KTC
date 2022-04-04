@@ -19,6 +19,7 @@ class CollegeApi {
         private const val COURSES = "$MY_API/courses"
         private const val TIMETABLE = "$MY_API/timetable"
         private const val TEACHER_TIMETABLE = "$MY_API/teacher-timetable"
+        private const val TEACHERS_LIST = "$MY_API/teachers-list"
         private const val ACTUAL_VERSION = "$MY_API/actual-version"
 
         /**
@@ -94,6 +95,14 @@ class CollegeApi {
             sendRequest("$TIMETABLE/$groupId", callback)
         else
             sendRequest("$TIMETABLE/$groupId/$week", callback)
+    }
+
+    /**
+     * Fetches the teachers list in branch.
+     * @param branchId branch ID.
+     */
+    fun fetchTeachersList(branchId: Int, callback: CollegeCallback) {
+        sendRequest("$TEACHERS_LIST/$branchId", callback)
     }
 
     /**

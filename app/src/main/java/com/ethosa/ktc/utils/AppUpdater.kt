@@ -28,9 +28,9 @@ class AppUpdater(
         private const val GOOGLE_PLAY_WEB_URL = "https://play.google.com/store/apps/details?id=com.ethosa.ktc"
         private const val GOOGLE_PLAY_PACKAGE = "com.android.vending"
 
-        val VERSION = arrayOf(0, 6, 0)
+        val VERSION = arrayOf(0, 7, 0)
         val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
-        val omitted = "${version}_omitted"
+        var omitted = "_omitted"
 
         var actualVersion: ActualAppVersion? = null
     }
@@ -39,10 +39,13 @@ class AppUpdater(
     private val college = CollegeApi()
     // New version omitted
     private val preferences = context.getSharedPreferences("com.ethosa.ktc", Context.MODE_PRIVATE)
-    private var updateOmitted = preferences.getBoolean(omitted, false)
+    private var updateOmitted = false
 
 
     private fun showDialog() {
+        omitted = "${actualVersion!!}_omitted"
+        updateOmitted = preferences.getBoolean(omitted, false)
+
         // Create dialog updater
         val dialog = MaterialAlertDialogBuilder(context)
             .setBackground(

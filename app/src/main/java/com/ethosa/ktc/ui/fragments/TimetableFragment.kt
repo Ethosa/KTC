@@ -98,6 +98,19 @@ class TimetableFragment : IOFragmentBackPressed() {
         _binding = null
     }
 
+    /**
+     * Calls when back button pressed.
+     */
+    override fun onBackPressed(): Boolean {
+        // Provides behavior on Back pressed.
+        when (state) {
+            1 -> fetchBranches()
+            2 -> fetchCourses(branch!!.id)
+            else -> return false
+        }
+        return true
+    }
+
     private fun changeWeek(i: Int) {
         // Provides week changing behavior.
         week += i
@@ -113,16 +126,6 @@ class TimetableFragment : IOFragmentBackPressed() {
             1 -> fetchCourses(branch!!.id)
             2 -> fetchTimetable(group!!.id)
         }
-    }
-
-    override fun onBackPressed(): Boolean {
-        // Provides behavior on Back pressed.
-        when (state) {
-            1 -> fetchBranches()
-            2 -> fetchCourses(branch!!.id)
-            else -> return false
-        }
-        return true
     }
 
     private fun updateState(current: Int = 0) {
