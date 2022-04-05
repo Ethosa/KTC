@@ -9,6 +9,10 @@ import com.ethosa.ktc.utils.AppUpdater
 data class ActualAppVersion(
     val actual_version: List<Int>
 ) {
+    /**
+     * Check to version actual.
+     * @return true if version is actual.
+     */
     fun isActual(): Boolean {
         for (i in 0..2) {
             if (actual_version[i] > AppUpdater.VERSION[i]) {

@@ -13,10 +13,11 @@ class AuthInterface {
      * Processes HTML text
      */
     @JavascriptInterface
-    fun processHtml(html: String) {
-    }
+    fun processHtml(html: String) { }
 
+    /**
+     * Processes cookies
+     */
     @JavascriptInterface
-    fun getCookies(cookies: String) {
-    }
+    fun getCookies(cookies: String) { }
 }

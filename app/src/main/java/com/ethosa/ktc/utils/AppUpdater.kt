@@ -30,7 +30,7 @@ class AppUpdater(
         // When google services isn't available on phone
         private const val GITHUB_RELEASES_URL = "https://github.com/Ethosa/KTC/releases"
 
-        val VERSION = arrayOf(0, 7, 0)
+        val VERSION = arrayOf(0, 7, 1)
         val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
         var omitted = "_omitted"
 

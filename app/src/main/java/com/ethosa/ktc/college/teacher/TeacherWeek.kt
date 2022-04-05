@@ -1,3 +1,6 @@
 package com.ethosa.ktc.college.teacher
 
-class TeacherWeek : ArrayList<TeacherLesson>()
+/**
+ * Keeps week days
+ */
+class TeacherWeek : ArrayList<TeacherDay>()

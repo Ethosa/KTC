@@ -1,16 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.KTC" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_variant</item>
         <item name="colorPrimaryVariant">@color/accent</item>
         <item name="colorOnPrimary">@color/accent_variant</item>
-        <!-- Secondary brand color. -->
+
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorSecondaryVariant">@color/secondary_variant</item>
         <item name="colorOnSecondary">@color/accent</item>
-        <!-- Status bar color. -->
+
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:windowBackground">@color/background</item>
@@ -20,29 +18,49 @@
         <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
     </style>
 
+
+    <style name="Theme.KTC.MaterialYou" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/material_dynamic_primary50</item>
+        <item name="colorPrimaryDark">@color/material_dynamic_primary40</item>
+        <item name="colorPrimaryVariant">@color/material_dynamic_primary30</item>
+        <item name="colorOnPrimary">@color/material_dynamic_primary60</item>
+
+        <item name="colorSecondary">@color/material_dynamic_secondary50</item>
+        <item name="colorSecondaryContainer">@color/material_dynamic_secondary40</item>
+        <item name="colorSecondaryVariant">@color/material_dynamic_secondary30</item>
+        <item name="colorOnSecondary">@color/material_dynamic_secondary60</item>
+
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:colorAccent">@color/material_dynamic_tertiary50</item>
+        <item name="android:windowBackground">@color/material_dynamic_tertiary10</item>
+        <item name="android:textColorLink">@color/material_dynamic_tertiary70</item>
+
+        <item name="fontFamily">@font/nuritom</item>
+        <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
+    </style>
+
+
     <style name="Theme.KTC.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
+
     <style name="Theme.KTC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="background">@color/background_secondary</item>
     </style>
 
+
     <style name="Theme.KTC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
     <style name="Theme.KTC.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
-        <!-- Radius of the outer bound of widgets to make the rounded corners -->
         <item name="appWidgetRadius">16dp</item>
-        <!--
-        Radius of the inner view's bound of widgets to make the rounded corners.
-        It needs to be 8dp or less than the value of appWidgetRadius
-        -->
         <item name="appWidgetInnerRadius">8dp</item>
     </style>
 
+
     <style name="Theme.KTC.AppWidgetContainer" parent="Theme.KTC.AppWidgetContainerParent">
-        <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
         <item name="appWidgetPadding">16dp</item>
     </style>
 </resources>
