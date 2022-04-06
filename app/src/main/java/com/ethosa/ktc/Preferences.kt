@@ -7,6 +7,7 @@ import com.ethosa.ktc.college.timetable.Group
 
 /**
  * Provides working with SharedPreferences
+ * @param context app context
  */
 class Preferences(
     context: Context
@@ -24,6 +25,10 @@ class Preferences(
         var isStudent = true
         var week = 0
         var timetableState = 0
+
+        // Pro college
+        var proCollegeUsername = ""
+        var proCollegePassword = ""
     }
 
     /**
@@ -41,8 +46,38 @@ class Preferences(
         )
         week = preferences.getInt(Constants.TIMETABLE_WEEK, 0)
         isStudent = preferences.getBoolean(Constants.TIMETABLE_IS_STUDENT, true)
+
+        proCollegeUsername = preferences.getString(Constants.LOGIN_USERNAME, "")!!
+        proCollegePassword = preferences.getString(Constants.LOGIN_PASSWORD, "")!!
     }
 
+    /**
+     * Clears current timetable state
+     */
+    fun clearTimetable() {
+        preferences.edit()
+            .putInt(Constants.TIMETABLE_STATE, 0)
+            .putString(Constants.TIMETABLE_GROUP_TITLE, "")
+            .putInt(Constants.TIMETABLE_GROUP, 0)
+            .putBoolean(Constants.TIMETABLE_IS_STUDENT, true)
+            .putInt(Constants.TIMETABLE_BRANCH, 0)
+            .putInt(Constants.TIMETABLE_WEEK, 0)
+            .apply()
+    }
+
+    /**
+     * Clears current pro college state
+     */
+    fun clearProCollege() {
+        preferences.edit()
+            .putString(Constants.LOGIN_USERNAME, "")
+            .putString(Constants.LOGIN_PASSWORD, "")
+            .apply()
+    }
+
+    /**
+     * Saves current timetable state
+     */
     fun saveTimetable() {
         preferences.edit()
             .putInt(Constants.TIMETABLE_STATE, timetableState)
@@ -51,6 +86,16 @@ class Preferences(
             .putBoolean(Constants.TIMETABLE_IS_STUDENT, isStudent)
             .putInt(Constants.TIMETABLE_BRANCH, branch!!.id)
             .putInt(Constants.TIMETABLE_WEEK, week)
+            .apply()
+    }
+
+    /**
+     * Saves current pro college state
+     */
+    fun saveProCollege() {
+        preferences.edit()
+            .putString(Constants.LOGIN_USERNAME, proCollegeUsername)
+            .putString(Constants.LOGIN_PASSWORD, proCollegePassword)
             .apply()
     }
 }

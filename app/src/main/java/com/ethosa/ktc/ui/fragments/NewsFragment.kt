@@ -61,8 +61,7 @@ class NewsFragment : Fragment(), CollegeCallback {
         val animate = ObjectAnimator.ofFloat(
             _binding?.progressLoad, "alpha",
             1f, 0f
-        )
-        animate.duration = 500
+        ).setDuration(500)
         activity?.runOnUiThread {
             animate.start()
             _binding?.newsContainer?.adapter = NewsAdapter(news.anonce + news.news)

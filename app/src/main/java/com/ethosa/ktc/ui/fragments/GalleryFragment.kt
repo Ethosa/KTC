@@ -68,8 +68,7 @@ class GalleryFragment(
             _binding?.progressLoad, "alpha",
             1f,
             0f
-        )
-        animate.duration = 500
+        ).setDuration(500)
         activity?.runOnUiThread {
             _binding?.albumsList?.adapter = AlbumsPreviewAdapter(albums)
             animate.start()

@@ -1,7 +1,5 @@
 package com.ethosa.ktc.ui.fragments
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +12,7 @@ import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
 import androidx.webkit.WebViewFeature
+import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.college.ProCollege
 import com.ethosa.ktc.databinding.FragmentProCollegeBinding
 
@@ -25,12 +24,7 @@ class ProCollegeFragment : Fragment() {
     private var _binding: FragmentProCollegeBinding? = null
     private val binding get() = _binding!!
     private lateinit var proCollege: ProCollege
-    private lateinit var preferences: SharedPreferences
-
-    companion object {
-        private const val USERNAME = "username"
-        private const val PASSWORD = "password"
-    }
+    private lateinit var preferences: Preferences
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,12 +34,11 @@ class ProCollegeFragment : Fragment() {
         _binding = FragmentProCollegeBinding.inflate(inflater, container, false)
 
         proCollege = ProCollege(binding.content)
-        preferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-
-        binding.username.editText?.setText(preferences.getString(USERNAME, ""))
-        binding.password.editText?.setText(preferences.getString(PASSWORD, ""))
+        preferences = Preferences(requireContext())
+        preferences.load()
 
         // Auto dark mode ...
+        // Require API Q+
         if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
             when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
                 Configuration.UI_MODE_NIGHT_YES -> {
@@ -73,8 +66,7 @@ class ProCollegeFragment : Fragment() {
             // Auth in ProCollege
             binding.login.visibility = View.GONE
             binding.content.visibility = View.VISIBLE
-            preferences.edit().putString(USERNAME, binding.username.editText?.text.toString()).apply()
-            preferences.edit().putString(PASSWORD, binding.password.editText?.text.toString()).apply()
+            preferences.saveProCollege()
             proCollege.auth(
                 binding.username.editText?.text.toString(),
                 binding.password.editText?.text.toString()

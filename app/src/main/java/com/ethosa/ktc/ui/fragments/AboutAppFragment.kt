@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ethosa.ktc.Constants
 import com.ethosa.ktc.databinding.FragmentAboutAppBinding
 import com.ethosa.ktc.ui.dialog.AppUpdater
 
@@ -25,11 +26,10 @@ class AboutAppFragment : Fragment() {
         _binding = FragmentAboutAppBinding.inflate(inflater, container, false)
 
         binding.appVersion.text = AppUpdater.version
-
         binding.authorGithub.setOnClickListener {
             // Go to Github repo
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("https://github.com/ethosa/ktc")
+            intent.data = Uri.parse(Constants.GITHUB_REPO_URL)
             startActivity(intent)
         }
 

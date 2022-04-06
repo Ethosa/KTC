@@ -19,5 +19,10 @@ sealed class Constants {
         const val GOOGLE_PLAY_PACKAGE = "com.android.vending"
         // When google services isn't available on phone
         const val GITHUB_RELEASES_URL = "https://github.com/Ethosa/KTC/releases"
+        const val GITHUB_REPO_URL = "https://github.com/Ethosa/KTC"
+
+        // Pro college
+        const val LOGIN_USERNAME = "username"
+        const val LOGIN_PASSWORD = "password"
     }
 }
