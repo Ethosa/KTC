@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.R
 import com.ethosa.ktc.databinding.ActivityMainBinding
 import com.ethosa.ktc.ui.dialog.AppUpdater
@@ -27,5 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         val appUpdater = AppUpdater(this)
         appUpdater.checkToUpdate()
+
+        val preferences = Preferences(this)
+        preferences.load()
     }
 }

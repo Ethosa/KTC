@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import com.ethosa.ktc.Constants
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.ActualAppVersion
 import com.ethosa.ktc.college.CollegeApi
@@ -24,12 +25,6 @@ class AppUpdater(
     private val context: AppCompatActivity
 ) {
     companion object {
-        // when google services is available on phone.
-        private const val GOOGLE_PLAY_MARKET_URL = "market://details?id=com.ethosa.ktc"
-        private const val GOOGLE_PLAY_PACKAGE = "com.android.vending"
-        // When google services isn't available on phone
-        private const val GITHUB_RELEASES_URL = "https://github.com/Ethosa/KTC/releases"
-
         val VERSION = arrayOf(0, 7, 1)
         val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
         var omitted = "_omitted"
@@ -40,7 +35,7 @@ class AppUpdater(
     // For fetching actual version
     private val college = CollegeApi()
     // New version omitted
-    private val preferences = context.getSharedPreferences("com.ethosa.ktc", Context.MODE_PRIVATE)
+    private val preferences = context.getSharedPreferences(Constants.PACKAGE, Context.MODE_PRIVATE)
     private var updateOmitted = false
 
 
@@ -62,12 +57,12 @@ class AppUpdater(
             .setPositiveButton(R.string.update_dialog_positive) { dialog, _ ->
                 try {
                     // Detect Google play market
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(GOOGLE_PLAY_MARKET_URL))
-                    intent.`package` = GOOGLE_PLAY_PACKAGE
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.GOOGLE_PLAY_MARKET_URL))
+                    intent.`package` = Constants.GOOGLE_PLAY_PACKAGE
                     context.startActivity(intent)
                 } catch (notFound: ActivityNotFoundException) {
                     // Go to GitHub releases
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB_RELEASES_URL))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.GITHUB_RELEASES_URL))
                     context.startActivity(intent)
                 }
                 dialog.dismiss()

@@ -27,9 +27,9 @@ class AlbumsPreviewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
+        return ViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_album_preview, parent, false)
-        return ViewHolder(inflater)
+        )
     }
 
     /**

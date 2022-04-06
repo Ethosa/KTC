@@ -33,9 +33,9 @@ class NewsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
+        return ViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_news, parent, false)
-        return ViewHolder(layoutInflater)
+        )
     }
 
     /**

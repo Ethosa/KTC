@@ -1,14 +1,13 @@
 package com.ethosa.ktc.ui.fragments
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.timetable.*
@@ -28,26 +27,11 @@ import okhttp3.Response
  */
 class TimetableFragment : IOFragmentBackPressed() {
     private var _binding: FragmentTimetableBinding? = null
+    private lateinit var preferences: Preferences
     private lateinit var itemDecoration: RecyclerView.ItemDecoration
-    private lateinit var preferences: SharedPreferences
 
     private val college = CollegeApi()
     private val binding get() = _binding!!
-    // 0 - branches, 1 - courses, 2 - timetable.
-    private var state = 0
-    var branch: Branch? = null
-    var group: Group? = null
-    var week: Int = 0
-    var isStudent = true
-
-    companion object {
-        const val STATE = "state"
-        const val BRANCH = "branch"
-        const val GROUP = "group"
-        const val GROUP_TITLE = "group_title"
-        const val WEEK = "week"
-        const val IS_STUDENT = "is_student"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,15 +45,7 @@ class TimetableFragment : IOFragmentBackPressed() {
         binding.timetable.addItemDecoration(itemDecoration)
 
         // Load state
-        preferences = requireActivity().getSharedPreferences("com.ethosa.ktc", Context.MODE_PRIVATE)
-        state = preferences.getInt(STATE, 0)
-        branch = Branch(preferences.getInt(BRANCH, 0), "")
-        group = Group(
-            preferences.getInt(GROUP, 0),
-            preferences.getString(GROUP_TITLE, "")!!
-        )
-        week = preferences.getInt(WEEK, 0)
-        isStudent = preferences.getBoolean(IS_STUDENT, true)
+        preferences = Preferences(requireContext())
         loadState()
 
         // Analog for back button
@@ -80,19 +56,19 @@ class TimetableFragment : IOFragmentBackPressed() {
 
         // Next week
         binding.next.setOnClickListener {
-            if (week < 57)
+            if (Preferences.week < 57)
                 changeWeek(1)
         }
 
         // previous week
         binding.previous.setOnClickListener {
-            if (week > 1)
+            if (Preferences.week > 1)
                 changeWeek(-1)
         }
 
         // toggle isStudent
         binding.toggleTimetable.setOnClickListener {
-            isStudent = !isStudent
+            Preferences.isStudent = !Preferences.isStudent
         }
 
         return binding.root
@@ -111,9 +87,9 @@ class TimetableFragment : IOFragmentBackPressed() {
      */
     override fun onBackPressed(): Boolean {
         // Provides behavior on Back pressed.
-        when (state) {
+        when (Preferences.timetableState) {
             1 -> fetchBranches()
-            2 -> fetchCourses(branch!!.id)
+            2 -> fetchCourses(Preferences.branch!!.id)
             else -> return false
         }
         return true
@@ -121,32 +97,22 @@ class TimetableFragment : IOFragmentBackPressed() {
 
     private fun changeWeek(i: Int) {
         // Provides week changing behavior.
-        week += i
+        Preferences.week += i
         binding.next.isEnabled = false
         binding.previous.isEnabled = false
-        fetchTimetable(group!!.id, week)
+        fetchTimetable(Preferences.group!!.id, Preferences.week)
     }
 
     private fun loadState() {
         // Fetches timetable from loaded state.
-        when (state) {
+        when (Preferences.timetableState) {
+            // branches
             0 -> fetchBranches()
-            1 -> fetchCourses(branch!!.id)
-            2 -> fetchTimetable(group!!.id)
+            // courses
+            1 -> fetchCourses(Preferences.branch!!.id)
+            // students timetable
+            2 -> fetchTimetable(Preferences.group!!.id)
         }
-    }
-
-    private fun updateState(current: Int = 0) {
-        // Updates fragment's state and saves it into SharedPreferences
-        state = current
-        preferences.edit().putInt(STATE, state).apply()
-    }
-
-    private fun updateTimetable(timetable: Week) {
-        // Updates fragment's group and saves it into SharedPreferences
-        preferences.edit().putInt(GROUP, group!!.id).apply()
-        preferences.edit().putInt(WEEK, timetable.week_number).apply()
-        preferences.edit().putString(GROUP_TITLE, group!!.title).apply()
     }
 
     /**
@@ -154,7 +120,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      */
     @Suppress("MemberVisibilityCanBePrivate")
     fun fetchBranches() {
-        updateState()
+        Preferences.timetableState = 0
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 if (_binding == null) return
@@ -166,6 +132,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.GONE
                     binding.timetable.adapter = BranchAdapter(this@TimetableFragment, branches)
+                    preferences.saveTimetable()
                 }
             }
         })
@@ -176,7 +143,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      * @param branchId unique branch ID.
      */
     fun fetchCourses(branchId: Int) {
-        updateState(1)
+        Preferences.timetableState = 1
         college.fetchCourses(branchId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
@@ -192,7 +159,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                     binding.previous.visibility = View.GONE
                     binding.timetableTitle.text = "Курсы"
                     binding.timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
-                    preferences.edit().putInt(BRANCH, branch!!.id).apply()
+                    preferences.saveTimetable()
                 }
             }
         })
@@ -204,7 +171,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      * @param week by default is current week.
      */
     fun fetchTimetable(groupId: Int, week: Int? = null) {
-        updateState(2)
+        Preferences.timetableState = 2
         college.fetchTimetable(groupId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
@@ -212,18 +179,18 @@ class TimetableFragment : IOFragmentBackPressed() {
                 // Parse JSON
                 val json = response.body?.string()
                 val timetable = Gson().fromJson(json, Week::class.java)
-                this@TimetableFragment.week = timetable.week_number
+                Preferences.week = timetable.week_number
 
                 requireActivity().runOnUiThread {
                     binding.back.isEnabled = true
                     binding.next.isEnabled = true
                     binding.previous.isEnabled = true
-                    binding.timetableTitle.text = "${group!!.title}\n${timetable.week_number} неделя"
+                    binding.timetableTitle.text = "${Preferences.group!!.title}\n${timetable.week_number} неделя"
                     binding.timetableToolbar.visibility = View.VISIBLE
                     binding.next.visibility = View.VISIBLE
                     binding.previous.visibility = View.VISIBLE
                     binding.timetable.adapter = TimetableAdapter(this@TimetableFragment, timetable)
-                    updateTimetable(timetable)
+                    preferences.saveTimetable()
                 }
             }
         }, week)

@@ -31,10 +31,8 @@ class SettingsAdapter (
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater
-                .from(parent.context)
-                .inflate(R.layout.layout_settings_button, parent, false)
+        return ViewHolder(LayoutInflater.from(parent.context)
+            .inflate(R.layout.layout_settings_button, parent, false)
         )
     }
 
