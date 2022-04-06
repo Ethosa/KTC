@@ -90,6 +90,11 @@ class TimetableFragment : IOFragmentBackPressed() {
                 changeWeek(-1)
         }
 
+        // toggle isStudent
+        binding.toggleTimetable.setOnClickListener {
+            isStudent = !isStudent
+        }
+
         return binding.root
     }
 

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
 /**
  * Provides spacing item decoration for RecyclerView.
+ * @param spaceH horizontal space
+ * @param spaceV vertical space
  */
 class SpacingItemDecoration(
     private val spaceH: Int,
@@ -16,8 +18,10 @@ class SpacingItemDecoration(
      * Calculates item offsets
      */
     override fun getItemOffsets(
-        outRect: Rect, view: View,
-        parent: RecyclerView, state: RecyclerView.State
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
     ) {
         outRect.left = spaceH
         outRect.right = spaceH

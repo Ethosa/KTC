@@ -9,8 +9,8 @@ package com.ethosa.ktc.college.timetable
  * }
  */
 data class Lesson(
-    val title: String = "",
-    val teacher: String = "",
-    val classroom: String = "",
+    val title: String,
+    val teacher: String,
+    val classroom: String,
     val time: LessonTime
 )

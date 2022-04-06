@@ -10,9 +10,9 @@ package com.ethosa.ktc.college.news
  * }
  */
 data class News(
-    val title: String = "",
-    var body: String = "",
-    val date: String = "1 апр",
-    val image: String = "",
-    val id: String = ""
+    val title: String,
+    var body: String,
+    val date: String,
+    val image: String,
+    val id: String
 )

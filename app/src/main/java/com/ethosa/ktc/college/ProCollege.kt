@@ -31,6 +31,7 @@ class ProCollege(
         wb.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 view?.evaluateJavascript("") {
+                    // Auto auth
                     wb.loadUrl("""
                         javascript:
                         document.getElementsByName("username")[0].value = "$username";

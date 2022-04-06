@@ -1,12 +1,10 @@
 package com.ethosa.ktc.college.gallery
 
 /**
- * {
- *      "id": "176",
- *      "title": "",
- *      "preview": "image url",
- *      "date": "21.01.2022"
- * }
+ * @param id album ID
+ * @param title album title
+ * @param preview album preview image URL
+ * @param date album addition date
  */
 data class AlbumPreview(
     val id: String,
