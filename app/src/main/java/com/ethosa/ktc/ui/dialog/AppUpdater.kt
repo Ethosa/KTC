@@ -52,8 +52,9 @@ class AppUpdater(
                     context.theme)
             )
             .setTitle(R.string.update_dialog_title)
-            .setMessage("""Текущая версия: $version, актуальная версия: ${actualVersion!!}.
-                           ${actualVersion!!.description}""".trimMargin())
+            .setMessage(
+                "Текущая версия: $version, актуальная версия: ${actualVersion!!}." +
+                        "\n\nЧто нового:\n${actualVersion!!.description}")
             .setPositiveButton(R.string.update_dialog_positive) { dialog, _ ->
                 try {
                     // Detect Google play market

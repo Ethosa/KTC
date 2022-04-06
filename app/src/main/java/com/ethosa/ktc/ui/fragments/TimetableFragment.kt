@@ -118,8 +118,7 @@ class TimetableFragment : IOFragmentBackPressed() {
     /**
      * Fetches branches and shows it.
      */
-    @Suppress("MemberVisibilityCanBePrivate")
-    fun fetchBranches() {
+    private fun fetchBranches() {
         Preferences.timetableState = 0
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
