@@ -1,4 +1,4 @@
-package com.ethosa.ktc.utils
+package com.ethosa.ktc.ui.dialog
 
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -57,19 +57,23 @@ class AppUpdater(
                     context.theme)
             )
             .setTitle(R.string.update_dialog_title)
-            .setMessage("Текущая версия: $version, актуальная версия: ${actualVersion!!}")
+            .setMessage("""Текущая версия: $version, актуальная версия: ${actualVersion!!}.
+                           ${actualVersion!!.description}""".trimMargin())
             .setPositiveButton(R.string.update_dialog_positive) { dialog, _ ->
                 try {
+                    // Detect Google play market
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(GOOGLE_PLAY_MARKET_URL))
                     intent.`package` = GOOGLE_PLAY_PACKAGE
                     context.startActivity(intent)
                 } catch (notFound: ActivityNotFoundException) {
+                    // Go to GitHub releases
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB_RELEASES_URL))
                     context.startActivity(intent)
                 }
                 dialog.dismiss()
             }
             .setNeutralButton(R.string.update_dialog_neutral) { dialog, _ ->
+                // Mark current actual version as omitted
                 updateOmitted = true
                 preferences.edit().putBoolean(omitted, true).apply()
                 dialog.dismiss()
@@ -78,6 +82,7 @@ class AppUpdater(
                 dialog.dismiss()
             }
             .create()
+        // Setup elevation
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             dialog.window?.setElevation(16f)
             dialog.window?.setDimAmount(0.7f)

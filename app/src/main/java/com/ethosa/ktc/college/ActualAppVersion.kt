@@ -1,13 +1,20 @@
 package com.ethosa.ktc.college
 
-import com.ethosa.ktc.utils.AppUpdater
+import com.ethosa.ktc.ui.dialog.AppUpdater
 
 /**
  * JSON:
- *  { "actual_version": [0, 6, 0] }
+ *  {
+ *      "actual_version": [0, 6, 0],
+ *      "description": "update description"
+ *  }
+ *
+ *  @param actual_version list of major, minor and patch version.
+ *  @param description update description
  */
 data class ActualAppVersion(
-    val actual_version: List<Int>
+    val actual_version: List<Int>,
+    val description: String
 ) {
     /**
      * Check to version actual.

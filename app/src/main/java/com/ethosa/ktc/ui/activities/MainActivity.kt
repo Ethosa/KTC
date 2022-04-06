@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ethosa.ktc.R
 import com.ethosa.ktc.databinding.ActivityMainBinding
-import com.ethosa.ktc.utils.AppUpdater
+import com.ethosa.ktc.ui.dialog.AppUpdater
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**

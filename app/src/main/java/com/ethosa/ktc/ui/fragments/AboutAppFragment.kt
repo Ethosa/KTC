@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ethosa.ktc.databinding.FragmentAboutAppBinding
-import com.ethosa.ktc.utils.AppUpdater
+import com.ethosa.ktc.ui.dialog.AppUpdater
 
 /**
  * Provides About app fragment behavior.

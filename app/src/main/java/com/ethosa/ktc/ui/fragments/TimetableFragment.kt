@@ -38,6 +38,7 @@ class TimetableFragment : IOFragmentBackPressed() {
     var branch: Branch? = null
     var group: Group? = null
     var week: Int = 0
+    var isStudent = true
 
     companion object {
         const val STATE = "state"
@@ -45,6 +46,7 @@ class TimetableFragment : IOFragmentBackPressed() {
         const val GROUP = "group"
         const val GROUP_TITLE = "group_title"
         const val WEEK = "week"
+        const val IS_STUDENT = "is_student"
     }
 
     override fun onCreateView(
@@ -67,6 +69,7 @@ class TimetableFragment : IOFragmentBackPressed() {
             preferences.getString(GROUP_TITLE, "")!!
         )
         week = preferences.getInt(WEEK, 0)
+        isStudent = preferences.getBoolean(IS_STUDENT, true)
         loadState()
 
         // Analog for back button
