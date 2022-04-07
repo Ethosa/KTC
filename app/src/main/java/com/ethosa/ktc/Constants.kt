@@ -14,6 +14,8 @@ sealed class Constants {
         const val TIMETABLE_WEEK = "week"
         const val TIMETABLE_IS_STUDENT = "is_student"
 
+        const val TIMETABLE_TEACHER_ID = "teacher_id"
+
         // when google services is available on phone.
         const val GOOGLE_PLAY_MARKET_URL = "market://details?id=com.ethosa.ktc"
         const val GOOGLE_PLAY_PACKAGE = "com.android.vending"
@@ -24,5 +26,8 @@ sealed class Constants {
         // Pro college
         const val LOGIN_USERNAME = "username"
         const val LOGIN_PASSWORD = "password"
+
+        // AppDynamicTheme
+        const val CURRENT_THEME = "current_theme"
     }
 }

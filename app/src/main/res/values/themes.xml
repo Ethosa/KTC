@@ -31,9 +31,9 @@
         <item name="colorOnSecondary">@color/material_dynamic_secondary60</item>
 
         <item name="android:statusBarColor">?attr/colorPrimary</item>
-        <item name="android:colorAccent">@color/material_dynamic_tertiary50</item>
-        <item name="android:windowBackground">@color/material_dynamic_tertiary10</item>
-        <item name="android:textColorLink">@color/material_dynamic_tertiary70</item>
+        <item name="android:colorAccent">@color/material_dynamic_tertiary30</item>
+        <item name="android:windowBackground">@color/material_dynamic_tertiary99</item>
+        <item name="android:textColorLink">@color/material_dynamic_tertiary50</item>
 
         <item name="fontFamily">@font/nuritom</item>
         <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>

@@ -90,7 +90,7 @@ class TimetableWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         // Construct the RemoteViews object
-        val views = RemoteViews(context.packageName, R.layout.timetable_widget)
+        val views = RemoteViews(context.packageName, R.layout.widget_timetable)
         views.setOnClickPendingIntent(
             R.id.timetable_widget_reload,
             updateWidgetPendingIntent(context, appWidgetId)

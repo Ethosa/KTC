@@ -8,7 +8,7 @@ import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.R
 import com.ethosa.ktc.databinding.ActivityMainBinding
 import com.ethosa.ktc.ui.dialog.AppUpdater
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.ethosa.ktc.utils.AppDynamicTheme
 
 /**
  * The main app activity.
@@ -19,17 +19,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Preferences(this).load()
+        AppDynamicTheme(this).loadTheme()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val navView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
 
-        val appUpdater = AppUpdater(this)
-        appUpdater.checkToUpdate()
-
-        val preferences = Preferences(this)
-        preferences.load()
+        AppUpdater(this).checkToUpdate()
     }
 }

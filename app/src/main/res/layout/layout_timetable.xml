@@ -11,6 +11,7 @@
     tools:layout_editor_absoluteY="9dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dayroot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

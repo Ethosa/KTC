@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:id="@+id/tlesson_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/lesson_number"
+            android:textColor="@color/text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tlesson_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/lesson_title"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/tlesson_number"
+            app:layout_constraintEnd_toStartOf="@+id/tlesson_classroom"
+            app:layout_constraintStart_toEndOf="@+id/tlesson_number"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tlesson_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lesson_teacher"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="@+id/tlesson_title"
+            app:layout_constraintStart_toStartOf="@+id/tlesson_title"
+            app:layout_constraintTop_toBottomOf="@+id/tlesson_title" />
+
+        <TextView
+            android:id="@+id/tlesson_classroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/lesson_classroom"
+            app:layout_constraintBottom_toBottomOf="@+id/tlesson_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tlesson_number" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -23,12 +23,16 @@ class Preferences(
         // student timetable
         var group: Group? = null
         var isStudent = true
+        var teacherId = 0
         var week = 0
         var timetableState = 0
 
         // Pro college
         var proCollegeUsername = ""
         var proCollegePassword = ""
+
+        // AppDynamicTheme
+        var currentTheme = "default"
     }
 
     /**
@@ -45,10 +49,12 @@ class Preferences(
             preferences.getString(Constants.TIMETABLE_GROUP_TITLE, "")!!
         )
         week = preferences.getInt(Constants.TIMETABLE_WEEK, 0)
+        teacherId = preferences.getInt(Constants.TIMETABLE_TEACHER_ID, 0)
         isStudent = preferences.getBoolean(Constants.TIMETABLE_IS_STUDENT, true)
 
         proCollegeUsername = preferences.getString(Constants.LOGIN_USERNAME, "")!!
         proCollegePassword = preferences.getString(Constants.LOGIN_PASSWORD, "")!!
+        currentTheme = preferences.getString(Constants.CURRENT_THEME, "default")!!
     }
 
     /**
@@ -62,6 +68,7 @@ class Preferences(
             .putBoolean(Constants.TIMETABLE_IS_STUDENT, true)
             .putInt(Constants.TIMETABLE_BRANCH, 0)
             .putInt(Constants.TIMETABLE_WEEK, 0)
+            .putInt(Constants.TIMETABLE_TEACHER_ID, 0)
             .apply()
     }
 
@@ -86,6 +93,7 @@ class Preferences(
             .putBoolean(Constants.TIMETABLE_IS_STUDENT, isStudent)
             .putInt(Constants.TIMETABLE_BRANCH, branch!!.id)
             .putInt(Constants.TIMETABLE_WEEK, week)
+            .putInt(Constants.TIMETABLE_TEACHER_ID, teacherId)
             .apply()
     }
 
@@ -96,6 +104,12 @@ class Preferences(
         preferences.edit()
             .putString(Constants.LOGIN_USERNAME, proCollegeUsername)
             .putString(Constants.LOGIN_PASSWORD, proCollegePassword)
+            .apply()
+    }
+
+    fun saveTheme() {
+        preferences.edit()
+            .putString(Constants.CURRENT_THEME, currentTheme)
             .apply()
     }
 }

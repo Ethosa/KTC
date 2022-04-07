@@ -9,10 +9,12 @@ import android.text.Html
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 /**
  * Provides image fetching from HTML text
  */
+@Suppress("OPT_IN_IS_NOT_ENABLED")
 class HtmlImageGetter(
     private val res: Resources,
     private val textView: TextView
@@ -20,13 +22,13 @@ class HtmlImageGetter(
     /**
      * Fetches images from HTML text
      */
-    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
     @OptIn(DelicateCoroutinesApi::class)
+    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
     override fun getDrawable(p0: String?): Drawable {
         val holder = PlaceHolder(res, null)
         GlobalScope.launch(Dispatchers.IO) {
-            run {
-                // Download image and converts to Drawable
+            // Download image and converts to Drawable
+            try {
                 val bitmap = Picasso.get().load(p0!!).get()
                 val drawable = BitmapDrawable(res, bitmap)
                 // Scale image with keep aspect ratio
@@ -42,7 +44,7 @@ class HtmlImageGetter(
                 withContext(Dispatchers.Main) {
                     textView.text = textView.text
                 }
-            }
+            } catch (e: Exception) { }
         }
         return holder
     }

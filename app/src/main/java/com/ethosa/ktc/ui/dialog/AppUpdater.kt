@@ -25,7 +25,7 @@ class AppUpdater(
     private val context: AppCompatActivity
 ) {
     companion object {
-        val VERSION = arrayOf(0, 7, 1)
+        val VERSION = arrayOf(0, 8, 0)
         val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
         var omitted = "_omitted"
 

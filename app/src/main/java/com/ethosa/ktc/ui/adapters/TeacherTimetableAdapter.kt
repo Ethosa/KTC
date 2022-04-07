@@ -5,22 +5,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.R
-import com.ethosa.ktc.college.timetable.Week
-import com.ethosa.ktc.databinding.LayoutLessonBinding
+import com.ethosa.ktc.college.teacher.TeacherTimetable
+import com.ethosa.ktc.databinding.LayoutTeacherLessonBinding
 import com.ethosa.ktc.databinding.LayoutTimetableBinding
 import com.ethosa.ktc.ui.fragments.TimetableFragment
 
 /**
- * Provides RecyclerView.Adapter behavior for timetable.
+ * Implementation of TimetableAdapter but for teachers
  */
-class TimetableAdapter(
+class TeacherTimetableAdapter(
     private val timetableFragment: TimetableFragment,
-    private val week: Week
-) : RecyclerView.Adapter<TimetableAdapter.ViewHolder>() {
-    /**
-     * Provides RecyclerView.ViewHolder behavior.
-     * Also includes TimetableBinding.
-     */
+    private val items: TeacherTimetable,
+) : RecyclerView.Adapter<TeacherTimetableAdapter.ViewHolder>() {
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = LayoutTimetableBinding.bind(view)
     }
@@ -30,32 +27,29 @@ class TimetableAdapter(
             .inflate(R.layout.layout_timetable, parent, false))
     }
 
-    /**
-     * Binds every day in week.
-     * Binds every lesson in day.
-     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
-        val day = week.days[position]
+        val day = items.week[position]
 
         binding.dayHeader.text = day.title
 
+        // ох уж эти костыли ...
+        val header = binding.dayroot
+        binding.root.removeAllViews()
+        binding.root.addView(header)
+
         for (l in day.lessons) {
-            val lesson = LayoutLessonBinding.inflate(
+            if (l.group == "") continue
+            val lesson = LayoutTeacherLessonBinding.inflate(
                 LayoutInflater.from(timetableFragment.context),
-                holder.binding.root, false)
-            lesson.lessonTitle.text = l.title
-            lesson.lessonClassroom.text = l.classroom
-            lesson.lessonNumber.text = l.time[0]
-            lesson.lessonFrom.text = l.time[1]
-            lesson.lessonTo.text = l.time[2]
-            lesson.lessonTeacher.text = l.teacher
+                null, false)
+            lesson.tlessonClassroom.text = l.classroom
+            lesson.tlessonGroup.text = l.group
+            lesson.tlessonTitle.text = l.title
+            lesson.tlessonNumber.text = l.number
             binding.root.addView(lesson.root)
         }
     }
 
-    /**
-     * @return days count.
-     */
-    override fun getItemCount(): Int = week.days.count()
+    override fun getItemCount(): Int = items.week.count()
 }

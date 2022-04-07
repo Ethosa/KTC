@@ -8,6 +8,6 @@ package com.ethosa.ktc.college.teacher
  * }
  */
 data class Teacher(
-    val id: String,
+    val id: Int,
     val name: String
 )
