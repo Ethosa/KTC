@@ -25,7 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
         android:background="@drawable/navigation"
-        app:itemActiveIndicatorStyle="@null"
+        app:itemActiveIndicatorStyle="@style/Theme.KTC.MaterialYou.ActiveIndicator"
         app:itemIconTint="@drawable/selector_navigation"
         app:itemPaddingBottom="12dp"
         app:itemPaddingTop="8dp"

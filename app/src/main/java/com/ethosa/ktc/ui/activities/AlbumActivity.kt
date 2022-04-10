@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
-import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.gallery.Album
 import com.ethosa.ktc.databinding.ActivityAlbumBinding
 import com.ethosa.ktc.ui.adapters.AlbumAdapter
 import com.ethosa.ktc.ui.decoration.SpacingItemDecoration
+import com.ethosa.ktc.utils.AppDynamicTheme
 import com.google.gson.Gson
 import jp.wasabeef.glide.transformations.BlurTransformation
 import okhttp3.Call
@@ -31,7 +31,8 @@ class AlbumActivity(
 
         binding = ActivityAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(binding.toolbar)
+        AppDynamicTheme(this).loadTheme()
 
         // Setup recycler view
         val layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)

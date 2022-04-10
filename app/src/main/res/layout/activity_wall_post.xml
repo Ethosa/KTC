@@ -54,6 +54,7 @@
 
     <include
         android:id="@+id/content"
-        layout="@layout/activity_wall_post_content" />
+        layout="@layout/activity_wall_post_content"
+        android:background="?cardBackgroundColor" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

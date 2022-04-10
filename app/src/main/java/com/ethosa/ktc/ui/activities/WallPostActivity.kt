@@ -11,6 +11,7 @@ import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.news.News
 import com.ethosa.ktc.databinding.ActivityWallPostBinding
 import com.ethosa.ktc.glide.transformation.CenterInsideBlur
+import com.ethosa.ktc.utils.AppDynamicTheme
 import com.ethosa.ktc.utils.HtmlImageGetter
 import com.google.gson.Gson
 import okhttp3.Call
@@ -30,6 +31,8 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
         // Setup view binding
         binding = ActivityWallPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+        AppDynamicTheme(this).loadTheme()
 
         binding.albumBackButton.setOnClickListener { finish() }
 
@@ -56,8 +59,7 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
         // Create animation object
         val animate = ObjectAnimator.ofFloat(
             binding.content.progressBar, "alpha", 1f, 0f
-        )
-        animate.duration = 500
+        ).setDuration(500)
         // Fix <img/> tag
         new.body = new.body.replace(
             "src=\"/", "src=\"http://www.kansk-tc.ru/"

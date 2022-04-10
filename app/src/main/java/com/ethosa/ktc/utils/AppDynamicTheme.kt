@@ -16,8 +16,7 @@ class AppDynamicTheme(
      */
     fun loadTheme() {
         when(Preferences.currentTheme) {
-            "default" -> context.setTheme(R.style.Theme_KTC_NoActionBar)
-            "material3" ->
+            "default" ->
                 if (Build.VERSION.SDK_INT >= 31)
                     context.setTheme(R.style.Theme_KTC_MaterialYou)
                 else

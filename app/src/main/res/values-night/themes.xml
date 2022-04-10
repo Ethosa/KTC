@@ -55,4 +55,8 @@
         <item name="tickColorInactive">@color/material_dynamic_neutral_variant60</item>
         <item name="tickColorActive">@color/material_dynamic_tertiary90</item>
     </style>
+
+    <style name="Theme.KTC.MaterialYou.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/material_dynamic_neutral_variant50</item>
+    </style>
 </resources>
