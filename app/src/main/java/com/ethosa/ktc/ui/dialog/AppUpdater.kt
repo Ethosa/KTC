@@ -25,7 +25,7 @@ class AppUpdater(
     private val context: AppCompatActivity
 ) {
     companion object {
-        val VERSION = arrayOf(0, 8, 0)
+        val VERSION = arrayOf(0, 8, 1)
         val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
         var omitted = "_omitted"
 
@@ -48,7 +48,7 @@ class AppUpdater(
             .setBackground(
                 ResourcesCompat.getDrawable(
                     context.resources,
-                    R.drawable.shape_background_primary,
+                    R.drawable.shape_background_secondary,
                     context.theme)
             )
             .setTitle(R.string.update_dialog_title)

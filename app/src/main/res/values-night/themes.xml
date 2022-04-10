@@ -1,14 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.KTC" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary_variant</item>
-        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_variant</item>
         <item name="colorPrimaryVariant">@color/accent</item>
         <item name="colorOnPrimary">@color/accent_variant</item>
 
-        <item name="colorSecondary">@color/secondary_variant</item>
-        <item name="colorSecondaryVariant">@color/secondary</item>
-        <item name="colorOnSecondary">@color/secondary_variant</item>
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/accent</item>
 
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:colorAccent">@color/accent</item>
@@ -16,14 +15,23 @@
         <item name="android:textColorLink">@color/primary_variant</item>
 
         <item name="fontFamily">@font/nuritom</item>
+
+        <item name="android:textColorPrimary">@color/btn_text</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/inactive</item>
+        <item name="cardBackgroundColor">@color/background_secondary</item>
+
+        <item name="tickColorInactive">@color/inactive</item>
+        <item name="tickColorActive">@color/active</item>
     </style>
 
 
     <style name="Theme.KTC.MaterialYou" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/material_dynamic_primary50</item>
-        <item name="colorPrimaryDark">@color/material_dynamic_primary40</item>
-        <item name="colorPrimaryVariant">@color/material_dynamic_primary30</item>
-        <item name="colorOnPrimary">@color/material_dynamic_primary60</item>
+        <item name="colorPrimary">@color/material_dynamic_tertiary50</item>
+        <item name="colorPrimaryDark">@color/material_dynamic_tertiary40</item>
+        <item name="colorPrimaryVariant">@color/material_dynamic_tertiary30</item>
+        <item name="colorOnPrimary">@color/material_dynamic_tertiary60</item>
 
         <item name="colorSecondary">@color/material_dynamic_secondary50</item>
         <item name="colorSecondaryContainer">@color/material_dynamic_secondary40</item>
@@ -37,5 +45,14 @@
 
         <item name="fontFamily">@font/nuritom</item>
         <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
+
+        <item name="android:textColorPrimary">@color/material_dynamic_neutral_variant20</item>
+        <item name="android:textColor">@color/material_dynamic_neutral_variant70</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/material_dynamic_tertiary70</item>
+        <item name="cardBackgroundColor">@color/material_dynamic_tertiary20</item>
+
+        <item name="tickColorInactive">@color/material_dynamic_neutral_variant60</item>
+        <item name="tickColorActive">@color/material_dynamic_tertiary90</item>
     </style>
 </resources>

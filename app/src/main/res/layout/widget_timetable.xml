@@ -5,7 +5,7 @@
     style="@style/Widget.KTC.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_background_primary"
+    android:background="@color/background_secondary"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="8dp"
@@ -23,7 +23,6 @@
             android:layout_weight="10"
             android:text="@string/add_widget"
             android:textAlignment="center"
-            android:textColor="@color/text"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -33,9 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:src="@drawable/ic_reload"
+            android:tint="@color/primary"
             app:srcCompat="@drawable/ic_reload"
             app:tint="@color/primary"
-            android:tint="@color/primary"
             tools:ignore="ContentDescription,ImageContrastCheck,UseAppTint" />
     </LinearLayout>
 

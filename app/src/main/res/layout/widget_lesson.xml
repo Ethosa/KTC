@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -24,11 +23,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="4dp"
             android:text="@string/lesson_number"
-            android:textColor="@color/text"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/lesson_teacher"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/lesson_title" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -40,11 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lesson_time"
-                android:textColor="@color/text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toTopOf="@+id/hr_time"
-                app:layout_constraintEnd_toEndOf="@+id/hr_time"
-                app:layout_constraintStart_toStartOf="@+id/hr_time" />
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/hr_time"
@@ -61,11 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lesson_time"
-                android:textColor="@color/text"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/hr_time"
-                app:layout_constraintStart_toStartOf="@+id/hr_time"
-                app:layout_constraintTop_toBottomOf="@+id/lesson_from" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -85,9 +72,7 @@
                 android:lineSpacingExtra="-4sp"
                 android:padding="0dp"
                 android:text="@string/lesson_title"
-                android:textColor="@color/text"
                 android:textSize="14sp"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:textStyle="bold" />
 
             <LinearLayout
@@ -103,8 +88,7 @@
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
                     android:padding="0dp"
-                    android:text="@string/lesson_teacher"
-                    android:textColor="@color/text" />
+                    android:text="@string/lesson_teacher" />
 
                 <TextView
                     android:id="@+id/lesson_classroom"
@@ -112,11 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/lesson_classroom"
-                    android:textColor="@color/text"
-                    app:layout_constraintBottom_toBottomOf="@+id/lesson_from"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/lesson_to" />
+                    android:text="@string/lesson_classroom" />
 
             </LinearLayout>
 

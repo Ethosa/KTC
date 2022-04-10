@@ -40,7 +40,10 @@ class BranchAdapter(
         val branch = items[position]
         binding.btn.text = branch.title
         binding.btn.setOnClickListener {
-            timetableFragment.fetchCourses(branch.id)
+            if (Preferences.isStudent)
+                timetableFragment.fetchCourses(branch.id)
+            else
+                timetableFragment.fetchTeacherList(branch.id)
             Preferences.branch = branch
         }
     }

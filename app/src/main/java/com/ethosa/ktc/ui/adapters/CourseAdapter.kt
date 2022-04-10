@@ -1,6 +1,8 @@
 package com.ethosa.ktc.ui.adapters
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,14 +43,17 @@ class CourseAdapter(
         val binding = holder.binding
         val item = items[position]
         val theme = timetableFragment.requireContext().theme
-        val back = timetableFragment.resources.getColorStateList(R.color.primary, theme)
-        val fore = timetableFragment.resources.getColor(R.color.btn_text, theme)
+        val back = TypedValue()
+        val fore = TypedValue()
+        theme.resolveAttribute(android.R.attr.textColorPrimary, fore, true)
+        theme.resolveAttribute(android.R.attr.colorPrimary, back, true)
         binding.courseTitle.text = "${item.course} курс"
         for (group in item.groups) {
             val chip = Chip(timetableFragment.context)
             chip.text = group.title
-            chip.chipBackgroundColor = back
-            chip.setTextColor(fore)
+            chip.chipBackgroundColor = ColorStateList.valueOf(back.data)
+            chip.chipStrokeWidth = 0f
+            chip.setTextColor(fore.data)
             chip.setOnClickListener {
                 timetableFragment.fetchTimetable(group.id)
                 Preferences.group = group

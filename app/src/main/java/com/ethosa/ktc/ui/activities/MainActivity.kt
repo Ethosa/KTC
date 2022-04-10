@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Preferences(this).load()
+        Preferences.currentTheme = "material3"
         AppDynamicTheme(this).loadTheme()
 
         binding = ActivityMainBinding.inflate(layoutInflater)

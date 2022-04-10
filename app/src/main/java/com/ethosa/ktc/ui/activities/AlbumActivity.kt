@@ -40,6 +40,8 @@ class AlbumActivity(
         binding.albumContent.album.setHasFixedSize(true)
         binding.albumContent.album.addItemDecoration(SpacingItemDecoration(8))
 
+        binding.albumBackButton.setOnClickListener { finish() }
+
         // Fetch intent extra data
         binding.toolbarLayout.title = intent.getStringExtra("title")
         Glide.with(binding.root)

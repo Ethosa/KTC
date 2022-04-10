@@ -24,4 +24,29 @@
         <item name="android:background">@color/background</item>
         <item name="android:textColor">@color/primary</item>
     </style>
+
+
+    <style name="Theme.KTC.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Theme.KTC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="background">@color/background_secondary</item>
+    </style>
+
+
+    <style name="Theme.KTC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="Theme.KTC.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <item name="appWidgetRadius">16dp</item>
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+
+    <style name="Theme.KTC.AppWidgetContainer" parent="Theme.KTC.AppWidgetContainerParent">
+        <item name="appWidgetPadding">16dp</item>
+    </style>
 </resources>

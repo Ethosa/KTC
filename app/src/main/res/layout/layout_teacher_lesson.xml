@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/lesson_number"
-            android:textColor="@color/text"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +31,6 @@
             android:layout_marginEnd="8dp"
             android:text="@string/lesson_title"
             android:textAlignment="center"
-            android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="@+id/tlesson_number"
             app:layout_constraintEnd_toStartOf="@+id/tlesson_classroom"
             app:layout_constraintStart_toEndOf="@+id/tlesson_number"
@@ -43,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lesson_teacher"
-            android:textColor="@color/text"
             app:layout_constraintEnd_toEndOf="@+id/tlesson_title"
             app:layout_constraintStart_toStartOf="@+id/tlesson_title"
             app:layout_constraintTop_toBottomOf="@+id/tlesson_title" />

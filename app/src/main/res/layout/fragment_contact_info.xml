@@ -37,7 +37,7 @@
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
                 android:src="@drawable/ic_headset"
-                app:tint="@color/primary"
+                app:tint="?colorPrimary"
                 tools:ignore="ContentDescription,ImageContrastCheck" />
 
             <TextView
@@ -45,7 +45,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_contact_info"
-                android:textColor="@color/text"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -57,10 +56,9 @@
             android:layout_marginTop="16dp"
             android:autoLink="email"
             android:text="@string/contact_email"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
         <TextView
             android:id="@+id/contact_site_title"
@@ -69,10 +67,9 @@
             android:layout_marginTop="6dp"
             android:autoLink="web"
             android:text="@string/contact_site"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contact_email_title"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/contact_phone_title"
@@ -82,10 +79,9 @@
             android:autoLink="phone"
             android:lineSpacingExtra="-4sp"
             android:text="@string/contact_phone"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contact_site_title"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/contact_phone_director_title"
@@ -95,10 +91,9 @@
             android:autoLink="phone"
             android:lineSpacingExtra="-4sp"
             android:text="@string/contact_phone_director"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contact_phone_title"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/contact_phone_dep_dir_academic_title"
@@ -108,10 +103,9 @@
             android:autoLink="phone"
             android:lineSpacingExtra="-4sp"
             android:text="@string/contact_phone_dep_dir_academic"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contact_phone_director_title"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/contact_phone_dep_dir_academic_work_title"
@@ -121,10 +115,9 @@
             android:autoLink="phone"
             android:lineSpacingExtra="-4sp"
             android:text="@string/contact_phone_dep_dir_academic_work"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contact_phone_dep_dir_academic_title"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/contact_dep_dir_educational_title"
@@ -134,10 +127,9 @@
             android:autoLink="phone"
             android:lineSpacingExtra="-4sp"
             android:text="@string/contact_phone_dep_dir_educational"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contact_phone_dep_dir_academic_work_title"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/contact_address_title"
@@ -146,9 +138,8 @@
             android:layout_marginTop="6dp"
             android:lineSpacingExtra="-4sp"
             android:text="@string/contact_address"
-            android:textColor="@color/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contact_dep_dir_educational_title"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

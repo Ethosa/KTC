@@ -140,12 +140,12 @@ class TimetableFragment : IOFragmentBackPressed() {
         Preferences.timetableState = 0
         college.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
-                if (_binding == null) return
                 // Parse JSON
                 val json = response.body?.string()
                 val branches = Gson().fromJson(json, Branches::class.java)
 
                 requireActivity().runOnUiThread {
+                    if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.GONE
                     binding.timetable.adapter = BranchAdapter(this@TimetableFragment, branches)
@@ -164,12 +164,12 @@ class TimetableFragment : IOFragmentBackPressed() {
         college.fetchCourses(branchId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
-                if (_binding == null) return
                 // Parse JSON
                 val json = response.body?.string()
                 val courses = Gson().fromJson(json, Courses::class.java)
 
                 requireActivity().runOnUiThread {
+                    if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.VISIBLE
                     binding.next.visibility = View.GONE
@@ -192,13 +192,13 @@ class TimetableFragment : IOFragmentBackPressed() {
         college.fetchTimetable(groupId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
-                if (_binding == null) return
                 // Parse JSON
                 val json = response.body?.string()
                 val timetable = Gson().fromJson(json, Week::class.java)
                 Preferences.week = timetable.week_number
 
                 requireActivity().runOnUiThread {
+                    if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.next.isEnabled = true
                     binding.previous.isEnabled = true
@@ -225,13 +225,13 @@ class TimetableFragment : IOFragmentBackPressed() {
             object : CollegeCallback {
                 @SuppressLint("SetTextI18n")
                 override fun onResponse(call: Call, response: Response) {
-                    if (_binding == null) return
                     // Parse JSON
                     val json = response.body?.string()
                     val timetable = Gson().fromJson(json, TeacherTimetable::class.java)
                     Preferences.teacherId = teacherId
 
                     requireActivity().runOnUiThread {
+                        if (_binding == null) return@runOnUiThread
                         binding.back.isEnabled = true
                         binding.timetableTitle.text = timetable.title
                         binding.timetableToolbar.visibility = View.VISIBLE
@@ -248,18 +248,18 @@ class TimetableFragment : IOFragmentBackPressed() {
      * Fetches list of teachers
      * @param branchId unique branch ID.
      */
-    private fun fetchTeacherList(branchId: Int) {
+    fun fetchTeacherList(branchId: Int) {
         Preferences.timetableState = 1
         college.fetchTeachersList(branchId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
-                if (_binding == null) return
                 // Parse JSON
                 val json = response.body?.string()
                 val teachers = Gson().fromJson(json, TeachersList::class.java)
                 teachers.teachers.removeAt(0)
 
                 requireActivity().runOnUiThread {
+                    if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.VISIBLE
                     binding.next.visibility = View.GONE

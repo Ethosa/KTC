@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background">
+    android:layout_height="match_parent">
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
@@ -26,8 +25,11 @@
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
         android:background="@drawable/navigation"
-        app:itemTextColor="@color/active"
-        app:itemIconTint="@drawable/navigation_item_tint"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemIconTint="@drawable/selector_navigation"
+        app:itemPaddingBottom="12dp"
+        app:itemPaddingTop="8dp"
+        app:itemTextColor="?tickColorActive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

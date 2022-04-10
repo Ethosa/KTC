@@ -34,7 +34,7 @@ class TeacherTimetableAdapter(
         binding.dayHeader.text = day.title
 
         // ох уж эти костыли ...
-        val header = binding.dayroot
+        val header = binding.dayRoot
         binding.root.removeAllViews()
         binding.root.addView(header)
 

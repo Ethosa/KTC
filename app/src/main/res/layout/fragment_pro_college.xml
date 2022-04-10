@@ -42,9 +42,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/background_secondary"
+                android:backgroundTint="?cardBackgroundColor"
                 android:hint="@string/username"
-                android:textColor="@color/text"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,15 +56,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/primary">
+            app:passwordToggleTint="?colorPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/background_secondary"
+                android:backgroundTint="?cardBackgroundColor"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:textColor="@color/text"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,12 +72,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:backgroundTint="?colorPrimary"
             android:text="@string/auth"
-            android:textColor="@color/btn_text"
+            android:textColor="?android:textColorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password"
-            tools:ignore="TextContrastCheck" />
+            app:layout_constraintTop_toBottomOf="@+id/password"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -96,7 +94,7 @@
 
     <ProgressBar
         android:id="@+id/content_progress"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="?android:progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"

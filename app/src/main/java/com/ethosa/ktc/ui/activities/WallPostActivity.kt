@@ -31,6 +31,8 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
         binding = ActivityWallPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.albumBackButton.setOnClickListener { finish() }
+
         // Loads intent data to toolbarLayout
         setSupportActionBar(findViewById(R.id.toolbar))
         binding.toolbarLayout.title = intent.getStringExtra("title")
