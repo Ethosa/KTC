@@ -15,4 +15,6 @@
     <color name="btn_text">#DADCE3</color>
     <color name="inactive">#232427</color>
     <color name="active">#0026AE</color>
+
+    <color name="active_indicator">@color/material_dynamic_tertiary90</color>
 </resources>

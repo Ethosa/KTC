@@ -15,4 +15,6 @@
     <color name="btn_text">#2F1D38</color>
     <color name="inactive">#b4bcca</color>
     <color name="active">#D7BBF2</color>
+
+    <color name="active_indicator">@color/material_dynamic_neutral_variant50</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.ethosa.ktc.ui.activities
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -25,9 +26,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView = binding.navView
+        if (Build.VERSION.SDK_INT >= 31)
+            binding.navView.itemActiveIndicatorColor = getColorStateList(R.color.active_indicator)
+
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
 
         AppUpdater(this).checkToUpdate()
     }
