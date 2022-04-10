@@ -24,8 +24,4 @@ class AppDynamicTheme(
             else -> context.setTheme(R.style.Theme_KTC_NoActionBar)
         }
     }
-
-    fun changeTheme(newTheme: String) {
-        Preferences.currentTheme = newTheme
-    }
 }

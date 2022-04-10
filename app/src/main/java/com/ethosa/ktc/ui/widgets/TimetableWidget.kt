@@ -110,11 +110,12 @@ class TimetableWidget : AppWidgetProvider() {
                 // Parse JSON
                 val json = response.body?.string()
                 val timetable = Gson().fromJson(json, Week::class.java)
+                println(weekday)
                 // Get current day timetable
                 val day =
                     when {
-                        weekday > 1 -> timetable.days[weekday-2]
-                        weekday > 0 -> timetable.days[1]
+                        weekday > 2 -> timetable.days[weekday-2]
+                        weekday > 1 -> timetable.days[1]
                         else -> timetable.days[0]
                     }
 
