@@ -11,5 +11,9 @@
 
 Вы можете помочь развитию проекта, создав `issue`, если нашли баг/ошибку или у Вас какая-то идея.
 
-|![image](https://user-images.githubusercontent.com/49402667/158067657-16425711-9b3f-4897-b8a9-b3767cb59d35.png)|![image](https://user-images.githubusercontent.com/49402667/158067674-99707842-e57d-4360-9dba-012d702af20f.png)|
+|![image](https://user-images.githubusercontent.com/49402667/162774083-e4eabbf2-302f-4fe3-b564-1b62684402c0.png)|![image](https://user-images.githubusercontent.com/49402667/162775350-e17bfceb-ca0d-4db3-b97b-8dd00fa9a215.png)|
+| ---- | ---- |
+
+Адаптивная тема на Android 12+
+|![image](https://user-images.githubusercontent.com/49402667/162775722-40f28614-1029-41ed-baa3-1a9ddf5e99c3.png)|![image](https://user-images.githubusercontent.com/49402667/162776380-36a335e8-e419-4dc6-9bf6-aafa95d61350.png)|
 | ---- | ---- |
