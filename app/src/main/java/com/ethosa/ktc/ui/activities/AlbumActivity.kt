@@ -1,6 +1,7 @@
 package com.ethosa.ktc.ui.activities
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
@@ -32,6 +33,7 @@ class AlbumActivity(
         binding = ActivityAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         AppDynamicTheme(this).loadTheme()
 
         // Setup recycler view
@@ -41,8 +43,6 @@ class AlbumActivity(
         binding.albumContent.album.setHasFixedSize(true)
         binding.albumContent.album.addItemDecoration(SpacingItemDecoration(8))
 
-        binding.albumBackButton.setOnClickListener { finish() }
-
         // Fetch intent extra data
         binding.toolbarLayout.title = intent.getStringExtra("title")
         Glide.with(binding.root)
@@ -50,6 +50,11 @@ class AlbumActivity(
             .transform(BlurTransformation(20, 2))
             .into(binding.albumToolbarImage)
         college.fetchAlbumById(intent.getStringExtra("id")!!, this)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 
     /**

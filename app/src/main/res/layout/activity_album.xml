@@ -38,17 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 app:layout_collapseMode="pin"
+                android:theme="@style/Theme.KTC.PopupOverlay"
                 app:popupTheme="@style/Theme.KTC.PopupOverlay" />
-
-            <ImageView
-                android:id="@+id/album_back_button"
-                android:layout_width="54dp"
-                android:layout_height="48dp"
-                app:layout_collapseMode="pin"
-                app:srcCompat="@drawable/ic_angle_circle_left"
-                app:tint="?android:textColorPrimary"
-                tools:tint="?android:textColorPrimary"
-                tools:ignore="ContentDescription" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

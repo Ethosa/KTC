@@ -24,6 +24,7 @@
 
         <item name="tickColorInactive">@color/inactive</item>
         <item name="tickColorActive">@color/active</item>
+        <item name="titleTextColor">@color/text</item>
     </style>
 
 
@@ -54,5 +55,6 @@
 
         <item name="tickColorInactive">@color/material_dynamic_neutral_variant60</item>
         <item name="tickColorActive">@color/material_dynamic_tertiary90</item>
+        <item name="titleTextColor">@color/material_dynamic_neutral_variant80</item>
     </style>
 </resources>

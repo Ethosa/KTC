@@ -34,7 +34,9 @@
         <item name="background">@color/background_secondary</item>
     </style>
 
-    <style name="Theme.KTC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.KTC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorSecondary">?titleTextColor</item>
+    </style>
 
     <style name="Theme.KTC.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
         <item name="appWidgetRadius">16dp</item>

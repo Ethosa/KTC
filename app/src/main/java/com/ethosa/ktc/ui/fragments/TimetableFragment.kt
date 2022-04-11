@@ -144,7 +144,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                 val json = response.body?.string()
                 val branches = Gson().fromJson(json, Branches::class.java)
 
-                requireActivity().runOnUiThread {
+                activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.GONE
@@ -168,7 +168,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                 val json = response.body?.string()
                 val courses = Gson().fromJson(json, Courses::class.java)
 
-                requireActivity().runOnUiThread {
+                activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.VISIBLE
@@ -197,7 +197,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                 val timetable = Gson().fromJson(json, Week::class.java)
                 Preferences.week = timetable.week_number
 
-                requireActivity().runOnUiThread {
+                activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.next.isEnabled = true
@@ -230,7 +230,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                     val timetable = Gson().fromJson(json, TeacherTimetable::class.java)
                     Preferences.teacherId = teacherId
 
-                    requireActivity().runOnUiThread {
+                    activity!!.runOnUiThread {
                         if (_binding == null) return@runOnUiThread
                         binding.back.isEnabled = true
                         binding.timetableTitle.text = timetable.title
@@ -258,7 +258,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                 val teachers = Gson().fromJson(json, TeachersList::class.java)
                 teachers.teachers.removeAt(0)
 
-                requireActivity().runOnUiThread {
+                activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.VISIBLE

@@ -2,6 +2,7 @@ package com.ethosa.ktc.ui.activities
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import com.bumptech.glide.Glide
@@ -32,9 +33,8 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
         binding = ActivityWallPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         AppDynamicTheme(this).loadTheme()
-
-        binding.albumBackButton.setOnClickListener { finish() }
 
         // Loads intent data to toolbarLayout
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -47,6 +47,11 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
 
         // Fetches post data.
         college.fetchNewById(intent.getStringExtra("id")!!.toInt(), this)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 
     /**
