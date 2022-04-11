@@ -104,7 +104,7 @@ class AppUpdater(
                 val body = response.body?.string()
                 actualVersion = Gson().fromJson(body, ActualAppVersion::class.java)
 
-//                if (!actualVersion!!.isActual())
+                if (!actualVersion!!.isActual())
                     context.runOnUiThread { showDialog() }
             }
         })
