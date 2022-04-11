@@ -43,6 +43,7 @@ class AppUpdater(
 
 
     private fun showDialog() {
+        // checking if the version omitted
         omitted = "${actualVersion!!}_omitted"
         updateOmitted = preferences.getBoolean(omitted, false)
         if (updateOmitted) return

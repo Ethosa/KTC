@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
-import android.webkit.WebView
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
@@ -22,7 +20,8 @@ import com.ethosa.ktc.databinding.FragmentProCollegeBinding
  */
 class ProCollegeFragment : Fragment() {
     private var _binding: FragmentProCollegeBinding? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
+
     private lateinit var proCollege: ProCollege
     private lateinit var preferences: Preferences
 
@@ -33,9 +32,12 @@ class ProCollegeFragment : Fragment() {
     ): View {
         _binding = FragmentProCollegeBinding.inflate(inflater, container, false)
 
-        proCollege = ProCollege(binding.content)
+        proCollege = ProCollege(this)
         preferences = Preferences(requireContext())
         preferences.load()
+
+        binding.username.editText?.setText(Preferences.proCollegeUsername)
+        binding.password.editText?.setText(Preferences.proCollegePassword)
 
         // Auto dark mode ...
         // Require API Q+
@@ -50,29 +52,33 @@ class ProCollegeFragment : Fragment() {
             }
         }
 
-        // Page load progress
-        binding.content.webChromeClient = object : WebChromeClient() {
-            override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                super.onProgressChanged(view, newProgress)
-                binding.contentProgress.progress = newProgress
-                if (newProgress >= 100)
-                    binding.contentProgress.visibility = View.GONE
-                else
-                    binding.contentProgress.visibility = View.VISIBLE
-            }
-        }
-
-        binding.auth.setOnClickListener {
-            // Auth in ProCollege
-            binding.login.visibility = View.GONE
-            binding.content.visibility = View.VISIBLE
-            preferences.saveProCollege()
-            proCollege.auth(
-                binding.username.editText?.text.toString(),
-                binding.password.editText?.text.toString()
-            )
-        }
+        binding.auth.setOnClickListener { auth() }
 
         return binding.root
+    }
+
+    /**
+     * Authorizes in the ProCollege
+     */
+    private fun auth() {
+        // Load data from input
+        val username = binding.username.editText?.text.toString()
+        val password = binding.password.editText?.text.toString()
+        // check validation
+        if (username != "" && password != "") {
+            // Save username and password and go to the pro college.
+            Preferences.proCollegeUsername = username
+            Preferences.proCollegePassword = password
+            preferences.saveProCollege()
+            proCollege.auth(Preferences.proCollegeUsername, Preferences.proCollegePassword)
+            binding.login.visibility = View.GONE
+            binding.content.visibility = View.VISIBLE
+        } else {
+            // Show errors
+            if (username == "")
+                binding.username.error = "Введите логин"
+            if (password == "")
+                binding.password.error = "Введите пароль"
+        }
     }
 }
