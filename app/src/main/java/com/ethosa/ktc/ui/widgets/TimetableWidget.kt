@@ -114,7 +114,7 @@ class TimetableWidget : AppWidgetProvider() {
                 // Get current day timetable
                 val day =
                     when {
-                        weekday > 2 -> timetable.days[weekday-2]
+                        weekday >= 2 -> timetable.days[weekday-2]
                         weekday > 1 -> timetable.days[1]
                         else -> timetable.days[0]
                     }

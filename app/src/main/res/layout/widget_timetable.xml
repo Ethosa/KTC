@@ -5,7 +5,6 @@
     style="@style/Widget.KTC.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_secondary"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="8dp"
