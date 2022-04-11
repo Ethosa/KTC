@@ -5,7 +5,8 @@
     <string name="github">Github</string>
 
     <string name="add_widget">Расписание</string>
-    <string name="app_widget_description">Отображается расписание на сегодня</string>
+    <string name="app_widget_description">Виджет отображает расписание для студентов на сегодняшний день</string>
+    <string name="app_widget_teacher_description">Виджет отображает расписание для преподавателей на сегодняшний день</string>
 
     <string name="update_dialog_title">Доступно обновление!</string>
     <string name="update_dialog_positive">Обновить приложение</string>
@@ -15,7 +16,7 @@
     <string name="title_news">Новости</string>
     <string name="title_timetable">Расписание</string>
     <string name="title_gallery">Галерея</string>
-    <string name="title_settings">Настройки</string>
+    <string name="title_settings">Личный кабинет</string>
     <string name="title_about">О приложении</string>
     <string name="title_contact_info">Контактная информация</string>
     <string name="title_pro_college">ProCollege</string>
@@ -63,4 +64,5 @@
 
     <string name="placeholder">Placeholder</string>
     <string name="app_version_string">v0.0.1</string>
+    <string name="appwidget_text">EXAMPLE</string>
 </resources>

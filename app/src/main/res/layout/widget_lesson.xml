@@ -72,7 +72,6 @@
                 android:lineSpacingExtra="-4sp"
                 android:padding="0dp"
                 android:text="@string/lesson_title"
-                android:textSize="14sp"
                 tools:textStyle="bold" />
 
             <LinearLayout

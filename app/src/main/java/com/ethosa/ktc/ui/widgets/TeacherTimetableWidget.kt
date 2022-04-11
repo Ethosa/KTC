@@ -13,7 +13,7 @@ import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
-import com.ethosa.ktc.college.timetable.Week
+import com.ethosa.ktc.college.teacher.TeacherTimetable
 import com.ethosa.ktc.ui.activities.MainActivity
 import com.google.gson.Gson
 import okhttp3.Call
@@ -24,7 +24,7 @@ import java.util.*
 /**
  * Implementation of App Widget functionality.
  */
-class TimetableWidget : AppWidgetProvider() {
+class TeacherTimetableWidget : AppWidgetProvider() {
     private val college = CollegeApi()
     private var preferences: Preferences? = null
 
@@ -100,46 +100,46 @@ class TimetableWidget : AppWidgetProvider() {
             openAppPendingIntent(context, appWidgetId)
         )
         // Load last group ID
-        val groupId = Preferences.group!!.id
+        val teacherId = Preferences.teacherId
+        val branchId = Preferences.branch!!.id
         val calendar = Calendar.getInstance()
         val weekday = calendar.get(Calendar.DAY_OF_WEEK)
 
-        college.fetchTimetable(groupId, object : CollegeCallback {
+        college.fetchTeacherTimetable(branchId, teacherId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
-                val timetable = Gson().fromJson(json, Week::class.java)
+                val timetable = Gson().fromJson(json, TeacherTimetable::class.java)
                 println(weekday)
                 // Get current day timetable
                 val day =
                     when {
-                        weekday >= 2 -> timetable.days[weekday-2]
-                        weekday > 1 -> timetable.days[1]
-                        else -> timetable.days[0]
+                        weekday >= 2 -> timetable.week[weekday-2]
+                        weekday > 1 -> timetable.week[1]
+                        else -> timetable.week[0]
                     }
 
                 // Setup widget
-                views.setTextViewText(R.id.timetable_widget_title, day.title)
+                views.setTextViewText(R.id.timetable_widget_title, "${timetable.teacher} - ${day.title}")
                 views.removeAllViews(R.id.timetable_widget_lessons)
 
                 // Setup views
                 for (l in day.lessons) {
                     println(l)
                     // Load lesson data
-                    val lesson = RemoteViews(context.packageName, R.layout.widget_lesson)
-                    lesson.setTextViewText(R.id.lesson_title, l.title)
-                    lesson.setTextViewText(R.id.lesson_classroom, l.classroom)
-                    lesson.setTextViewText(R.id.lesson_number, l.time[0])
-                    lesson.setTextViewText(R.id.lesson_from, l.time[1])
-                    lesson.setTextViewText(R.id.lesson_to, l.time[2])
-                    lesson.setTextViewText(R.id.lesson_teacher, l.teacher)
+                    if (l.group == "") continue
+                    val lesson = RemoteViews(context.packageName, R.layout.widget_tlesson)
+                    lesson.setTextViewText(R.id.widget_tlesson_title, l.title)
+                    lesson.setTextViewText(R.id.widget_tlesson_classroom, l.classroom)
+                    lesson.setTextViewText(R.id.widget_tlesson_group, l.group)
+                    lesson.setTextViewText(R.id.widget_tlesson_number, l.number)
                     views.addView(R.id.timetable_widget_lessons, lesson)
                 }
                 // Update widget
                 appWidgetManager.updateAppWidget(appWidgetId, views)
             }
-        }, null)
+        })
         appWidgetManager.updateAppWidget(appWidgetId, views)
     }
 }
