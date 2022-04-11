@@ -48,9 +48,9 @@ class TeacherTimetableWidget : AppWidgetProvider() {
         context: Context?,
         appWidgetId: Int
     ): PendingIntent {
-        val intent = Intent(context, TimetableWidget::class.java)
+        val intent = Intent(context, TeacherTimetableWidget::class.java)
         val ids = AppWidgetManager.getInstance(context)
-            .getAppWidgetIds(ComponentName(context!!, TimetableWidget::class.java))
+            .getAppWidgetIds(ComponentName(context!!, TeacherTimetableWidget::class.java))
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
 
