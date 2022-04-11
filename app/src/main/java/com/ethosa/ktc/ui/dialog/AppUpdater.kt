@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import com.ethosa.ktc.BuildConfig
 import com.ethosa.ktc.Constants
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.ActualAppVersion
@@ -25,7 +26,9 @@ class AppUpdater(
     private val context: AppCompatActivity
 ) {
     companion object {
-        val VERSION = arrayOf(0, 8, 1)
+        val VERSION = Array(3) {
+            i -> BuildConfig.VERSION_NAME.split(".")[i].toInt()
+        }
         val version = "v${VERSION[0]}.${VERSION[1]}.${VERSION[2]}"
         var omitted = "_omitted"
 
@@ -42,6 +45,7 @@ class AppUpdater(
     private fun showDialog() {
         omitted = "${actualVersion!!}_omitted"
         updateOmitted = preferences.getBoolean(omitted, false)
+        if (updateOmitted) return
 
         // Create dialog updater
         val dialog = MaterialAlertDialogBuilder(context)
@@ -72,6 +76,7 @@ class AppUpdater(
                 // Mark current actual version as omitted
                 updateOmitted = true
                 preferences.edit().putBoolean(omitted, true).apply()
+                println(preferences.getBoolean(omitted, false))
                 dialog.dismiss()
             }
             .setNegativeButton(R.string.update_dialog_negative) { dialog, _ ->
@@ -98,7 +103,7 @@ class AppUpdater(
                 val body = response.body?.string()
                 actualVersion = Gson().fromJson(body, ActualAppVersion::class.java)
 
-                if (!actualVersion!!.isActual() and !updateOmitted)
+//                if (!actualVersion!!.isActual())
                     context.runOnUiThread { showDialog() }
             }
         })
