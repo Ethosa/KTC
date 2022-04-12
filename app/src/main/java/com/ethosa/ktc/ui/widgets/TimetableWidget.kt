@@ -128,12 +128,14 @@ class TimetableWidget : AppWidgetProvider() {
                     println(l)
                     // Load lesson data
                     val lesson = RemoteViews(context.packageName, R.layout.widget_lesson)
-                    lesson.setTextViewText(R.id.lesson_title, l.title)
-                    lesson.setTextViewText(R.id.lesson_classroom, l.classroom)
-                    lesson.setTextViewText(R.id.lesson_number, l.time[0])
-                    lesson.setTextViewText(R.id.lesson_from, l.time[1])
-                    lesson.setTextViewText(R.id.lesson_to, l.time[2])
-                    lesson.setTextViewText(R.id.lesson_teacher, l.teacher)
+                    with (lesson) {
+                        setTextViewText(R.id.lesson_title, l.title)
+                        setTextViewText(R.id.lesson_classroom, l.classroom)
+                        setTextViewText(R.id.lesson_number, l.time[0])
+                        setTextViewText(R.id.lesson_from, l.time[1])
+                        setTextViewText(R.id.lesson_to, l.time[2])
+                        setTextViewText(R.id.lesson_teacher, l.teacher)
+                    }
                     views.addView(R.id.timetable_widget_lessons, lesson)
                 }
                 // Update widget

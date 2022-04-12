@@ -130,10 +130,12 @@ class TeacherTimetableWidget : AppWidgetProvider() {
                     // Load lesson data
                     if (l.group == "") continue
                     val lesson = RemoteViews(context.packageName, R.layout.widget_tlesson)
-                    lesson.setTextViewText(R.id.widget_tlesson_title, l.title)
-                    lesson.setTextViewText(R.id.widget_tlesson_classroom, l.classroom)
-                    lesson.setTextViewText(R.id.widget_tlesson_group, l.group)
-                    lesson.setTextViewText(R.id.widget_tlesson_number, l.number)
+                    with (lesson) {
+                        setTextViewText(R.id.widget_tlesson_title, l.title)
+                        setTextViewText(R.id.widget_tlesson_classroom, l.classroom)
+                        setTextViewText(R.id.widget_tlesson_group, l.group)
+                        setTextViewText(R.id.widget_tlesson_number, l.number)
+                    }
                     views.addView(R.id.timetable_widget_lessons, lesson)
                 }
                 // Update widget

@@ -39,47 +39,24 @@ class Preferences(
      * Loads preferences
      */
     fun load() {
-        timetableState = preferences.getInt(Constants.TIMETABLE_STATE, 0)
-        branch = Branch(
-            preferences.getInt(Constants.TIMETABLE_BRANCH, 0),
-            ""
-        )
-        group = Group(
-            preferences.getInt(Constants.TIMETABLE_GROUP, 0),
-            preferences.getString(Constants.TIMETABLE_GROUP_TITLE, "")!!
-        )
-        week = preferences.getInt(Constants.TIMETABLE_WEEK, 0)
-        teacherId = preferences.getInt(Constants.TIMETABLE_TEACHER_ID, 0)
-        isStudent = preferences.getBoolean(Constants.TIMETABLE_IS_STUDENT, true)
+        with (preferences) {
+            timetableState = getInt(Constants.TIMETABLE_STATE, 0)
+            branch = Branch(
+                getInt(Constants.TIMETABLE_BRANCH, 0),
+                ""
+            )
+            group = Group(
+                getInt(Constants.TIMETABLE_GROUP, 0),
+                getString(Constants.TIMETABLE_GROUP_TITLE, "")!!
+            )
+            week = getInt(Constants.TIMETABLE_WEEK, 0)
+            teacherId = getInt(Constants.TIMETABLE_TEACHER_ID, 0)
+            isStudent = getBoolean(Constants.TIMETABLE_IS_STUDENT, true)
 
-        proCollegeUsername = preferences.getString(Constants.LOGIN_USERNAME, "")!!
-        proCollegePassword = preferences.getString(Constants.LOGIN_PASSWORD, "")!!
-        currentTheme = preferences.getString(Constants.CURRENT_THEME, "default")!!
-    }
-
-    /**
-     * Clears current timetable state
-     */
-    fun clearTimetable() {
-        preferences.edit()
-            .putInt(Constants.TIMETABLE_STATE, 0)
-            .putString(Constants.TIMETABLE_GROUP_TITLE, "")
-            .putInt(Constants.TIMETABLE_GROUP, 0)
-            .putBoolean(Constants.TIMETABLE_IS_STUDENT, true)
-            .putInt(Constants.TIMETABLE_BRANCH, 0)
-            .putInt(Constants.TIMETABLE_WEEK, 0)
-            .putInt(Constants.TIMETABLE_TEACHER_ID, 0)
-            .apply()
-    }
-
-    /**
-     * Clears current pro college state
-     */
-    fun clearProCollege() {
-        preferences.edit()
-            .putString(Constants.LOGIN_USERNAME, "")
-            .putString(Constants.LOGIN_PASSWORD, "")
-            .apply()
+            proCollegeUsername = getString(Constants.LOGIN_USERNAME, "")!!
+            proCollegePassword = getString(Constants.LOGIN_PASSWORD, "")!!
+            currentTheme = getString(Constants.CURRENT_THEME, "default")!!
+        }
     }
 
     /**

@@ -22,6 +22,7 @@
             android:layout_weight="10"
             android:text="@string/add_widget"
             android:textAlignment="center"
+            android:textColor="@color/text"
             android:textSize="20sp"
             android:textStyle="bold" />
 

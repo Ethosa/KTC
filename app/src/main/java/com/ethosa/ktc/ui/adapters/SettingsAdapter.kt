@@ -38,12 +38,9 @@ class SettingsAdapter (
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
-        val icon = icons.getDrawable(position)
-        val title = titles.getString(position)
         val action = actions.getResourceId(position, 0)
-        binding.chip.chipIcon = icon
-        binding.chip.text = title
-        println(action)
+        binding.chip.chipIcon = icons.getDrawable(position)
+        binding.chip.text = titles.getString(position)
         if (action != 0)
             binding.chip.setOnClickListener {
                 fragment.findNavController().navigate(action)

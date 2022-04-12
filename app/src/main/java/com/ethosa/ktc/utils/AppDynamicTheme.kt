@@ -11,6 +11,11 @@ import com.ethosa.ktc.R
 class AppDynamicTheme(
     private val context: Context
 ) {
+    companion object {
+        const val DEFAULT_THEME = R.style.Theme_KTC_NoActionBar
+        const val MATERIAL_THEME = R.style.Theme_KTC_MaterialYou
+    }
+
     /**
      * Loads theme from preferences
      */
@@ -18,10 +23,10 @@ class AppDynamicTheme(
         when(Preferences.currentTheme) {
             "default" ->
                 if (Build.VERSION.SDK_INT >= 31)
-                    context.setTheme(R.style.Theme_KTC_MaterialYou)
+                    context.setTheme(MATERIAL_THEME)
                 else
-                    context.setTheme(R.style.Theme_KTC_NoActionBar)
-            else -> context.setTheme(R.style.Theme_KTC_NoActionBar)
+                    context.setTheme(DEFAULT_THEME)
+            else -> context.setTheme(DEFAULT_THEME)
         }
     }
 }

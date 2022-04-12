@@ -21,7 +21,8 @@
             android:layout_marginEnd="4dp"
             android:gravity="center"
             android:text="@string/lesson_number"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/text" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="-4sp"
                 android:text="@string/lesson_title"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/text" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -48,7 +50,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
-                    android:text="@string/lesson_teacher" />
+                    android:text="@string/lesson_teacher"
+                    android:textColor="@color/text" />
 
                 <TextView
                     android:id="@+id/widget_tlesson_classroom"
@@ -56,7 +59,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_weight="1"
-                    android:text="@string/lesson_classroom" />
+                    android:text="@string/lesson_classroom"
+                    android:textColor="@color/text" />
             </LinearLayout>
 
         </LinearLayout>

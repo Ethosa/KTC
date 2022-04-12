@@ -174,12 +174,14 @@ class TimetableFragment : IOFragmentBackPressed() {
 
                 activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
-                    binding.back.isEnabled = true
-                    binding.timetableToolbar.visibility = View.VISIBLE
-                    binding.next.visibility = View.GONE
-                    binding.previous.visibility = View.GONE
-                    binding.timetableTitle.text = "Курсы"
-                    binding.timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
+                    with (binding) {
+                        back.isEnabled = true
+                        timetableToolbar.visibility = View.VISIBLE
+                        next.visibility = View.GONE
+                        previous.visibility = View.GONE
+                        timetableTitle.text = "Курсы"
+                        timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
+                    }
                     preferences.saveTimetable()
                 }
             }
@@ -198,19 +200,21 @@ class TimetableFragment : IOFragmentBackPressed() {
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
-                val timetable = Gson().fromJson(json, Week::class.java)
-                Preferences.week = timetable.week_number
+                val data = Gson().fromJson(json, Week::class.java)
+                Preferences.week = data.week_number
 
                 activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
-                    binding.back.isEnabled = true
-                    binding.next.isEnabled = true
-                    binding.previous.isEnabled = true
-                    binding.timetableTitle.text = "${Preferences.group!!.title}\n${timetable.week_number} неделя"
-                    binding.timetableToolbar.visibility = View.VISIBLE
-                    binding.next.visibility = View.VISIBLE
-                    binding.previous.visibility = View.VISIBLE
-                    binding.timetable.adapter = TimetableAdapter(this@TimetableFragment, timetable)
+                    with (binding) {
+                        back.isEnabled = true
+                        next.isEnabled = true
+                        previous.isEnabled = true
+                        timetableTitle.text = "${Preferences.group!!.title}\n${data.week_number} неделя"
+                        timetableToolbar.visibility = View.VISIBLE
+                        next.visibility = View.VISIBLE
+                        previous.visibility = View.VISIBLE
+                        timetable.adapter = TimetableAdapter(this@TimetableFragment, data)
+                    }
                     preferences.saveTimetable()
                 }
             }
@@ -231,17 +235,19 @@ class TimetableFragment : IOFragmentBackPressed() {
                 override fun onResponse(call: Call, response: Response) {
                     // Parse JSON
                     val json = response.body?.string()
-                    val timetable = Gson().fromJson(json, TeacherTimetable::class.java)
+                    val data = Gson().fromJson(json, TeacherTimetable::class.java)
                     Preferences.teacherId = teacherId
 
                     activity!!.runOnUiThread {
                         if (_binding == null) return@runOnUiThread
-                        binding.back.isEnabled = true
-                        binding.timetableTitle.text = timetable.title
-                        binding.timetableToolbar.visibility = View.VISIBLE
-                        binding.next.visibility = View.GONE
-                        binding.previous.visibility = View.GONE
-                        binding.timetable.adapter = TeacherTimetableAdapter(this@TimetableFragment, timetable)
+                        with (binding) {
+                            back.isEnabled = true
+                            timetableTitle.text = data.title
+                            timetableToolbar.visibility = View.VISIBLE
+                            next.visibility = View.GONE
+                            previous.visibility = View.GONE
+                            timetable.adapter = TeacherTimetableAdapter(this@TimetableFragment, data)
+                        }
                         preferences.saveTimetable()
                     }
                 }
@@ -264,12 +270,14 @@ class TimetableFragment : IOFragmentBackPressed() {
 
                 activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
-                    binding.back.isEnabled = true
-                    binding.timetableToolbar.visibility = View.VISIBLE
-                    binding.next.visibility = View.GONE
-                    binding.previous.visibility = View.GONE
-                    binding.timetableTitle.text = "Список учителей"
-                    binding.timetable.adapter = TeachersListAdapter(this@TimetableFragment, teachers)
+                    with (binding) {
+                        back.isEnabled = true
+                        timetableToolbar.visibility = View.VISIBLE
+                        next.visibility = View.GONE
+                        previous.visibility = View.GONE
+                        timetableTitle.text = "Список учителей"
+                        timetable.adapter = TeachersListAdapter(this@TimetableFragment, teachers)
+                    }
                     preferences.saveTimetable()
                 }
             }

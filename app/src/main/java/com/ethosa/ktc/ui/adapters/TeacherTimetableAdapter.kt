@@ -43,11 +43,13 @@ class TeacherTimetableAdapter(
             val lesson = LayoutTeacherLessonBinding.inflate(
                 LayoutInflater.from(timetableFragment.context),
                 null, false)
-            lesson.tlessonClassroom.text = l.classroom
-            lesson.tlessonGroup.text = l.group
-            lesson.tlessonTitle.text = l.title
-            lesson.tlessonNumber.text = l.number
-            binding.root.addView(lesson.root)
+            with (lesson) {
+                tlessonClassroom.text = l.classroom
+                tlessonGroup.text = l.group
+                tlessonTitle.text = l.title
+                tlessonNumber.text = l.number
+                binding.root.addView(root)
+            }
         }
     }
 
