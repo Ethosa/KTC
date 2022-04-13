@@ -3,16 +3,16 @@
 
     <style name="Widget.Theme.KTC.ButtonBar.Fullscreen" parent="">
         <item name="android:background">@color/background</item>
-        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="android:buttonBarStyle">?android:buttonBarStyle</item>
     </style>
 
     <style name="Theme.KTC.FullScreenDialog" parent="Theme.KTC">
-        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
-        <item name="colorAccent">?attr/colorAccent</item>
-        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryDark">?colorPrimaryDark</item>
+        <item name="colorAccent">?colorAccent</item>
+        <item name="colorPrimary">?colorPrimary</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">@color/background</item>
-        <item name="actionMenuTextColor">?attr/colorAccent</item>
+        <item name="actionMenuTextColor">?colorAccent</item>
     </style>
 
     <style name="Widget.KTC.AppWidget.Container" parent="android:Widget">

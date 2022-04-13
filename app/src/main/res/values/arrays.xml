@@ -3,7 +3,7 @@
     <string-array name="settings_titles">
         <item>Личный кабинет</item>
         <item>Контактная информация</item>
-        <item>О программе</item>
+        <item>О приложении</item>
     </string-array>
 
     <array name="settings_icons">

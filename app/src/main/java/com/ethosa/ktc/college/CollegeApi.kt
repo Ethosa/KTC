@@ -14,7 +14,7 @@ class CollegeApi {
         private const val NEWS_API = "${API_URL}news/"
         private const val ALBUMS_API = "${API_URL}albums/"
 
-        private const val MY_API = "http://109.248.133.17:8000/ktc-api"
+        private const val MY_API = "http://mob.kansk-tc.ru/ktc-api"
         private const val BRANCHES = "$MY_API/branches"
         private const val COURSES = "$MY_API/courses"
         private const val TIMETABLE = "$MY_API/timetable"

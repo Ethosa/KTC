@@ -46,7 +46,6 @@
 
     <include
         android:id="@+id/album_content"
-        layout="@layout/activity_album_content"
-        android:background="?cardBackgroundColor" />
+        layout="@layout/activity_album_content"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
