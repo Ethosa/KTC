@@ -1,5 +1,7 @@
 package com.ethosa.ktc.college.news
 
+import androidx.annotation.Keep
+
 /**
  * {
  *      "title": "Молодежная площадка «Поколение 2030»",
@@ -9,6 +11,7 @@ package com.ethosa.ktc.college.news
  *      "id": "2392"
  * }
  */
+@Keep
 data class News(
     val title: String,
     var body: String,

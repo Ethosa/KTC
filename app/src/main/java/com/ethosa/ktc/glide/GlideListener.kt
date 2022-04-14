@@ -1,6 +1,7 @@
 package com.ethosa.ktc.glide
 
 import android.graphics.Bitmap
+import androidx.annotation.Keep
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
@@ -9,6 +10,7 @@ import com.bumptech.glide.request.target.Target
 /**
  * Provides RequestListener behavior for Bitmap
  */
+@Keep
 class GlideListener(
     private val callback: GlideCallback
 ) : RequestListener<Bitmap> {

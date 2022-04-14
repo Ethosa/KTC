@@ -2,11 +2,13 @@ package com.ethosa.ktc.glide
 
 import android.graphics.Bitmap
 import android.util.Log
+import androidx.annotation.Keep
 import java.lang.Exception
 
 /**
  * Provides little Glide callback
  */
+@Keep
 interface GlideCallback {
     /**
      * Should be called when resource was loaded.

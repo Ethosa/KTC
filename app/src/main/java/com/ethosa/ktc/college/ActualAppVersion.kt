@@ -1,5 +1,6 @@
 package com.ethosa.ktc.college
 
+import androidx.annotation.Keep
 import com.ethosa.ktc.ui.dialog.AppUpdater
 
 /**
@@ -12,6 +13,7 @@ import com.ethosa.ktc.ui.dialog.AppUpdater
  *  @param actual_version list of major, minor and patch version.
  *  @param description update description
  */
+@Keep
 data class ActualAppVersion(
     val actual_version: List<Int>,
     val description: String

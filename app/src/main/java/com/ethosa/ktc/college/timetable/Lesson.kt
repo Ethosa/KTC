@@ -1,5 +1,7 @@
 package com.ethosa.ktc.college.timetable
 
+import androidx.annotation.Keep
+
 /**
  * {
  *      "title": "Проектирование и дизайн информационных систем",
@@ -8,6 +10,7 @@ package com.ethosa.ktc.college.timetable
  *      "time": ["1", "8:15", "9:45"]
  * }
  */
+@Keep
 data class Lesson(
     val title: String,
     val teacher: String,

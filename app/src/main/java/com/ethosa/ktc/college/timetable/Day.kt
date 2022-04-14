@@ -1,5 +1,7 @@
 package com.ethosa.ktc.college.timetable
 
+import androidx.annotation.Keep
+
 /**
  * {
  *      "title": "19 февраля, Суббота",
@@ -12,6 +14,7 @@ package com.ethosa.ktc.college.timetable
  *          }, ...]
  * }
  */
+@Keep
 data class Day(
     val lessons: List<Lesson>,
     val title: String

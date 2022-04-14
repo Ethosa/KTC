@@ -6,11 +6,13 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.annotation.Keep
 import com.ethosa.ktc.ui.fragments.ProCollegeFragment
 
 /**
  * Provides work with pro college.
  */
+@Keep
 @SuppressLint("SetJavaScriptEnabled", "JavascriptInterface")
 class ProCollege(
     private val fragment: ProCollegeFragment,
@@ -42,7 +44,7 @@ class ProCollege(
     /**
      * Authorization in pro college using WebView.
      */
-    @Suppress("DEPRECATION")
+    @Keep
     fun auth(username: String, password: String) {
         // Setup WebView ..
         fragment.binding.content.webViewClient = object : WebViewClient() {
@@ -108,6 +110,7 @@ class ProCollege(
     /**
      * Clears WebView and shows errors.
      */
+    @Keep
     @JavascriptInterface
     fun processErrors(html: String) {
         onSignOut()
@@ -121,6 +124,7 @@ class ProCollege(
     /**
      * Calls on sign out from pro college.
      */
+    @Keep
     @JavascriptInterface
     fun onSignOut() {
         fragment.requireActivity().runOnUiThread {
@@ -139,6 +143,7 @@ class ProCollege(
     /**
      * Shows WebView on authorized in account.
      */
+    @Keep
     @JavascriptInterface
     fun showWebView() {
         fragment.requireActivity().runOnUiThread {

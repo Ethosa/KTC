@@ -1,5 +1,7 @@
 package com.ethosa.ktc.college.timetable
 
+import androidx.annotation.Keep
+
 /**
  * {
  *      "course": 1,
@@ -11,6 +13,7 @@ package com.ethosa.ktc.college.timetable
  *      ]
  * }
  */
+@Keep
 data class Course(
     val course: Int,
     val groups: Groups

@@ -1,11 +1,13 @@
 package com.ethosa.ktc.college
 
+import androidx.annotation.Keep
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
 /**
  * Provides working with KTC api.
  */
+@Keep
 class CollegeApi {
     companion object {
         private val client = OkHttpClient()

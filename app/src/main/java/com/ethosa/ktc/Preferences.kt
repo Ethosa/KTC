@@ -1,6 +1,7 @@
 package com.ethosa.ktc
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.ethosa.ktc.college.timetable.Branch
 import com.ethosa.ktc.college.timetable.Group
 
@@ -9,6 +10,7 @@ import com.ethosa.ktc.college.timetable.Group
  * Provides working with SharedPreferences
  * @param context app context
  */
+@Keep
 class Preferences(
     context: Context
 ) {

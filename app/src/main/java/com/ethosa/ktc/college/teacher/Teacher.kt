@@ -1,5 +1,7 @@
 package com.ethosa.ktc.college.teacher
 
+import androidx.annotation.Keep
+
 /**
  * JSON is
  * {
@@ -7,6 +9,7 @@ package com.ethosa.ktc.college.teacher
  *      "name": "Asd Asd"
  * }
  */
+@Keep
 data class Teacher(
     val id: Int,
     val name: String

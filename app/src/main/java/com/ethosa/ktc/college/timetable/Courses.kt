@@ -1,5 +1,7 @@
 package com.ethosa.ktc.college.timetable
 
+import androidx.annotation.Keep
+
 /**
  * [
  *      {
@@ -10,4 +12,5 @@ package com.ethosa.ktc.college.timetable
  *      }, ...
  * ]
  */
+@Keep
 class Courses : ArrayList<Course>()

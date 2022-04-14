@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.text.Html
 import android.widget.TextView
+import androidx.annotation.Keep
 import kotlinx.coroutines.*
 import java.net.URL
 
@@ -14,6 +15,7 @@ import java.net.URL
 /**
  * Provides image fetching from HTML text
  */
+@Keep
 @Suppress("OPT_IN_IS_NOT_ENABLED")
 class HtmlImageGetter(
     private val res: Resources,

@@ -1,8 +1,11 @@
 package com.ethosa.ktc
 
+import androidx.annotation.Keep
+
 /**
  * Constants class keeps all app constants
  */
+@Keep
 sealed class Constants {
     companion object {
         const val PACKAGE = "com.ethosa.ktc"
