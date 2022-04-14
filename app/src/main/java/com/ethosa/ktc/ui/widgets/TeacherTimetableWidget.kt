@@ -125,11 +125,11 @@ class TeacherTimetableWidget : AppWidgetProvider() {
                 views.removeAllViews(R.id.timetable_widget_lessons)
 
                 // Setup views
+                var lesson: RemoteViews
                 for (l in day.lessons) {
-                    println(l)
                     // Load lesson data
                     if (l.group == "") continue
-                    val lesson = RemoteViews(context.packageName, R.layout.widget_tlesson)
+                    lesson = RemoteViews(context.packageName, R.layout.widget_tlesson)
                     with (lesson) {
                         setTextViewText(R.id.widget_tlesson_title, l.title)
                         setTextViewText(R.id.widget_tlesson_classroom, l.classroom)

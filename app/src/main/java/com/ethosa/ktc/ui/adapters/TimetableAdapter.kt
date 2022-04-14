@@ -40,8 +40,9 @@ class TimetableAdapter(
 
         binding.dayHeader.text = day.title
 
+        var lesson: LayoutLessonBinding
         for (l in day.lessons) {
-            val lesson = LayoutLessonBinding.inflate(
+            lesson = LayoutLessonBinding.inflate(
                 LayoutInflater.from(timetableFragment.context),
                 holder.binding.root, false)
             with (lesson) {

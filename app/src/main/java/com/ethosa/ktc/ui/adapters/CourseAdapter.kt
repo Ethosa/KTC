@@ -42,14 +42,17 @@ class CourseAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         val item = items[position]
+
         val theme = timetableFragment.requireContext().theme
         val back = TypedValue()
         val fore = TypedValue()
         theme.resolveAttribute(android.R.attr.textColorPrimary, fore, true)
         theme.resolveAttribute(android.R.attr.colorPrimary, back, true)
+
         binding.courseTitle.text = "${item.course} курс"
+        var chip: Chip
         for (group in item.groups) {
-            val chip = Chip(timetableFragment.context)
+            chip = Chip(timetableFragment.context)
             chip.text = group.title
             chip.chipBackgroundColor = ColorStateList.valueOf(back.data)
             chip.chipStrokeWidth = 0f

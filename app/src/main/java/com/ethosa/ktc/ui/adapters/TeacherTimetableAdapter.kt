@@ -38,11 +38,12 @@ class TeacherTimetableAdapter(
         binding.root.removeAllViews()
         binding.root.addView(header)
 
+        var lesson: LayoutTeacherLessonBinding
         for (l in day.lessons) {
-            if (l.group == "") continue
-            val lesson = LayoutTeacherLessonBinding.inflate(
+            lesson = LayoutTeacherLessonBinding.inflate(
                 LayoutInflater.from(timetableFragment.context),
                 null, false)
+            if (l.group == "") continue
             with (lesson) {
                 tlessonClassroom.text = l.classroom
                 tlessonGroup.text = l.group

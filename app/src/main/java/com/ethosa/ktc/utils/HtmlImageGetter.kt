@@ -7,9 +7,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.text.Html
 import android.widget.TextView
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.*
-import java.lang.Exception
+import java.net.URL
+
 
 /**
  * Provides image fetching from HTML text
@@ -29,13 +29,15 @@ class HtmlImageGetter(
         GlobalScope.launch(Dispatchers.IO) {
             // Download image and converts to Drawable
             try {
-                val bitmap = Picasso.get().load(p0!!).get()
-                val drawable = BitmapDrawable(res, bitmap)
+                val inputStream = URL(p0).openConnection().getInputStream()
+                val drawable = Drawable.createFromStream(inputStream, "src")
+                inputStream.close()
+
                 // Scale image with keep aspect ratio
                 val width = res.displayMetrics.widthPixels
-                val aspectRatio =
-                    drawable.intrinsicWidth.toFloat() / drawable.intrinsicHeight.toFloat()
+                val aspectRatio = drawable.intrinsicWidth.toFloat() / drawable.intrinsicHeight
                 val height = (width / aspectRatio).toInt()
+
                 // Change bounds
                 drawable.setBounds(0, 0, width, height)
                 holder.drawable = drawable
