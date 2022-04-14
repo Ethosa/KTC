@@ -182,7 +182,9 @@ class TimetableFragment : IOFragmentBackPressed() {
                         next.visibility = View.GONE
                         previous.visibility = View.GONE
                         timetableTitle.text = "Курсы"
-                        timetable.adapter = CourseAdapter(this@TimetableFragment, courses)
+                        timetable.adapter = CourseAdapter(
+                            this@TimetableFragment, courses
+                        )
                     }
                     preferences.saveTimetable()
                 }
@@ -215,7 +217,9 @@ class TimetableFragment : IOFragmentBackPressed() {
                         timetableToolbar.visibility = View.VISIBLE
                         next.visibility = View.VISIBLE
                         previous.visibility = View.VISIBLE
-                        timetable.adapter = TimetableAdapter(this@TimetableFragment, data)
+                        timetable.adapter = TimetableAdapter(
+                            this@TimetableFragment, data
+                        )
                     }
                     preferences.saveTimetable()
                 }
@@ -248,7 +252,9 @@ class TimetableFragment : IOFragmentBackPressed() {
                             timetableToolbar.visibility = View.VISIBLE
                             next.visibility = View.GONE
                             previous.visibility = View.GONE
-                            timetable.adapter = TeacherTimetableAdapter(this@TimetableFragment, data)
+                            timetable.adapter = TeacherTimetableAdapter(
+                                this@TimetableFragment, data
+                            )
                         }
                         preferences.saveTimetable()
                     }
@@ -278,7 +284,9 @@ class TimetableFragment : IOFragmentBackPressed() {
                         next.visibility = View.GONE
                         previous.visibility = View.GONE
                         timetableTitle.text = "Список учителей"
-                        timetable.adapter = TeachersListAdapter(this@TimetableFragment, teachers)
+                        timetable.adapter = TeachersListAdapter(
+                            this@TimetableFragment, teachers
+                        )
                     }
                     preferences.saveTimetable()
                 }
