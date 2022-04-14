@@ -51,11 +51,13 @@ class ProCollege(
                             document.getElementsByName("username")[0].value = "$username";
                             document.getElementsByName("password")[0].value = "$password";
                             authButton.click();
+                        } else {
+                            window.Android.showWebView();
                         }
                         
                         if (authErrors != undefined && authErrors.length != 0) {
                             window.Android.processErrors(
-                                authErrors[0].getElementsByTagName("a")[0].innerHTML
+                                authErrors.getElementsByTagName("a")[0].innerHTML
                             );
                         }
                         
@@ -104,7 +106,7 @@ class ProCollege(
     }
 
     /**
-     *
+     * Calls on sign out from pro college.
      */
     @JavascriptInterface
     fun onSignOut() {
@@ -115,10 +117,20 @@ class ProCollege(
                 content.webViewClient = WebViewClient()
                 content.clearHistory()
                 content.stopLoading()
-                content.visibility = View.GONE
+                webviewContainer.visibility = View.GONE
                 login.visibility = View.VISIBLE
-                contentProgress.visibility = View.GONE
             }
+        }
+    }
+
+    /**
+     * Shows WebView on authorized in account.
+     */
+    @JavascriptInterface
+    fun showWebView() {
+        fragment.requireActivity().runOnUiThread {
+            fragment.binding.webviewContainer.visibility = View.VISIBLE
+            fragment.binding.login.visibility = View.GONE
         }
     }
 }

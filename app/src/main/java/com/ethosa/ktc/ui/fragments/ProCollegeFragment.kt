@@ -39,6 +39,9 @@ class ProCollegeFragment : Fragment() {
         binding.username.editText?.setText(Preferences.proCollegeUsername)
         binding.password.editText?.setText(Preferences.proCollegePassword)
 
+        if (Preferences.proCollegeUsername != "" && Preferences.proCollegePassword != "")
+            auth()
+
         // Auto dark mode ...
         // Require API Q+
         if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
@@ -72,7 +75,6 @@ class ProCollegeFragment : Fragment() {
             preferences.saveProCollege()
             proCollege.auth(Preferences.proCollegeUsername, Preferences.proCollegePassword)
             binding.login.visibility = View.GONE
-            binding.content.visibility = View.VISIBLE
         } else {
             // Show errors
             if (username == "")
