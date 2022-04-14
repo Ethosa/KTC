@@ -73,7 +73,7 @@ class TimetableFragment : IOFragmentBackPressed() {
             if (!Preferences.isStudent && Preferences.timetableState == 2 && Preferences.teacherId == 0) {
                 Preferences.timetableState = 1
             }
-            if (Preferences.isStudent && Preferences.timetableState == 2 && Preferences.group!!.id == 0) {
+            if (Preferences.isStudent && Preferences.timetableState == 2 && Preferences.group.id == 0) {
                 Preferences.timetableState = 1
             }
             loadState()
@@ -99,9 +99,9 @@ class TimetableFragment : IOFragmentBackPressed() {
             1 -> fetchBranches()
             2 ->
                 if (Preferences.isStudent)
-                    fetchCourses(Preferences.branch!!.id)
+                    fetchCourses(Preferences.branch.id)
                 else
-                    fetchTeacherList(Preferences.branch!!.id)
+                    fetchTeacherList(Preferences.branch.id)
             else -> return false
         }
         return true
@@ -112,7 +112,7 @@ class TimetableFragment : IOFragmentBackPressed() {
         Preferences.week += i
         binding.next.isEnabled = false
         binding.previous.isEnabled = false
-        fetchTimetable(Preferences.group!!.id, Preferences.week)
+        fetchTimetable(Preferences.group.id, Preferences.week)
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -124,13 +124,13 @@ class TimetableFragment : IOFragmentBackPressed() {
             // courses
             1 ->
                 if (Preferences.isStudent)
-                    fetchCourses(Preferences.branch!!.id)
+                    fetchCourses(Preferences.branch.id)
                 else
-                    fetchTeacherList(Preferences.branch!!.id)
+                    fetchTeacherList(Preferences.branch.id)
             // students timetable
             2 ->
                 if (Preferences.isStudent)
-                    fetchTimetable(Preferences.group!!.id)
+                    fetchTimetable(Preferences.group.id)
                 else
                     fetchTeacherTimetable(Preferences.teacherId)
         }
@@ -213,7 +213,7 @@ class TimetableFragment : IOFragmentBackPressed() {
                         back.isEnabled = true
                         next.isEnabled = true
                         previous.isEnabled = true
-                        timetableTitle.text = "${Preferences.group!!.title}\n${data.week_number} неделя"
+                        timetableTitle.text = "${Preferences.group.title}\n${data.week_number} неделя"
                         timetableToolbar.visibility = View.VISIBLE
                         next.visibility = View.VISIBLE
                         previous.visibility = View.VISIBLE
@@ -234,7 +234,7 @@ class TimetableFragment : IOFragmentBackPressed() {
     fun fetchTeacherTimetable(teacherId: Int = -1) {
         Preferences.timetableState = 2
         college.fetchTeacherTimetable(
-            Preferences.branch!!.id,
+            Preferences.branch.id,
             if (teacherId < 0) Preferences.teacherId else teacherId,
             object : CollegeCallback {
                 @SuppressLint("SetTextI18n")

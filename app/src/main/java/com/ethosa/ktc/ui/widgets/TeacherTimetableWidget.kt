@@ -101,7 +101,7 @@ class TeacherTimetableWidget : AppWidgetProvider() {
         )
         // Load last group ID
         val teacherId = Preferences.teacherId
-        val branchId = Preferences.branch!!.id
+        val branchId = Preferences.branch.id
         val calendar = Calendar.getInstance()
         val weekday = calendar.get(Calendar.DAY_OF_WEEK)
 

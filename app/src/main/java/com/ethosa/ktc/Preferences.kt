@@ -19,9 +19,9 @@ class Preferences(
 
     companion object {
         // timetable branch
-        var branch: Branch? = null
+        var branch: Branch = Branch(1, "")
         // student timetable
-        var group: Group? = null
+        var group: Group = Group(0, "")
         var isStudent = true
         var teacherId = 0
         var week = 0
@@ -65,10 +65,10 @@ class Preferences(
     fun saveTimetable() {
         preferences.edit()
             .putInt(Constants.TIMETABLE_STATE, timetableState)
-            .putString(Constants.TIMETABLE_GROUP_TITLE, group?.title)
-            .putInt(Constants.TIMETABLE_GROUP, group!!.id)
+            .putString(Constants.TIMETABLE_GROUP_TITLE, group.title)
+            .putInt(Constants.TIMETABLE_GROUP, group.id)
             .putBoolean(Constants.TIMETABLE_IS_STUDENT, isStudent)
-            .putInt(Constants.TIMETABLE_BRANCH, branch!!.id)
+            .putInt(Constants.TIMETABLE_BRANCH, branch.id)
             .putInt(Constants.TIMETABLE_WEEK, week)
             .putInt(Constants.TIMETABLE_TEACHER_ID, teacherId)
             .apply()

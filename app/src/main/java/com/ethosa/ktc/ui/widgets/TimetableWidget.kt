@@ -100,7 +100,7 @@ class TimetableWidget : AppWidgetProvider() {
             openAppPendingIntent(context, appWidgetId)
         )
         // Load last group ID
-        val groupId = Preferences.group!!.id
+        val groupId = Preferences.group.id
         val calendar = Calendar.getInstance()
         val weekday = calendar.get(Calendar.DAY_OF_WEEK)
 
