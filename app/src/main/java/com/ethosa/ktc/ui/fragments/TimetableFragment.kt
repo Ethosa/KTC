@@ -70,10 +70,12 @@ class TimetableFragment : IOFragmentBackPressed() {
         // toggle isStudent
         binding.toggleTimetable.setOnClickListener {
             Preferences.isStudent = !Preferences.isStudent
-            if (Preferences.isStudent && Preferences.timetableState == 2 && Preferences.teacherId == 0)
-                Preferences.isStudent = !Preferences.isStudent
-            if (!Preferences.isStudent && Preferences.timetableState == 2 && Preferences.group!!.id == 0)
-                Preferences.isStudent = !Preferences.isStudent
+            if (!Preferences.isStudent && Preferences.timetableState == 2 && Preferences.teacherId == 0) {
+                Preferences.timetableState = 1
+            }
+            if (Preferences.isStudent && Preferences.timetableState == 2 && Preferences.group!!.id == 0) {
+                Preferences.timetableState = 1
+            }
             loadState()
         }
 
