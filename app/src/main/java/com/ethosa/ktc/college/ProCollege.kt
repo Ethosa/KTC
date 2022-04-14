@@ -18,6 +18,15 @@ class ProCollege(
 
     companion object {
         private const val LOGIN_PAGE = "https://pro.kansk-tc.ru/login/index.php"
+
+        private val errors = hashMapOf(
+            "Your session has timed out. Please log in again." to
+                    "Срок Вашей сессии истек. Пожалуйста войдите ещё раз.",
+            "Invalid login, please try again." to
+                    "Неправильный логин, попробуйте ещё раз.",
+            "Invalid login, please try again" to
+                    "Неправильный логин, попробуйте ещё раз."
+        )
     }
 
     init {
@@ -25,6 +34,7 @@ class ProCollege(
         with (fragment.binding.content) {
             settings.javaScriptEnabled = true
             settings.builtInZoomControls = true
+            settings.displayZoomControls = false
             settings.userAgentString = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
         }
     }
@@ -102,7 +112,10 @@ class ProCollege(
     fun processErrors(html: String) {
         onSignOut()
         // Setup error
-        fragment.binding.password.error = html
+        if (errors.containsKey(html))
+            fragment.binding.password.error = errors[html]
+        else
+            fragment.binding.password.error = html
     }
 
     /**
