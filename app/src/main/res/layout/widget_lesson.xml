@@ -10,6 +10,7 @@
     tools:layout_editor_absoluteY="9dp">
 
     <LinearLayout
+        android:id="@+id/lesson_background"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -23,8 +24,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="4dp"
             android:text="@string/lesson_number"
-            android:textStyle="bold"
-            android:textColor="@color/text" />
+            android:textColor="@color/text"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,8 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lesson_time"
-                android:textSize="12sp"
-                android:textColor="@color/text" />
+                android:textColor="@color/text"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/hr_time"
@@ -54,8 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lesson_time"
-                android:textSize="12sp"
-                android:textColor="@color/text" />
+                android:textColor="@color/text"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -75,8 +76,8 @@
                 android:lineSpacingExtra="-4sp"
                 android:padding="0dp"
                 android:text="@string/lesson_title"
-                tools:textStyle="bold"
-                android:textColor="@color/text" />
+                android:textColor="@color/text"
+                tools:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"

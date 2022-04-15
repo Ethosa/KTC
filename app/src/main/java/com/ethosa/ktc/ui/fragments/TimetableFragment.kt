@@ -31,7 +31,6 @@ class TimetableFragment : IOFragmentBackPressed() {
     private lateinit var preferences: Preferences
     private lateinit var itemDecoration: RecyclerView.ItemDecoration
 
-    private val college = CollegeApi()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -144,7 +143,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      */
     private fun fetchBranches() {
         Preferences.timetableState = 0
-        college.fetchBranches(object : CollegeCallback {
+        CollegeApi.fetchBranches(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
@@ -167,7 +166,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      */
     fun fetchCourses(branchId: Int) {
         Preferences.timetableState = 1
-        college.fetchCourses(branchId, object : CollegeCallback {
+        CollegeApi.fetchCourses(branchId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
@@ -199,7 +198,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      */
     fun fetchTimetable(groupId: Int, week: Int? = null) {
         Preferences.timetableState = 2
-        college.fetchTimetable(groupId, object : CollegeCallback {
+        CollegeApi.fetchTimetable(groupId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
@@ -233,7 +232,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      */
     fun fetchTeacherTimetable(teacherId: Int = -1) {
         Preferences.timetableState = 2
-        college.fetchTeacherTimetable(
+        CollegeApi.fetchTeacherTimetable(
             Preferences.branch.id,
             if (teacherId < 0) Preferences.teacherId else teacherId,
             object : CollegeCallback {
@@ -268,7 +267,7 @@ class TimetableFragment : IOFragmentBackPressed() {
      */
     fun fetchTeacherList(branchId: Int) {
         Preferences.timetableState = 1
-        college.fetchTeachersList(branchId, object : CollegeCallback {
+        CollegeApi.fetchTeachersList(branchId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON

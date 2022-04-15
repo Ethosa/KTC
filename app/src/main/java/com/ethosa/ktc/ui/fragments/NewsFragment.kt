@@ -36,9 +36,9 @@ class NewsFragment : Fragment(), CollegeCallback {
         val itemDecoration = SpacingItemDecoration(0, 32)
         binding.newsContainer.layoutManager = LinearLayoutManager(context)
         binding.newsContainer.addItemDecoration(itemDecoration)
+
         // Fetch last news from college
-        val college = CollegeApi()
-        college.fetchLastNews(this)
+        CollegeApi.fetchLastNews(this)
 
         return root
     }

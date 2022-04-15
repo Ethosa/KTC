@@ -25,7 +25,6 @@ class AlbumActivity(
 ) : AppCompatActivity(), CollegeCallback {
 
     lateinit var binding: ActivityAlbumBinding
-    private val college = CollegeApi()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +48,9 @@ class AlbumActivity(
             .load(intent.getStringExtra("preview"))
             .transform(BlurTransformation(20, 2))
             .into(binding.albumToolbarImage)
-        college.fetchAlbumById(intent.getStringExtra("id")!!, this)
+        CollegeApi.fetchAlbumById(
+            intent.getStringExtra("id")!!, this
+        )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -26,7 +26,6 @@ class GalleryFragment(
 ) : Fragment(), CollegeCallback {
 
     private var _binding: FragmentGalleryBinding? = null
-    private val college = CollegeApi()
 
     private val binding get() = _binding!!
 
@@ -44,7 +43,7 @@ class GalleryFragment(
         binding.albumsList.setHasFixedSize(true)
         binding.albumsList.addItemDecoration(SpacingItemDecoration(8))
 
-        college.fetchAlbums(this)
+        CollegeApi.fetchAlbums(this)
 
         return binding.root
     }

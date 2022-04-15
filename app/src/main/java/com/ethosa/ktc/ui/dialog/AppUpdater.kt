@@ -35,8 +35,6 @@ class AppUpdater(
         var actualVersion: ActualAppVersion? = null
     }
 
-    // For fetching actual version
-    private val college = CollegeApi()
     // New version omitted
     private val preferences = context.getSharedPreferences(Constants.PACKAGE, Context.MODE_PRIVATE)
     private var updateOmitted = false
@@ -99,7 +97,7 @@ class AppUpdater(
      * If this version older than actual and isn't tagged as omitted than shows dialog.
      */
     fun checkToUpdate() {
-        college.fetchActualVersion(object : CollegeCallback {
+        CollegeApi.fetchActualVersion(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
                 actualVersion = Gson().fromJson(body, ActualAppVersion::class.java)

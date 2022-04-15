@@ -18,6 +18,7 @@ import com.ethosa.ktc.ui.activities.MainActivity
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -25,7 +26,6 @@ import java.util.*
  * Implementation of App Widget functionality.
  */
 class TeacherTimetableWidget : AppWidgetProvider() {
-    private val college = CollegeApi()
     private var preferences: Preferences? = null
 
     override fun onUpdate(
@@ -83,7 +83,7 @@ class TeacherTimetableWidget : AppWidgetProvider() {
             })
     }
 
-    @SuppressLint("RemoteViewLayout")
+    @SuppressLint("RemoteViewLayout", "SimpleDateFormat")
     private fun updateAppWidget(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -105,7 +105,7 @@ class TeacherTimetableWidget : AppWidgetProvider() {
         val calendar = Calendar.getInstance()
         val weekday = calendar.get(Calendar.DAY_OF_WEEK)
 
-        college.fetchTeacherTimetable(branchId, teacherId, object : CollegeCallback {
+        CollegeApi.fetchTeacherTimetable(branchId, teacherId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON

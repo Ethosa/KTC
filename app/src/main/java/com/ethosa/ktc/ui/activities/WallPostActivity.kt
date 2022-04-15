@@ -24,7 +24,6 @@ import okhttp3.Response
 class WallPostActivity : AppCompatActivity(), CollegeCallback {
 
     private lateinit var binding: ActivityWallPostBinding
-    private val college: CollegeApi = CollegeApi()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +45,9 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
             .into(binding.toolbarImage)
 
         // Fetches post data.
-        college.fetchNewById(intent.getStringExtra("id")!!.toInt(), this)
+        CollegeApi.fetchNewById(
+            intent.getStringExtra("id")!!.toInt(), this
+        )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -18,6 +18,7 @@ import com.ethosa.ktc.ui.activities.MainActivity
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -25,7 +26,6 @@ import java.util.*
  * Implementation of App Widget functionality.
  */
 class TimetableWidget : AppWidgetProvider() {
-    private val college = CollegeApi()
     private var preferences: Preferences? = null
 
     override fun onUpdate(
@@ -83,7 +83,7 @@ class TimetableWidget : AppWidgetProvider() {
             })
     }
 
-    @SuppressLint("RemoteViewLayout")
+    @SuppressLint("RemoteViewLayout", "SimpleDateFormat")
     private fun updateAppWidget(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -103,8 +103,13 @@ class TimetableWidget : AppWidgetProvider() {
         val groupId = Preferences.group.id
         val calendar = Calendar.getInstance()
         val weekday = calendar.get(Calendar.DAY_OF_WEEK)
+        val now = "${calendar.get(Calendar.HOUR_OF_DAY)}:${Calendar.MINUTE}"
 
-        college.fetchTimetable(groupId, object : CollegeCallback {
+        val dateFormat = SimpleDateFormat("mm:ss")
+        dateFormat.isLenient = false
+        dateFormat.timeZone = TimeZone.getTimeZone("Europe/Krasnoyarsk")
+
+        CollegeApi.fetchTimetable(groupId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
@@ -137,6 +142,18 @@ class TimetableWidget : AppWidgetProvider() {
                         setTextViewText(R.id.lesson_to, l.time[2])
                         setTextViewText(R.id.lesson_teacher, l.teacher)
                     }
+
+                    // check time
+                    val from = dateFormat.parse(l.time[1])?.time!!
+                    val current = dateFormat.parse(now)?.time!!
+                    val to = dateFormat.parse(l.time[2])?.time!!
+                    if (current in from..to)
+                        lesson.setInt(
+                            R.id.lesson_background,
+                            "setBackgroundResource",
+                            R.color.foreground_alpha
+                        )
+
                     views.addView(R.id.timetable_widget_lessons, lesson)
                 }
                 // Update widget
