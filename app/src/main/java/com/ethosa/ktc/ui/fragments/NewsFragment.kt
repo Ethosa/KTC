@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.news.LastNews

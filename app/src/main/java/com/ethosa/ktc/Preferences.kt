@@ -35,6 +35,8 @@ class Preferences(
 
         // AppDynamicTheme
         var currentTheme = "default"
+
+        var currentFragment = 0
     }
 
     /**
@@ -58,6 +60,7 @@ class Preferences(
             proCollegeUsername = getString(Constants.LOGIN_USERNAME, "")!!
             proCollegePassword = getString(Constants.LOGIN_PASSWORD, "")!!
             currentTheme = getString(Constants.CURRENT_THEME, "default")!!
+            currentFragment = getInt(Constants.CURRENT_FRAGMENT, 0)
         }
     }
 
@@ -89,6 +92,12 @@ class Preferences(
     fun saveTheme() {
         preferences.edit()
             .putString(Constants.CURRENT_THEME, currentTheme)
+            .apply()
+    }
+
+    fun saveFragment() {
+        preferences.edit()
+            .putInt(Constants.CURRENT_FRAGMENT, currentFragment)
             .apply()
     }
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.databinding.FragmentSettingsBinding
 import com.ethosa.ktc.ui.adapters.SettingsAdapter
 import com.ethosa.ktc.ui.decoration.SpacingItemDecoration

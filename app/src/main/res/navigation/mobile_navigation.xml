@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/navigation_settings"
+        android:id="@+id/navigation_account"
         android:tag="Settings"
         android:name="com.ethosa.ktc.ui.fragments.SettingsFragment"
         android:label="@string/title_settings"

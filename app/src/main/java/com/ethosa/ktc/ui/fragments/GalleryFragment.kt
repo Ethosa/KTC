@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.gallery.Albums
