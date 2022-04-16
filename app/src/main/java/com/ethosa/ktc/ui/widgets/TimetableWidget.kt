@@ -106,8 +106,6 @@ class TimetableWidget : AppWidgetProvider() {
         val now = "${calendar.get(Calendar.HOUR_OF_DAY)}:${Calendar.MINUTE}"
 
         val dateFormat = SimpleDateFormat("mm:ss")
-        dateFormat.isLenient = false
-        dateFormat.timeZone = TimeZone.getTimeZone("Europe/Krasnoyarsk")
 
         CollegeApi.fetchTimetable(groupId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")

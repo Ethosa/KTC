@@ -35,8 +35,6 @@ class TimetableAdapter(
     @SuppressLint("SimpleDateFormat")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         dateFormat = SimpleDateFormat("mm:ss")
-        dateFormat.isLenient = false
-        dateFormat.timeZone = TimeZone.getTimeZone("Europe/Krasnoyarsk")
 
         val calendar = Calendar.getInstance()
         val day = calendar.get(Calendar.DAY_OF_WEEK)
@@ -56,10 +54,8 @@ class TimetableAdapter(
      * Binds every lesson in day.
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val binding = holder.binding
         val day = week.days[position]
-
-        binding.dayHeader.text = day.title
+        holder.binding.dayHeader.text = day.title
 
         var lesson: LayoutLessonBinding
         for (l in day.lessons) {
@@ -81,7 +77,7 @@ class TimetableAdapter(
                 if (current in from..to && weekday.title == day.title)
                     lesson.root.setBackgroundResource(R.color.foreground_alpha)
 
-                binding.root.addView(root)
+                holder.binding.root.addView(root)
             }
         }
     }
