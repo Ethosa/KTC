@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setOnItemSelectedListener {
             Preferences.currentFragment = getMenuNumber(it.itemId)
             navController.navigate(getMenuId())
-            preferences.saveFragment()
+            preferences.saveApp()
             true
         }
         binding.navView.selectedItemId = getMenuId()

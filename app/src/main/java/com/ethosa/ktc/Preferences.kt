@@ -33,10 +33,10 @@ class Preferences(
         var proCollegeUsername = ""
         var proCollegePassword = ""
 
-        // AppDynamicTheme
+        // App
         var currentTheme = "default"
-
         var currentFragment = 0
+        var viewedNews = mutableSetOf<String>()
     }
 
     /**
@@ -59,8 +59,11 @@ class Preferences(
 
             proCollegeUsername = getString(Constants.LOGIN_USERNAME, "")!!
             proCollegePassword = getString(Constants.LOGIN_PASSWORD, "")!!
+
             currentTheme = getString(Constants.CURRENT_THEME, "default")!!
             currentFragment = getInt(Constants.CURRENT_FRAGMENT, 0)
+            viewedNews = getStringSet(Constants.VIEWED_NEWS, mutableSetOf<String>())!!
+            println(viewedNews)
         }
     }
 
@@ -89,15 +92,12 @@ class Preferences(
             .apply()
     }
 
-    fun saveTheme() {
-        preferences.edit()
-            .putString(Constants.CURRENT_THEME, currentTheme)
-            .apply()
-    }
-
-    fun saveFragment() {
+    fun saveApp() {
         preferences.edit()
             .putInt(Constants.CURRENT_FRAGMENT, currentFragment)
+            .putString(Constants.CURRENT_THEME, currentTheme)
+            .putStringSet(Constants.VIEWED_NEWS, viewedNews.toSet())
             .apply()
+        println(viewedNews)
     }
 }

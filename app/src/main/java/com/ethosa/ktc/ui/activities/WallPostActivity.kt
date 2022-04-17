@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import com.bumptech.glide.Glide
+import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
@@ -67,10 +68,14 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
             binding.content.progressBar, "alpha", 1f, 0f
         ).setDuration(500)
         // Fix <img/> tag
-        new.body = new.body.replace(
-            "src=\"/", "src=\"http://www.kansk-tc.ru/"
-        )
+        if (!new.body.startsWith("http"))
+            new.body = new.body.replace(
+                "src=\"/", "src=\"http://www.kansk-tc.ru/"
+            )
         runOnUiThread {
+            // Save as viewed
+            Preferences.viewedNews.add(new.id)
+            Preferences(this).saveApp()
             // Render HTML tags
             binding.content.body.text = HtmlCompat.fromHtml(
                 new.body,

@@ -9,6 +9,8 @@ import androidx.annotation.Keep
 sealed class Constants {
     companion object {
         const val PACKAGE = "com.ethosa.ktc"
+        const val CURRENT_FRAGMENT = "current_fragment"
+        const val VIEWED_NEWS = "viewed_news"
 
         const val TIMETABLE_STATE = "state"
         const val TIMETABLE_BRANCH = "branch"
@@ -16,7 +18,6 @@ sealed class Constants {
         const val TIMETABLE_GROUP_TITLE = "group_title"
         const val TIMETABLE_WEEK = "week"
         const val TIMETABLE_IS_STUDENT = "is_student"
-
         const val TIMETABLE_TEACHER_ID = "teacher_id"
 
         // when google services is available on phone.
@@ -32,7 +33,5 @@ sealed class Constants {
 
         // AppDynamicTheme
         const val CURRENT_THEME = "current_theme"
-
-        const val CURRENT_FRAGMENT = "current_fragment"
     }
 }
