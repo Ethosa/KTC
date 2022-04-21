@@ -16,5 +16,7 @@
     <color name="inactive">#b4bcca</color>
     <color name="active">#D7BBF2</color>
 
+    <color name="current_lesson">#271F42</color>
+
     <color name="active_indicator">@color/material_dynamic_neutral_variant50</color>
 </resources>

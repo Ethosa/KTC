@@ -16,5 +16,7 @@
     <color name="inactive">#232427</color>
     <color name="active">#0026AE</color>
 
+    <color name="current_lesson">#CCD9E8</color>
+
     <color name="active_indicator">@color/material_dynamic_tertiary90</color>
 </resources>

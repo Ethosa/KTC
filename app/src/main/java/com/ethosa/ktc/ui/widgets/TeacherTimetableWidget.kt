@@ -18,7 +18,6 @@ import com.ethosa.ktc.ui.activities.MainActivity
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Response
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -45,12 +44,12 @@ class TeacherTimetableWidget : AppWidgetProvider() {
      */
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun updateWidgetPendingIntent(
-        context: Context?,
+        context: Context,
         appWidgetId: Int
     ): PendingIntent {
         val intent = Intent(context, TeacherTimetableWidget::class.java)
         val ids = AppWidgetManager.getInstance(context)
-            .getAppWidgetIds(ComponentName(context!!, TeacherTimetableWidget::class.java))
+            .getAppWidgetIds(ComponentName(context, TeacherTimetableWidget::class.java))
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
 
@@ -69,7 +68,7 @@ class TeacherTimetableWidget : AppWidgetProvider() {
      */
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun openAppPendingIntent(
-        context: Context?,
+        context: Context,
         appWidgetId: Int
     ): PendingIntent {
         val intent = Intent(context, MainActivity::class.java)

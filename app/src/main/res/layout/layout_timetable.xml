@@ -51,7 +51,6 @@
             app:layout_constraintEnd_toStartOf="@+id/day_header"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/day_header">
-
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

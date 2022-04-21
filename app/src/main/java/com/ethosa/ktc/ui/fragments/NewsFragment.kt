@@ -39,7 +39,7 @@ class NewsFragment : Fragment(), CollegeCallback {
         binding.news.addItemDecoration(SpacingItemDecoration(0, 32))
 
         binding.newsStories.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        binding.newsStories.addItemDecoration(SpacingItemDecoration(32, 0))
+        binding.newsStories.addItemDecoration(SpacingItemDecoration(16, 0))
 
         // Fetch last news from college
         CollegeApi.fetchLastNews(this)

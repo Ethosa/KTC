@@ -75,7 +75,7 @@ class TimetableAdapter(
                 val current = dateFormat.parse(now)?.time!!
                 val to = dateFormat.parse(l.time[2])?.time!!
                 if (current in from..to && weekday.title == day.title)
-                    lesson.root.setBackgroundResource(R.color.foreground_alpha)
+                    lesson.root.setBackgroundResource(R.color.current_lesson)
 
                 holder.binding.root.addView(root)
             }

@@ -45,12 +45,12 @@ class TimetableWidget : AppWidgetProvider() {
      */
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun updateWidgetPendingIntent(
-        context: Context?,
+        context: Context,
         appWidgetId: Int
     ): PendingIntent {
         val intent = Intent(context, TimetableWidget::class.java)
         val ids = AppWidgetManager.getInstance(context)
-            .getAppWidgetIds(ComponentName(context!!, TimetableWidget::class.java))
+            .getAppWidgetIds(ComponentName(context, TimetableWidget::class.java))
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
 
@@ -69,7 +69,7 @@ class TimetableWidget : AppWidgetProvider() {
      */
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun openAppPendingIntent(
-        context: Context?,
+        context: Context,
         appWidgetId: Int
     ): PendingIntent {
         val intent = Intent(context, MainActivity::class.java)
@@ -149,7 +149,7 @@ class TimetableWidget : AppWidgetProvider() {
                         lesson.setInt(
                             R.id.lesson_background,
                             "setBackgroundResource",
-                            R.color.foreground_alpha
+                            R.color.current_lesson
                         )
 
                     views.addView(R.id.timetable_widget_lessons, lesson)
