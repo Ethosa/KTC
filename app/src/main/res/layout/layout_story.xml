@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/roundedImageView"
         app:srcCompat="@mipmap/ic_launcher"
-        app:strokeColor="?colorPrimary"
+        app:strokeColor="?tickColorActive"
         app:strokeWidth="3dp"
         tools:ignore="ContentDescription" />
 

@@ -45,10 +45,10 @@ class TimetableWidget : AppWidgetProvider() {
      */
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun updateWidgetPendingIntent(
-        context: Context,
+        context: Context?,
         appWidgetId: Int
     ): PendingIntent {
-        val intent = Intent(context, TimetableWidget::class.java)
+        val intent = Intent(context!!, TimetableWidget::class.java)
         val ids = AppWidgetManager.getInstance(context)
             .getAppWidgetIds(ComponentName(context, TimetableWidget::class.java))
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
@@ -69,10 +69,10 @@ class TimetableWidget : AppWidgetProvider() {
      */
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun openAppPendingIntent(
-        context: Context,
+        context: Context?,
         appWidgetId: Int
     ): PendingIntent {
-        val intent = Intent(context, MainActivity::class.java)
+        val intent = Intent(context!!, MainActivity::class.java)
         return PendingIntent.getActivity(
             context,
             appWidgetId,
