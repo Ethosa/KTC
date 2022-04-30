@@ -1,13 +1,17 @@
 package com.ethosa.ktc.college
 
 import android.annotation.SuppressLint
+import android.app.DownloadManager
 import android.content.ActivityNotFoundException
-import android.content.Intent
+import android.content.Context.DOWNLOAD_SERVICE
 import android.net.Uri
+import android.os.Build
+import android.os.Environment
 import android.view.View
 import android.webkit.*
 import android.widget.Toast
 import androidx.annotation.Keep
+import androidx.core.content.ContextCompat.getSystemService
 import com.ethosa.ktc.Constants
 import com.ethosa.ktc.ui.fragments.ProCollegeFragment
 
@@ -134,10 +138,21 @@ class ProCollege(
             }
         }
 
-        fragment.binding.content.setDownloadListener { url, _, _, _, _ ->
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(url)
-            fragment.startActivity(i)
+        fragment.binding.content.setDownloadListener { url, _, contentDisposition, mimetype, _ ->
+            val req = DownloadManager.Request(Uri.parse(url))
+            req.setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype))
+            req.setDescription("Downloading file...")
+            req.setNotificationVisibility(
+                DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
+            )
+            req.setDestinationInExternalPublicDir(
+                Environment.DIRECTORY_DOWNLOADS,
+                URLUtil.guessFileName(url, contentDisposition, mimetype)
+            )
+            val dm = fragment.requireActivity().getSystemService(
+                DOWNLOAD_SERVICE
+            ) as DownloadManager?
+            dm?.enqueue(req)
         }
 
         fragment.binding.content.loadUrl(LOGIN_PAGE)

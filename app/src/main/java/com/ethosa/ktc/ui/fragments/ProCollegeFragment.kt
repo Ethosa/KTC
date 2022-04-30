@@ -1,5 +1,6 @@
 package com.ethosa.ktc.ui.fragments
 
+import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.res.Configuration
@@ -9,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.ValueCallback
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
@@ -42,6 +45,8 @@ class ProCollegeFragment : Fragment() {
         preferences = Preferences(requireContext())
         preferences.load()
 
+        checkDownloadPermission()
+
         binding.username.editText?.setText(Preferences.proCollegeUsername)
         binding.password.editText?.setText(Preferences.proCollegePassword)
 
@@ -73,6 +78,27 @@ class ProCollegeFragment : Fragment() {
             val result = if (intent == null || resultCode != RESULT_OK) null else intent.data
             uploadMessage?.onReceiveValue(arrayOf(result!!))
             uploadMessage = null
+        }
+    }
+
+    private fun checkDownloadPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                requireActivity(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        ) {
+            Toast.makeText(
+                requireActivity(),
+                "Разрешение на работу с файлами нужно для сохранения файлов. " +
+                        "Разрешите работу с файлами в настройках приложения",
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                100
+            )
         }
     }
 
