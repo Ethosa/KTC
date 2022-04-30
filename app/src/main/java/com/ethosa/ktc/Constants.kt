@@ -33,5 +33,7 @@ sealed class Constants {
 
         // AppDynamicTheme
         const val CURRENT_THEME = "current_theme"
+
+        const val FILECHOOSER_RESULTCODE = 100
     }
 }

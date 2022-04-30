@@ -1,13 +1,16 @@
 package com.ethosa.ktc.college
 
 import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.view.View
-import android.webkit.JavascriptInterface
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
+import android.widget.Toast
 import androidx.annotation.Keep
+import com.ethosa.ktc.Constants
 import com.ethosa.ktc.ui.fragments.ProCollegeFragment
+
 
 /**
  * Provides work with pro college.
@@ -102,6 +105,39 @@ class ProCollege(
                 else
                     fragment.binding.contentProgress.visibility = View.VISIBLE
             }
+
+            override fun onShowFileChooser(
+                webView: WebView?,
+                filePathCallback: ValueCallback<Array<Uri>>?,
+                fileChooserParams: FileChooserParams?
+            ): Boolean {
+                if (fragment.uploadMessage != null) {
+                    fragment.uploadMessage?.onReceiveValue(null)
+                    fragment.uploadMessage = null
+                }
+
+                fragment.uploadMessage = filePathCallback
+                val intent= fileChooserParams!!.createIntent()
+                try {
+                    @Suppress("DEPRECATION")
+                    fragment.startActivityForResult(intent, Constants.FILECHOOSER_RESULTCODE)
+                } catch (e: ActivityNotFoundException) {
+                    fragment.uploadMessage = null
+                    Toast.makeText(
+                        fragment.requireContext(),
+                        "Cannot Open File Chooser",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return false
+                }
+                return true
+            }
+        }
+
+        fragment.binding.content.setDownloadListener { url, _, _, _, _ ->
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            fragment.startActivity(i)
         }
 
         fragment.binding.content.loadUrl(LOGIN_PAGE)

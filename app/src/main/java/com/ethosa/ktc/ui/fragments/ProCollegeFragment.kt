@@ -1,15 +1,20 @@
 package com.ethosa.ktc.ui.fragments
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.ValueCallback
+import androidx.fragment.app.Fragment
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
 import androidx.webkit.WebViewFeature
+import com.ethosa.ktc.Constants
 import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.college.ProCollege
 import com.ethosa.ktc.databinding.FragmentProCollegeBinding
@@ -24,6 +29,7 @@ class ProCollegeFragment : Fragment() {
 
     private lateinit var proCollege: ProCollege
     private lateinit var preferences: Preferences
+    var uploadMessage: ValueCallback<Array<Uri>>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +64,16 @@ class ProCollegeFragment : Fragment() {
         binding.auth.setOnClickListener { auth() }
 
         return binding.root
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        if (requestCode == Constants.FILECHOOSER_RESULTCODE) {
+            if (null == uploadMessage) return
+            val result = if (intent == null || resultCode != RESULT_OK) null else intent.data
+            uploadMessage?.onReceiveValue(arrayOf(result!!))
+            uploadMessage = null
+        }
     }
 
     /**

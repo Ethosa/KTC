@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (Build.VERSION.SDK_INT >= 31)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
             binding.navView.itemActiveIndicatorColor = getColorStateList(R.color.active_indicator)
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
