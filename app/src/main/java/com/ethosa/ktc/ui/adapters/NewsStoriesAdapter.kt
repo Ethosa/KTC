@@ -39,6 +39,7 @@ class NewsStoriesAdapter(
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
         val binding = holder.binding
         val new = items[pos]
+        new.catch()
 
         // Download image and blurs it.
         Glide.with(binding.root)

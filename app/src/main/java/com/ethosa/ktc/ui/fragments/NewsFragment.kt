@@ -62,6 +62,7 @@ class NewsFragment : Fragment(), CollegeCallback {
         // Parse JSON
         val jsonString = response.body?.string()
         val news = Gson().fromJson(jsonString, LastNews::class.java)
+        news.catch()
         // Create animation object
         val animate = ObjectAnimator.ofFloat(
             _binding?.progressLoad, "alpha",
@@ -69,7 +70,7 @@ class NewsFragment : Fragment(), CollegeCallback {
         ).setDuration(500)
         activity?.runOnUiThread {
             animate.start()
-            _binding?.news?.adapter = NewsAdapter(news.anonce + news.news)
+            _binding?.news?.adapter = NewsAdapter(news.news + news.anonce)
             _binding?.newsStories?.adapter = NewsStoriesAdapter(
                 (news.anonce + news.news)
                     .filter { it.image != "" }

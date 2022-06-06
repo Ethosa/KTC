@@ -75,9 +75,9 @@ class NewsAdapter(
         binding.root.setOnClickListener {
             // Go to WallPostActivity
             val intent = Intent(binding.root.context, WallPostActivity::class.java)
+            intent.putExtra("image", new.image)
             intent.putExtra("id", new.id)
             intent.putExtra("title", new.title)
-            intent.putExtra("image", new.image)
             binding.root.context.startActivity(intent)
         }
     }
