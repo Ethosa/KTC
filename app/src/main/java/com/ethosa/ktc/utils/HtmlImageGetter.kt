@@ -37,7 +37,7 @@ class HtmlImageGetter(
 
                 // Scale image with keep aspect ratio
                 val width = res.displayMetrics.widthPixels
-                val aspectRatio = drawable.intrinsicWidth.toFloat() / drawable.intrinsicHeight
+                val aspectRatio = drawable!!.intrinsicWidth.toFloat() / drawable.intrinsicHeight
                 val height = (width / aspectRatio).toInt()
 
                 // Change bounds
