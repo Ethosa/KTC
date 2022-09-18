@@ -13,6 +13,7 @@ import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
+import com.ethosa.ktc.college.teacher.TeacherDay
 import com.ethosa.ktc.college.teacher.TeacherTimetable
 import com.ethosa.ktc.ui.activities.MainActivity
 import com.google.gson.Gson
@@ -104,7 +105,13 @@ class TeacherTimetableWidget : AppWidgetProvider() {
         val teacherId = Preferences.teacherId
         val branchId = Preferences.branch.id
         val calendar = Calendar.getInstance()
-        val weekday = calendar.get(Calendar.DAY_OF_WEEK)
+        var weekday = calendar.get(Calendar.DAY_OF_WEEK)
+        if (calendar.firstDayOfWeek == Calendar.SUNDAY) {
+            if (weekday == 1)
+                weekday = 7
+            else
+                weekday--
+        }
 
         CollegeApi.fetchTeacherTimetable(branchId, teacherId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
@@ -118,24 +125,31 @@ class TeacherTimetableWidget : AppWidgetProvider() {
                     views.setTextViewText(
                         R.id.timetable_widget_title, "Ошибка расписания"
                     )
+                    appWidgetManager.updateAppWidget(appWidgetId, views)
                     return
                 } catch (e: Exception) {
                     views.setTextViewText(
                         R.id.timetable_widget_title, "Неизвестная ошибка"
                     )
+                    appWidgetManager.updateAppWidget(appWidgetId, views)
                     return
                 }
-                println(weekday)
                 // Get current day timetable
-                val day =
-                    when {
-                        weekday >= 2 -> timetable.week[weekday-2]
-                        weekday > 1 -> timetable.week[1]
-                        else -> timetable.week[0]
-                    }
+                val day: TeacherDay? = when (weekday) {
+                    7 -> null
+                    1 -> timetable.week[0]
+                    else -> timetable.week[weekday-1]
+                }
+                if (day == null) {
+                    views.setTextViewText(R.id.timetable_widget_title, "Выходной")
+                    appWidgetManager.updateAppWidget(appWidgetId, views)
+                    return
+                }
 
                 // Setup widget
-                views.setTextViewText(R.id.timetable_widget_title, "${timetable.teacher} - ${day.title}")
+                views.setTextViewText(
+                    R.id.timetable_widget_title, "${timetable.teacher} - ${day.title}"
+                )
                 views.removeAllViews(R.id.timetable_widget_lessons)
 
                 // Setup views

@@ -37,8 +37,7 @@ class TimetableAdapter(
     init {
         val calendar = Calendar.getInstance()
         var day = calendar.get(Calendar.DAY_OF_WEEK)
-        val firstDay = calendar.firstDayOfWeek
-        if (firstDay == Calendar.SUNDAY) {
+        if (calendar.firstDayOfWeek == Calendar.SUNDAY) {
             if (day == 1)
                 day = 7
             else
