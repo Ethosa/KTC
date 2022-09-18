@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ethosa.ktc.Preferences
@@ -19,8 +20,11 @@ import com.ethosa.ktc.ui.adapters.*
 import com.ethosa.ktc.utils.IOFragmentBackPressed
 import com.ethosa.ktc.ui.decoration.SpacingItemDecoration
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import okhttp3.Call
 import okhttp3.Response
+import java.io.IOException
+import java.lang.Exception
 
 /**
  * Provides working with KTC timetable.
@@ -135,7 +139,8 @@ class TimetableFragment : IOFragmentBackPressed() {
         }
         binding.toggleTimetable.setImageDrawable(resources.getDrawable(
             if (Preferences.isStudent) R.drawable.ic_graduation_cap else R.drawable.ic_globe_alt,
-            requireContext().theme))
+            requireContext().theme)
+        )
     }
 
     /**
@@ -147,14 +152,42 @@ class TimetableFragment : IOFragmentBackPressed() {
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
-                val branches = Gson().fromJson(json, Branches::class.java)
+                val branches: Branches
+                try {
+                    branches = Gson().fromJson(json, Branches::class.java)
+                } catch (e: JsonSyntaxException) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_branch_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                } catch (e: Exception) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                }
 
                 activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
                     binding.back.isEnabled = true
                     binding.timetableToolbar.visibility = View.GONE
-                    binding.timetable.adapter = BranchAdapter(this@TimetableFragment, branches)
+                    binding.timetable.adapter = BranchAdapter(
+                        this@TimetableFragment, branches
+                    )
                     preferences.saveTimetable()
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                super.onFailure(call, e)
+                requireActivity().runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         })
@@ -171,7 +204,24 @@ class TimetableFragment : IOFragmentBackPressed() {
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
-                val courses = Gson().fromJson(json, Courses::class.java)
+                val courses: Courses
+                try {
+                    courses = Gson().fromJson(json, Courses::class.java)
+                } catch (e: JsonSyntaxException) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_courses_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                } catch (e: Exception) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                }
 
                 activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread
@@ -186,6 +236,15 @@ class TimetableFragment : IOFragmentBackPressed() {
                         )
                     }
                     preferences.saveTimetable()
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                super.onFailure(call, e)
+                requireActivity().runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         })
@@ -203,7 +262,24 @@ class TimetableFragment : IOFragmentBackPressed() {
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
-                val data = Gson().fromJson(json, Week::class.java)
+                val data: Week
+                try {
+                    data = Gson().fromJson(json, Week::class.java)
+                } catch (e: JsonSyntaxException) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_timetable_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                } catch (e: Exception) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                }
                 Preferences.week = data.week_number
 
                 activity!!.runOnUiThread {
@@ -223,6 +299,15 @@ class TimetableFragment : IOFragmentBackPressed() {
                     preferences.saveTimetable()
                 }
             }
+
+            override fun onFailure(call: Call, e: IOException) {
+                super.onFailure(call, e)
+                requireActivity().runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }, week)
     }
 
@@ -240,7 +325,24 @@ class TimetableFragment : IOFragmentBackPressed() {
                 override fun onResponse(call: Call, response: Response) {
                     // Parse JSON
                     val json = response.body?.string()
-                    val data = Gson().fromJson(json, TeacherTimetable::class.java)
+                    val data: TeacherTimetable
+                    try {
+                        data = Gson().fromJson(json, TeacherTimetable::class.java)
+                    } catch (e: JsonSyntaxException) {
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(
+                                requireContext(), R.string.toast_timetable_error, Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        return
+                    } catch (e: Exception) {
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(
+                                requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        return
+                    }
                     Preferences.teacherId = teacherId
 
                     activity!!.runOnUiThread {
@@ -258,6 +360,15 @@ class TimetableFragment : IOFragmentBackPressed() {
                         preferences.saveTimetable()
                     }
                 }
+
+                override fun onFailure(call: Call, e: IOException) {
+                    super.onFailure(call, e)
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
         })
     }
 
@@ -272,7 +383,24 @@ class TimetableFragment : IOFragmentBackPressed() {
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
-                val teachers = Gson().fromJson(json, TeachersList::class.java)
+                val teachers: TeachersList
+                try {
+                    teachers = Gson().fromJson(json, TeachersList::class.java)
+                } catch (e: JsonSyntaxException) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_teacher_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                } catch (e: Exception) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                }
                 teachers.teachers.removeAt(0)
 
                 activity!!.runOnUiThread {
@@ -288,6 +416,15 @@ class TimetableFragment : IOFragmentBackPressed() {
                         )
                     }
                     preferences.saveTimetable()
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                super.onFailure(call, e)
+                requireActivity().runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         })

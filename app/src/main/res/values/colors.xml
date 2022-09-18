@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#fcfefe</color>
-    <color name="background_secondary">#ECF2F8</color>
-    <color name="background_toolbar">#1E2832</color>
-    <color name="primary">#6979B4</color>
-    <color name="primary_variant">#6076AC</color>
-    <color name="secondary">#8E95AF</color>
-    <color name="secondary_variant">#647197</color>
-    <color name="accent">#AEB9D4</color>
-    <color name="accent_variant">#98A0C8</color>
+    <color name="background">#fcfcfd</color>
+    <color name="background_secondary">#f0f0f5</color>
+    <color name="background_toolbar">@color/background_secondary</color>
+    <color name="primary">#6677b2</color>
+    <color name="primary_variant">#7786bb</color>
+    <color name="secondary">#888faa</color>
+    <color name="secondary_variant">#979db5</color>
+    <color name="accent">#abb7d3</color>
+    <color name="accent_variant">#9ba9ca</color>
     <color name="foreground">#F8F9FC</color>
     <color name="foreground_alpha">#AFF8F8FC</color>
     <color name="text">#212122</color>

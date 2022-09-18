@@ -16,8 +16,10 @@ import com.ethosa.ktc.college.CollegeCallback
 import com.ethosa.ktc.college.teacher.TeacherTimetable
 import com.ethosa.ktc.ui.activities.MainActivity
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import okhttp3.Call
 import okhttp3.Response
+import java.lang.Exception
 import java.util.*
 
 
@@ -109,7 +111,20 @@ class TeacherTimetableWidget : AppWidgetProvider() {
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
-                val timetable = Gson().fromJson(json, TeacherTimetable::class.java)
+                val timetable: TeacherTimetable
+                try {
+                    timetable = Gson().fromJson(json, TeacherTimetable::class.java)
+                } catch (e: JsonSyntaxException) {
+                    views.setTextViewText(
+                        R.id.timetable_widget_title, "Ошибка расписания"
+                    )
+                    return
+                } catch (e: Exception) {
+                    views.setTextViewText(
+                        R.id.timetable_widget_title, "Неизвестная ошибка"
+                    )
+                    return
+                }
                 println(weekday)
                 // Get current day timetable
                 val day =

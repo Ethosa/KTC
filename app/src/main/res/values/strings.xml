@@ -65,4 +65,15 @@
     <string name="placeholder">Placeholder</string>
     <string name="app_version_string">v0.0.1</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <string name="toast_unknown_error">Произошла неизвестная ошибка</string>
+    <string name="toast_news_error">Не удалось получить новости</string>
+    <string name="toast_gallery_error">Не удалось получить галерею</string>
+    <string name="toast_timetable_error">Не удалось получить расписание</string>
+    <string name="toast_courses_error">Не удалось получить курсы</string>
+    <string name="toast_branch_error">Не удалось получить список филиалов</string>
+    <string name="toast_teacher_error">Не удалось получить список преподавателей</string>
+    <string name="toast_update_error">
+        При получении информации об обновлении возникла ошибка
+    </string>
 </resources>

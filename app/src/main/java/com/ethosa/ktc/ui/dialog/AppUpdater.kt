@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.ethosa.ktc.BuildConfig
@@ -15,8 +16,10 @@ import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import okhttp3.Call
 import okhttp3.Response
+import java.lang.Exception
 
 
 /**
@@ -61,12 +64,18 @@ class AppUpdater(
             .setPositiveButton(R.string.update_dialog_positive) { dialog, _ ->
                 try {
                     // Detect Google play market
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.GOOGLE_PLAY_MARKET_URL))
+                    val intent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(Constants.GOOGLE_PLAY_MARKET_URL)
+                    )
                     intent.`package` = Constants.GOOGLE_PLAY_PACKAGE
                     context.startActivity(intent)
                 } catch (notFound: ActivityNotFoundException) {
                     // Go to GitHub releases
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.GITHUB_RELEASES_URL))
+                    val intent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(Constants.GITHUB_RELEASES_URL)
+                    )
                     context.startActivity(intent)
                 }
                 dialog.dismiss()
@@ -100,7 +109,18 @@ class AppUpdater(
         CollegeApi.fetchActualVersion(object : CollegeCallback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
-                actualVersion = Gson().fromJson(body, ActualAppVersion::class.java)
+                try {
+                    actualVersion = Gson().fromJson(body, ActualAppVersion::class.java)
+                } catch (e: JsonSyntaxException) {
+                    return
+                } catch (e: Exception) {
+                    context.runOnUiThread {
+                        Toast.makeText(
+                            context, R.string.toast_update_error, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return
+                }
 
                 if (!actualVersion!!.isActual())
                     context.runOnUiThread { showDialog() }

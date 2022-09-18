@@ -29,19 +29,19 @@
 
 
     <style name="Theme.KTC.MaterialYou" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/material_dynamic_tertiary50</item>
-        <item name="colorPrimaryDark">@color/material_dynamic_tertiary40</item>
-        <item name="colorPrimaryVariant">@color/material_dynamic_tertiary30</item>
-        <item name="colorOnPrimary">@color/material_dynamic_tertiary60</item>
+        <item name="colorPrimary">@color/material_dynamic_primary40</item>
+        <item name="colorPrimaryDark">@color/material_dynamic_primary50</item>
+        <item name="colorPrimaryVariant">@color/material_dynamic_primary60</item>
+        <item name="colorOnPrimary">@color/material_dynamic_primary30</item>
 
-        <item name="colorSecondary">@color/material_dynamic_secondary50</item>
-        <item name="colorSecondaryContainer">@color/material_dynamic_secondary40</item>
-        <item name="colorSecondaryVariant">@color/material_dynamic_secondary30</item>
-        <item name="colorOnSecondary">@color/material_dynamic_secondary60</item>
+        <item name="colorSecondary">@color/material_dynamic_secondary40</item>
+        <item name="colorSecondaryContainer">@color/material_dynamic_secondary50</item>
+        <item name="colorSecondaryVariant">@color/material_dynamic_secondary60</item>
+        <item name="colorOnSecondary">@color/material_dynamic_secondary30</item>
 
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:colorAccent">@color/material_dynamic_tertiary50</item>
-        <item name="android:windowBackground">@color/material_dynamic_tertiary10</item>
+        <item name="android:windowBackground">@color/material_dynamic_neutral10</item>
         <item name="android:textColorLink">@color/material_dynamic_tertiary70</item>
 
         <item name="fontFamily">@font/nuritom</item>
@@ -51,7 +51,7 @@
         <item name="android:textColor">@color/material_dynamic_neutral_variant70</item>
         <item name="colorAccent">?attr/colorPrimary</item>
         <item name="android:textColorSecondary">@color/material_dynamic_tertiary70</item>
-        <item name="cardBackgroundColor">@color/material_dynamic_tertiary20</item>
+        <item name="cardBackgroundColor">@color/material_dynamic_neutral20</item>
 
         <item name="tickColorInactive">@color/material_dynamic_neutral_variant60</item>
         <item name="tickColorActive">@color/material_dynamic_tertiary90</item>

@@ -15,6 +15,6 @@ interface CollegeCallback : Callback {
      * Calls on request failure
      */
     override fun onFailure(call: Call, e: IOException) {
-        Log.e("CollegeAPI", e.message.toString())
+        Log.e("CollegeAPI", e.stackTraceToString())
     }
 }
