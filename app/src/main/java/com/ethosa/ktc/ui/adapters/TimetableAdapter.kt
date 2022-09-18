@@ -21,9 +21,11 @@ class TimetableAdapter(
     private val timetableFragment: TimetableFragment,
     private val week: Week
 ) : RecyclerView.Adapter<TimetableAdapter.ViewHolder>() {
-    private lateinit var dateFormat: SimpleDateFormat
-    private lateinit var weekday: Day
+    @SuppressLint("SimpleDateFormat")
+    private var dateFormat = SimpleDateFormat("mm:ss")
+    private var weekday: Day? = null
     private var now = "00:00"
+    var currentPos: Int? = null
     /**
      * Provides RecyclerView.ViewHolder behavior.
      * Also includes TimetableBinding.
@@ -32,19 +34,31 @@ class TimetableAdapter(
         val binding = LayoutTimetableBinding.bind(view)
     }
 
+    init {
+        val calendar = Calendar.getInstance()
+        var day = calendar.get(Calendar.DAY_OF_WEEK)
+        val firstDay = calendar.firstDayOfWeek
+        if (firstDay == Calendar.SUNDAY) {
+            if (day == 1)
+                day = 7
+            else
+                day--
+        }
+        now = "${calendar.get(Calendar.HOUR_OF_DAY)}:${Calendar.MINUTE}"
+        currentPos = when (day) {
+            7 -> null
+            1 -> 0
+            else -> day-1
+        }
+        weekday = when (day) {
+            7 -> null
+            1 -> week.days[0]
+            else -> week.days[day-1]
+        }
+    }
+
     @SuppressLint("SimpleDateFormat")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        dateFormat = SimpleDateFormat("mm:ss")
-
-        val calendar = Calendar.getInstance()
-        val day = calendar.get(Calendar.DAY_OF_WEEK)
-        now = "${calendar.get(Calendar.HOUR_OF_DAY)}:${Calendar.MINUTE}"
-        weekday = when {
-                day >= 2 -> week.days[day-2]
-                day > 1 -> week.days[1]
-                else -> week.days[0]
-            }
-
         return ViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_timetable, parent, false))
     }
@@ -74,7 +88,7 @@ class TimetableAdapter(
                 val from = dateFormat.parse(l.time[1])?.time!!
                 val current = dateFormat.parse(now)?.time!!
                 val to = dateFormat.parse(l.time[2])?.time!!
-                if (current in from..to && weekday.title == day.title)
+                if (current in from..to && weekday?.title == day.title)
                     lesson.root.setBackgroundResource(R.color.current_lesson)
 
                 holder.binding.root.addView(root)

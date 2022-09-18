@@ -156,18 +156,10 @@ class TimetableFragment : IOFragmentBackPressed() {
                 try {
                     branches = Gson().fromJson(json, Branches::class.java)
                 } catch (e: JsonSyntaxException) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_branch_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_branch_error)
                     return
                 } catch (e: Exception) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_unknown_error)
                     return
                 }
 
@@ -184,11 +176,7 @@ class TimetableFragment : IOFragmentBackPressed() {
 
             override fun onFailure(call: Call, e: IOException) {
                 super.onFailure(call, e)
-                requireActivity().runOnUiThread {
-                    Toast.makeText(
-                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                    ).show()
-                }
+                toast(R.string.toast_unknown_error)
             }
         })
     }
@@ -208,18 +196,10 @@ class TimetableFragment : IOFragmentBackPressed() {
                 try {
                     courses = Gson().fromJson(json, Courses::class.java)
                 } catch (e: JsonSyntaxException) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_courses_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_courses_error)
                     return
                 } catch (e: Exception) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_unknown_error)
                     return
                 }
 
@@ -241,11 +221,7 @@ class TimetableFragment : IOFragmentBackPressed() {
 
             override fun onFailure(call: Call, e: IOException) {
                 super.onFailure(call, e)
-                requireActivity().runOnUiThread {
-                    Toast.makeText(
-                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                    ).show()
-                }
+                toast(R.string.toast_unknown_error)
             }
         })
     }
@@ -258,7 +234,7 @@ class TimetableFragment : IOFragmentBackPressed() {
     fun fetchTimetable(groupId: Int, week: Int? = null) {
         Preferences.timetableState = 2
         CollegeApi.fetchTimetable(groupId, object : CollegeCallback {
-            @SuppressLint("SetTextI18n")
+            @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
             override fun onResponse(call: Call, response: Response) {
                 // Parse JSON
                 val json = response.body?.string()
@@ -266,18 +242,10 @@ class TimetableFragment : IOFragmentBackPressed() {
                 try {
                     data = Gson().fromJson(json, Week::class.java)
                 } catch (e: JsonSyntaxException) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_timetable_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_timetable_error)
                     return
                 } catch (e: Exception) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_unknown_error)
                     return
                 }
                 Preferences.week = data.week_number
@@ -292,9 +260,12 @@ class TimetableFragment : IOFragmentBackPressed() {
                         timetableToolbar.visibility = View.VISIBLE
                         next.visibility = View.VISIBLE
                         previous.visibility = View.VISIBLE
-                        timetable.adapter = TimetableAdapter(
+                        val adapter = TimetableAdapter(
                             this@TimetableFragment, data
                         )
+                        timetable.adapter = adapter
+                        if (adapter.currentPos != null)
+                            timetable.layoutManager?.scrollToPosition(adapter.currentPos!!)
                     }
                     preferences.saveTimetable()
                 }
@@ -302,11 +273,7 @@ class TimetableFragment : IOFragmentBackPressed() {
 
             override fun onFailure(call: Call, e: IOException) {
                 super.onFailure(call, e)
-                requireActivity().runOnUiThread {
-                    Toast.makeText(
-                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                    ).show()
-                }
+                toast(R.string.toast_unknown_error)
             }
         }, week)
     }
@@ -329,18 +296,10 @@ class TimetableFragment : IOFragmentBackPressed() {
                     try {
                         data = Gson().fromJson(json, TeacherTimetable::class.java)
                     } catch (e: JsonSyntaxException) {
-                        requireActivity().runOnUiThread {
-                            Toast.makeText(
-                                requireContext(), R.string.toast_timetable_error, Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                        toast(R.string.toast_timetable_error)
                         return
                     } catch (e: Exception) {
-                        requireActivity().runOnUiThread {
-                            Toast.makeText(
-                                requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                        toast(R.string.toast_unknown_error)
                         return
                     }
                     Preferences.teacherId = teacherId
@@ -363,11 +322,7 @@ class TimetableFragment : IOFragmentBackPressed() {
 
                 override fun onFailure(call: Call, e: IOException) {
                     super.onFailure(call, e)
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_unknown_error)
                 }
         })
     }
@@ -387,18 +342,10 @@ class TimetableFragment : IOFragmentBackPressed() {
                 try {
                     teachers = Gson().fromJson(json, TeachersList::class.java)
                 } catch (e: JsonSyntaxException) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_teacher_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_teacher_error)
                     return
                 } catch (e: Exception) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    toast(R.string.toast_unknown_error)
                     return
                 }
                 teachers.teachers.removeAt(0)
@@ -421,12 +368,16 @@ class TimetableFragment : IOFragmentBackPressed() {
 
             override fun onFailure(call: Call, e: IOException) {
                 super.onFailure(call, e)
-                requireActivity().runOnUiThread {
-                    Toast.makeText(
-                        requireContext(), R.string.toast_unknown_error, Toast.LENGTH_SHORT
-                    ).show()
-                }
+                toast(R.string.toast_unknown_error)
             }
         })
+    }
+
+    private fun toast(resId: Int) {
+        requireActivity().runOnUiThread {
+            Toast.makeText(
+                requireContext(), resId, Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }
