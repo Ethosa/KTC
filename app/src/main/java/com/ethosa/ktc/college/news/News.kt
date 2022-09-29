@@ -18,10 +18,4 @@ data class News(
     val date: String,
     var image: String,
     val id: String
-) {
-    fun catch() {
-        if ("data:image" in image || image.length > 256) {
-            image = ""
-        }
-    }
-}
+)

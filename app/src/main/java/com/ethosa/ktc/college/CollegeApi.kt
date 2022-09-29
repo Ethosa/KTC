@@ -23,6 +23,8 @@ class CollegeApi {
         private const val TEACHER_TIMETABLE = "$MY_API/teacher-timetable"
         private const val TEACHERS_LIST = "$MY_API/teachers-list"
         private const val ACTUAL_VERSION = "$MY_API/actual-version"
+        private const val LAST_NEWS = "$MY_API/news/"
+        private const val NEWS_BY_ID = "$MY_API/news/id"
 
         /**
          * Sends GET request to url.
@@ -113,6 +115,23 @@ class CollegeApi {
          */
         fun fetchTeacherTimetable(branchId: Int, teacherId: Int, callback: CollegeCallback) {
             sendRequest("$TEACHER_TIMETABLE/$branchId/$teacherId", callback)
+        }
+
+        /**
+         * Fetches last news from new Public Beta API
+         * @param callback College callback interface
+         */
+        fun fetchLastNewsBeta(callback: CollegeCallback) {
+            sendRequest(LAST_NEWS, callback)
+        }
+
+        /**
+         * Fetches news by ID from new Public Beta API
+         * @param id news ID
+         * @param callback College callback interface
+         */
+        fun fetchNewsByIdBeta(id: Int, callback: CollegeCallback) {
+            sendRequest("$NEWS_BY_ID$id", callback)
         }
     }
 }

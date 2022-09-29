@@ -44,20 +44,6 @@
         app:layout_constraintStart_toStartOf="@+id/wall_title"
         app:layout_constraintTop_toBottomOf="@+id/wall_date" />
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="0dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="4dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/right_padding"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/left_padding"
-        app:layout_constraintTop_toBottomOf="@+id/wall_text"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="ContentDescription" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right_padding"
         android:layout_width="wrap_content"
@@ -74,4 +60,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="256dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="#00000000"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/wall_text"
+        app:layout_constraintStart_toStartOf="@+id/left_padding"
+        app:layout_constraintTop_toBottomOf="@+id/wall_text">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription" />
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

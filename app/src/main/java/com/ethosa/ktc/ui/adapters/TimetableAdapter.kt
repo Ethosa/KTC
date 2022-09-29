@@ -36,23 +36,17 @@ class TimetableAdapter(
 
     init {
         val calendar = Calendar.getInstance()
-        var day = calendar.get(Calendar.DAY_OF_WEEK)
-        if (calendar.firstDayOfWeek == Calendar.SUNDAY) {
-            if (day == 1)
-                day = 7
-            else
-                day--
-        }
+        val day = calendar.get(Calendar.DAY_OF_WEEK)
         now = "${calendar.get(Calendar.HOUR_OF_DAY)}:${Calendar.MINUTE}"
         currentPos = when (day) {
-            7 -> null
-            1 -> 0
-            else -> day-1
+            1 -> null
+            2 -> 0
+            else -> day-2
         }
         weekday = when (day) {
-            7 -> null
-            1 -> week.days[0]
-            else -> week.days[day-1]
+            1 -> null
+            2 -> week.days[0]
+            else -> week.days[day-2]
         }
     }
 

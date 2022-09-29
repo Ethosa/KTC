@@ -1,11 +1,14 @@
 package com.ethosa.ktc.ui.fragments
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.ViewCompat
+import androidx.core.view.ViewPropertyAnimatorListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +16,7 @@ import com.ethosa.ktc.Preferences
 import com.ethosa.ktc.R
 import com.ethosa.ktc.college.CollegeApi
 import com.ethosa.ktc.college.CollegeCallback
-import com.ethosa.ktc.college.news.LastNews
+import com.ethosa.ktc.college.news.LastNewsBeta
 import com.ethosa.ktc.databinding.FragmentNewsBinding
 import com.ethosa.ktc.ui.adapters.NewsAdapter
 import com.ethosa.ktc.ui.adapters.NewsStoriesAdapter
@@ -49,7 +52,7 @@ class NewsFragment : Fragment(), CollegeCallback {
         binding.newsStories.addItemDecoration(SpacingItemDecoration(16, 0))
 
         // Fetch last news from college
-        CollegeApi.fetchLastNews(this)
+        CollegeApi.fetchLastNewsBeta(this)
 
         return root
     }
@@ -65,12 +68,13 @@ class NewsFragment : Fragment(), CollegeCallback {
     /**
      * Calls when collegeApi fetches last news.
      */
+    @SuppressLint("Recycle")
     override fun onResponse(call: Call, response: Response) {
         // Parse JSON
         val jsonString = response.body?.string()
-        val news: LastNews
+        val news: LastNewsBeta
         try {
-            news = Gson().fromJson(jsonString, LastNews::class.java)
+            news = Gson().fromJson(jsonString, LastNewsBeta::class.java)
         } catch (e: JsonSyntaxException) {
             requireActivity().runOnUiThread {
                 Toast.makeText(
@@ -87,20 +91,40 @@ class NewsFragment : Fragment(), CollegeCallback {
             e.printStackTrace()
             return
         }
-        news.catch()
-        // Create animation object
-        val animate = ObjectAnimator.ofFloat(
-            _binding?.progressLoad, "alpha",
-            1f, 0f
-        ).setDuration(500)
         activity?.runOnUiThread {
-            animate.start()
-            _binding?.news?.adapter = NewsAdapter(news.news + news.anonce)
+            _binding?.news?.adapter = NewsAdapter(news.announce + news.announce)
             _binding?.newsStories?.adapter = NewsStoriesAdapter(
-                (news.anonce + news.news)
+                (news.announce + news.news)
                     .filter { it.image != "" }
                     .sortedBy { it.id in Preferences.viewedNews }
             )
+            // Animation
+            _binding?.progressLoad?.let {
+                ViewCompat.animate(it)
+                    .setDuration(500)
+                    .alpha(0f)
+                    .start()
+            }
+            // stories
+            _binding?.newsStories?.let {
+                it.translationX = 500f
+                it.alpha = 0f
+                ViewCompat.animate(it)
+                    .setDuration(500)
+                    .translationX(0f)
+                    .alpha(1f)
+                    .startDelay = 800
+            }
+            // news
+            _binding?.news?.let {
+                it.translationY = 500f
+                it.alpha = 0f
+                ViewCompat.animate(it)
+                    .setDuration(500)
+                    .translationY(0f)
+                    .alpha(1f)
+                    .startDelay = 800
+            }
         }
     }
 

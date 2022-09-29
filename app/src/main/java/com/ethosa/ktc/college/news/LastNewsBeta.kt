@@ -6,7 +6,8 @@ import androidx.annotation.Keep
  * List of last news.
  */
 @Keep
-data class LastNews(
-    val anonce: List<News>,
+data class LastNewsBeta(
+    val announce: List<News>,
     val news: List<News>
 )
+

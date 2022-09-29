@@ -27,10 +27,15 @@ data class ActualAppVersion(
             return false
         } else {
             if (actual_version[1] > AppUpdater.VERSION[1]) {
-                return false
+                if (actual_version[0] >= AppUpdater.VERSION[0])
+                    return false
             } else {
                 if (actual_version[2] > AppUpdater.VERSION[2]) {
-                    return false
+                    if (
+                        actual_version[0] >= AppUpdater.VERSION[0] &&
+                        actual_version[1] >= AppUpdater.VERSION[1]
+                    )
+                        return false
                 }
             }
         }

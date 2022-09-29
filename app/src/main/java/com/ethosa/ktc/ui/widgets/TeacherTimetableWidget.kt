@@ -105,13 +105,7 @@ class TeacherTimetableWidget : AppWidgetProvider() {
         val teacherId = Preferences.teacherId
         val branchId = Preferences.branch.id
         val calendar = Calendar.getInstance()
-        var weekday = calendar.get(Calendar.DAY_OF_WEEK)
-        if (calendar.firstDayOfWeek == Calendar.SUNDAY) {
-            if (weekday == 1)
-                weekday = 7
-            else
-                weekday--
-        }
+        val weekday = calendar.get(Calendar.DAY_OF_WEEK)
 
         CollegeApi.fetchTeacherTimetable(branchId, teacherId, object : CollegeCallback {
             @SuppressLint("SetTextI18n")
@@ -136,9 +130,9 @@ class TeacherTimetableWidget : AppWidgetProvider() {
                 }
                 // Get current day timetable
                 val day: TeacherDay? = when (weekday) {
-                    7 -> null
-                    1 -> timetable.week[0]
-                    else -> timetable.week[weekday-1]
+                    1 -> null
+                    2 -> timetable.week[0]
+                    else -> timetable.week[weekday-2]
                 }
                 if (day == null) {
                     views.setTextViewText(R.id.timetable_widget_title, "Выходной")

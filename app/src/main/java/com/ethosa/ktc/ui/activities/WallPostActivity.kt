@@ -46,7 +46,7 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
             .into(binding.toolbarImage)
 
         // Fetches post data.
-        CollegeApi.fetchNewById(
+        CollegeApi.fetchNewsByIdBeta(
             intent.getStringExtra("id")!!.toInt(), this
         )
     }
@@ -67,11 +67,6 @@ class WallPostActivity : AppCompatActivity(), CollegeCallback {
         val animate = ObjectAnimator.ofFloat(
             binding.content.progressBar, "alpha", 1f, 0f
         ).setDuration(500)
-        // Fix <img/> tag
-        if (!new.body.startsWith("http"))
-            new.body = new.body.replace(
-                "src=\"/", "src=\"http://www.kansk-tc.ru/"
-            )
         runOnUiThread {
             // Save as viewed
             Preferences.viewedNews.add(new.id)
