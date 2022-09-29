@@ -1,8 +1,15 @@
 package com.ethosa.ktc.college
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.provider.Settings
+import android.provider.Settings.*
 import androidx.annotation.Keep
+import com.ethosa.ktc.ui.dialog.AppUpdater
+import okhttp3.Call
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.Response
 
 /**
  * Provides working with KTC api.
@@ -13,7 +20,6 @@ class CollegeApi {
         private val client = OkHttpClient()
 
         private const val API_URL = "http://api.kansk-tc.ru/"
-        private const val NEWS_API = "${API_URL}news/"
         private const val ALBUMS_API = "${API_URL}albums/"
 
         private const val MY_API = "http://mob.kansk-tc.ru/ktc-api"
@@ -25,6 +31,7 @@ class CollegeApi {
         private const val ACTUAL_VERSION = "$MY_API/actual-version"
         private const val LAST_NEWS = "$MY_API/news/"
         private const val NEWS_BY_ID = "$MY_API/news/id"
+        private const val LIKE = "$MY_API/news/like"
 
         /**
          * Sends GET request to url.
@@ -74,21 +81,6 @@ class CollegeApi {
         }
 
         /**
-         * Gets the last news and receives it in onResponse method
-         */
-        fun fetchLastNews(callback: CollegeCallback) {
-            sendRequest(NEWS_API, callback)
-        }
-
-        /**
-         * Fetches the new by ID.
-         * @param id unique new's ID.
-         */
-        fun fetchNewById(id: Int, callback: CollegeCallback) {
-            sendRequest("$NEWS_API$id", callback)
-        }
-
-        /**
          * Fetches the timetable for specified group and week.
          * @param groupId course group ID.
          * @param week week number. by default fetches current week.
@@ -132,6 +124,18 @@ class CollegeApi {
          */
         fun fetchNewsByIdBeta(id: Int, callback: CollegeCallback) {
             sendRequest("$NEWS_BY_ID$id", callback)
+        }
+
+        @SuppressLint("HardwareIds")
+        fun likeNewsById(id: Int, ctx: Context) {
+            sendRequest(
+                "$LIKE$id?uuid=${AppUpdater.UUID}",
+                object: CollegeCallback {
+                    override fun onResponse(call: Call, response: Response) {
+                        println(response.body?.string())
+                    }
+                }
+            )
         }
     }
 }

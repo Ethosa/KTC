@@ -62,6 +62,7 @@
         app:layout_constraintGuide_begin="16dp" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="256dp"
         android:layout_marginTop="8dp"
@@ -78,6 +79,28 @@
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
             tools:ignore="ContentDescription" />
+
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/like"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/left_padding"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:srcCompat="@drawable/ic_heart"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/like_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/like"
+        app:layout_constraintStart_toEndOf="@+id/like"
+        app:layout_constraintTop_toTopOf="@+id/like" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

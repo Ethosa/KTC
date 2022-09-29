@@ -17,5 +17,6 @@ data class News(
     var body: String,
     val date: String,
     var image: String,
-    val id: String
+    val id: String,
+    var likes: List<String>
 )
