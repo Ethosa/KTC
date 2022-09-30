@@ -1,5 +1,6 @@
 package com.ethosa.ktc.ui.dialog
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -26,6 +27,7 @@ import java.lang.Exception
 /**
  * AppUpdater class provides app updating
  */
+@SuppressLint("HardwareIds")
 class AppUpdater(
     private val context: AppCompatActivity
 ) {
@@ -92,9 +94,7 @@ class AppUpdater(
                 println(preferences.getBoolean(omitted, false))
                 dialog.dismiss()
             }
-            .setNegativeButton(R.string.update_dialog_negative) { dialog, _ ->
-                dialog.dismiss()
-            }
+            .setNegativeButton(R.string.update_dialog_negative) { dialog, _ -> dialog.dismiss() }
             .create()
         // Setup elevation
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {

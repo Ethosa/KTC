@@ -1,14 +1,13 @@
 package com.ethosa.ktc.ui.fragments
 
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.core.view.ViewCompat
-import androidx.core.view.ViewPropertyAnimatorListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -92,7 +91,7 @@ class NewsFragment : Fragment(), CollegeCallback {
             return
         }
         activity?.runOnUiThread {
-            _binding?.news?.adapter = NewsAdapter(news.announce + news.announce)
+            _binding?.news?.adapter = NewsAdapter(news.announce + news.news)
             _binding?.newsStories?.adapter = NewsStoriesAdapter(
                 (news.announce + news.news)
                     .filter { it.image != "" }
@@ -103,6 +102,7 @@ class NewsFragment : Fragment(), CollegeCallback {
                 ViewCompat.animate(it)
                     .setDuration(500)
                     .alpha(0f)
+                    .setInterpolator(DecelerateInterpolator())
                     .start()
             }
             // stories
@@ -112,6 +112,7 @@ class NewsFragment : Fragment(), CollegeCallback {
                 ViewCompat.animate(it)
                     .setDuration(500)
                     .translationX(0f)
+                    .setInterpolator(DecelerateInterpolator())
                     .alpha(1f)
                     .startDelay = 800
             }
@@ -122,6 +123,7 @@ class NewsFragment : Fragment(), CollegeCallback {
                 ViewCompat.animate(it)
                     .setDuration(500)
                     .translationY(0f)
+                    .setInterpolator(DecelerateInterpolator())
                     .alpha(1f)
                     .startDelay = 800
             }
