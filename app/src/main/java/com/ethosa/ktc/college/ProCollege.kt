@@ -140,15 +140,17 @@ class ProCollege(
 
         fragment.binding.content.setDownloadListener { url, _, contentDisposition, mimetype, _ ->
             val req = DownloadManager.Request(Uri.parse(url))
-            req.setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype))
-            req.setDescription("Downloading file...")
-            req.setNotificationVisibility(
-                DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
-            )
-            req.setDestinationInExternalPublicDir(
-                Environment.DIRECTORY_DOWNLOADS,
-                URLUtil.guessFileName(url, contentDisposition, mimetype)
-            )
+                .setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype))
+                .setDescription("Downloading file...")
+                .setNotificationVisibility(
+                    DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
+                )
+                .setAllowedOverMetered(true)
+                .setAllowedOverRoaming(false)
+                .setDestinationInExternalPublicDir(
+                    Environment.DIRECTORY_DOWNLOADS,
+                    URLUtil.guessFileName(url, contentDisposition, mimetype)
+                )
             val dm = fragment.requireActivity().getSystemService(
                 DOWNLOAD_SERVICE
             ) as DownloadManager?
