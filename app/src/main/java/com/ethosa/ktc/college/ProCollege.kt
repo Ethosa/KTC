@@ -14,6 +14,7 @@ import androidx.annotation.Keep
 import androidx.core.content.ContextCompat.getSystemService
 import com.ethosa.ktc.Constants
 import com.ethosa.ktc.ui.fragments.ProCollegeFragment
+import java.net.URL
 
 
 /**
@@ -139,7 +140,9 @@ class ProCollege(
         }
 
         fragment.binding.content.setDownloadListener { url, _, contentDisposition, mimetype, _ ->
+            Toast.makeText(fragment.requireContext(), url, Toast.LENGTH_LONG).show()
             val req = DownloadManager.Request(Uri.parse(url))
+                .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
                 .setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype))
                 .setDescription("Downloading file...")
                 .setNotificationVisibility(

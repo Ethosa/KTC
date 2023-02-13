@@ -348,7 +348,6 @@ class TimetableFragment : IOFragmentBackPressed() {
                     toast(R.string.toast_unknown_error)
                     return
                 }
-                teachers.teachers.removeAt(0)
 
                 activity!!.runOnUiThread {
                     if (_binding == null) return@runOnUiThread

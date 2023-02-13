@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">КТК</string>
+    <string name="add_widget">Расписание</string>
+    <string name="app_widget_description">Виджет отображает расписание для студентов на сегодняшний день</string>
+    <string name="app_widget_teacher_description">Виджет отображает расписание для преподавателей на сегодняшний день</string>
+    <string name="update_dialog_title">Доступно обновление!</string>
+    <string name="update_dialog_positive">Обновить приложение</string>
+    <string name="title_news">Новости</string>
+    <string name="update_dialog_neutral">Пропустить версию</string>
+    <string name="update_dialog_negative">Напомнить позже</string>
+    <string name="title_timetable">Расписание</string>
+    <string name="title_gallery">Галерея</string>
+    <string name="title_settings">Личный кабинет</string>
+    <string name="title_about">О приложении</string>
+    <string name="title_contact_info">Контактная информация</string>
+    <string name="title_activity_album">Альбом</string>
+    <string name="title_activity_wall_post">Новость</string>
+    <string name="news_title">Название поста</string>
+    <string name="news_date">19 апр</string>
+    <string name="news_description">Краткое описание поста</string>
+    <string name="course_string">1 Курс</string>
+    <string name="username">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="auth">Войти</string>
+    <string name="lesson_title">Проектирование и дизайн информационных систем</string>
+    <string name="contact_email">Электронная почта: kansk-ktt@mail.ru</string>
+    <string name="contact_site">Сайт колледжа: http://www.kansk-tc.ru</string>
+    <string name="contact_address">663600, Красноярский край, г. Канск, ул. Кайтымская, д.56</string>
+    <string name="toast_unknown_error">Произошла неизвестная ошибка</string>
+    <string name="toast_news_error">Не удалось получить новости</string>
+    <string name="toast_gallery_error">Не удалось получить галерею</string>
+    <string name="toast_timetable_error">Не удалось получить расписание</string>
+    <string name="toast_courses_error">Не удалось получить курсы</string>
+    <string name="toast_branch_error">Не удалось получить список филиалов</string>
+    <string name="toast_teacher_error">Не удалось получить список преподавателей</string>
+    <string name="contact_phone">"         Приемная, секретарь руководителя, Сухорукова Нина Викторовна +7 (39161) 2–39–52     "</string>
+    <string name="contact_phone_director">"         Директор, Берлинец Тамара Владимировна +7 (39161) 2–38–41     "</string>
+    <string name="contact_phone_dep_dir_academic">"         Заместитель директора по учебной работе, Гончарова Светлана Алексеевна +7 (39161) 2–39–52     "</string>
+    <string name="contact_phone_dep_dir_academic_work">"         Заместитель директора по учебно-производственной работе, Михиенкова Нина Лаврентьева +7 (39161) 2–06–51     "</string>
+    <string name="contact_phone_dep_dir_educational">"         Заместитель директора по воспитательной работе, Соколова Евгения Викторовна +7 (39161) 2–36–11     "</string>
+    <string name="about_app_desc">"         Приложение для Канского технологического колледжа, разработанное @Ethosa     "</string>
+    <string name="toast_update_error">"         При получении информации об обновлении возникла ошибка     "</string>
+</resources>

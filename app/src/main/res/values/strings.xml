@@ -1,79 +1,65 @@
 <resources>
     <string name="app_name">KTC</string>
-    <string name="author_tag">\@Ethosa</string>
-    <string name="author">Ethosa</string>
-    <string name="github">Github</string>
+    <string name="author_tag" translatable="false">\@Ethosa</string>
+    <string name="author" translatable="false">Ethosa</string>
+    <string name="github" translatable="false">Github</string>
 
-    <string name="add_widget">Расписание</string>
-    <string name="app_widget_description">Виджет отображает расписание для студентов на сегодняшний день</string>
-    <string name="app_widget_teacher_description">Виджет отображает расписание для преподавателей на сегодняшний день</string>
+    <string name="add_widget">Timetable</string>
+    <string name="app_widget_description">The widget displays the schedule for students for today</string>
+    <string name="app_widget_teacher_description">The widget displays the schedule for teachers for today</string>
 
-    <string name="update_dialog_title">Доступно обновление!</string>
-    <string name="update_dialog_positive">Обновить приложение</string>
-    <string name="update_dialog_neutral">Пропустить версию</string>
+    <string name="update_dialog_title">An update is available!</string>
+    <string name="update_dialog_positive">Update the app</string>
+    <string name="update_dialog_neutral">Skip version</string>
     <string name="update_dialog_negative">Напомнить позже</string>
 
-    <string name="title_news">Новости</string>
-    <string name="title_timetable">Расписание</string>
-    <string name="title_gallery">Галерея</string>
-    <string name="title_settings">Личный кабинет</string>
-    <string name="title_about">О приложении</string>
-    <string name="title_contact_info">Контактная информация</string>
-    <string name="title_pro_college">ProCollege</string>
-    <string name="title_activity_album">Альбом</string>
-    <string name="title_activity_wall_post">Новость</string>
+    <string name="title_news">Feed</string>
+    <string name="title_timetable">Timetable</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="title_settings">Personal account</string>
+    <string name="title_about">About</string>
+    <string name="title_contact_info">Contacts</string>
+    <string name="title_pro_college" translatable="false">ProCollege</string>
+    <string name="title_activity_album">Album</string>
+    <string name="title_activity_wall_post">News</string>
 
-    <string name="news_title">Название поста</string>
-    <string name="news_date">19 апр</string>
-    <string name="news_description">Краткое описание поста</string>
+    <string name="news_title">News title</string>
+    <string name="news_date">April 19</string>
+    <string name="news_description">Brief description of the post</string>
 
-    <string name="course_string">1 Курс</string>
+    <string name="course_string">1st Course</string>
 
-    <string name="username">Логин</string>
-    <string name="password">Пароль</string>
-    <string name="auth">Войти</string>
+    <string name="username">Login</string>
+    <string name="password">Password</string>
+    <string name="auth">Auth</string>
 
-    <string name="lesson_title">Проектирование и дизайн информационных систем</string>
-    <string name="lesson_number">1</string>
-    <string name="lesson_time">00:00</string>
-    <string name="lesson_classroom">3.10</string>
-    <string name="lesson_teacher">Гринь Д. Х.</string>
+    <string name="lesson_title">Design and design of information systems</string>
+    <string name="lesson_number" translatable="false">1</string>
+    <string name="lesson_time" translatable="false">00:00</string>
+    <string name="lesson_classroom" translatable="false">3.10</string>
+    <string name="lesson_teacher" translatable="false">Гринь Д. Х.</string>
 
-    <string name="contact_email">Электронная почта: kansk-ktt@mail.ru</string>
-    <string name="contact_site">Сайт колледжа: http://www.kansk-tc.ru</string>
-    <string name="contact_phone">
-        "Приемная, секретарь руководителя, Сухорукова Нина Викторовна +7 (39161) 2–39–52"
-    </string>
-    <string name="contact_phone_director">
-        "Директор, Берлинец Тамара Владимировна +7 (39161) 2–38–41"
-    </string>
-    <string name="contact_phone_dep_dir_academic">
-        "Заместитель директора по учебной работе, Гончарова Светлана Алексеевна +7 (39161) 2–39–52"
-    </string>
-    <string name="contact_phone_dep_dir_academic_work">
-        "Заместитель директора по учебно-производственной работе, Михиенкова Нина Лаврентьева +7 (39161) 2–06–51"
-    </string>
-    <string name="contact_phone_dep_dir_educational">
-        "Заместитель директора по воспитательной работе, Соколова Евгения Викторовна +7 (39161) 2–36–11"
-    </string>
-    <string name="contact_address">663600, Красноярский край, г. Канск, ул. Кайтымская, д.56</string>
+    <string name="contact_email">Email address: kansk-ktt@mail.ru</string>
+    <string name="contact_site">College website: http://www.kansk-tc.ru</string>
+    <string name="contact_phone">Reception, secretary of the head, Nina Viktorovna Sukhorukova +7 (39161) 2-39-52</string>
+    <string name="contact_phone_director">Director, Berlinets Tamara Vladimirovna +7 (39161) 2-38-41</string>
+    <string name="contact_phone_dep_dir_academic_work">Deputy Director for Educational and Production Work, Nina Lavrentieva Mikhienkova +7 (39161) 2-06-51</string>
+    <string name="contact_phone_dep_dir_educational">Deputy Director for Educational Work, Sokolova Evgeniya Viktorovna +7 (39161) 2-36-11</string>
+    <string name="contact_address">663600, Krasnoyarsk Territory, Kansk, Kaitymskaya str., 56</string>
 
-    <string name="about_app_desc">
-        "Приложение для Канского технологического колледжа, разработанное @Ethosa"
-    </string>
+    <string name="about_app_desc">An application for the Kana College of Technology, developed by @Ethosa</string>
 
-    <string name="placeholder">Placeholder</string>
-    <string name="app_version_string">v0.0.1</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="placeholder" translatable="false">Placeholder</string>
+    <string name="app_version_string" translatable="false">v0.0.1</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
 
-    <string name="toast_unknown_error">Произошла неизвестная ошибка</string>
-    <string name="toast_news_error">Не удалось получить новости</string>
-    <string name="toast_gallery_error">Не удалось получить галерею</string>
-    <string name="toast_timetable_error">Не удалось получить расписание</string>
-    <string name="toast_courses_error">Не удалось получить курсы</string>
-    <string name="toast_branch_error">Не удалось получить список филиалов</string>
-    <string name="toast_teacher_error">Не удалось получить список преподавателей</string>
-    <string name="toast_update_error">
-        При получении информации об обновлении возникла ошибка
-    </string>
+    <string name="toast_unknown_error">An unknown error has occurred</string>
+    <string name="toast_news_error">Couldn\'t get the news</string>
+    <string name="toast_gallery_error">Couldn\'t get gallery</string>
+    <string name="toast_timetable_error">Couldn\'t get a timetable</string>
+    <string name="toast_courses_error">Failed to get courses</string>
+    <string name="toast_branch_error">Couldn\'t get a list of branches</string>
+    <string name="toast_teacher_error">Could not get a list of teachers</string>
+    <string name="toast_update_error">An error occurred while receiving information about the update</string>
+    <string name="contact_phone_dep_dir_academic">Deputy Director for Academic Affairs, Svetlana Alekseevna Goncharova +7 (39161) 2-39-52</string>
 </resources>
